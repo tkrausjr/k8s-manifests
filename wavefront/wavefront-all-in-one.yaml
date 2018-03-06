@@ -17,13 +17,13 @@ spec:
     spec:
       containers:
       - name: wavefront-proxy
-        image: wavefronthq/proxy:latest
+        image: harbor.tpmlab.vmware.com/library/wavefront-proxy-squid:latest
         imagePullPolicy: Always
         env:
         - name: WAVEFRONT_URL
-          value: https://vmware.wavefront.com/api/
+          value: https://longboard.wavefront.com/api/
         - name: WAVEFRONT_TOKEN
-          value: f7c25e90-c738-43d4-b2fe-0c8edd406058
+          value: 18574d35-7e20-4153-b0e9-9afaec6abffa
         ports:
         - containerPort: 2878
           protocol: TCP
@@ -91,7 +91,7 @@ spec:
       serviceAccount: "heapster"
       containers:
       - name: heapster
-        image: wavefronthq/heapster-amd64:latest
+        image: harbor.tpmlab.vmware.com/library/wavefronthq/heapster-amd64:latest
         imagePullPolicy: Always
         command:
         - /heapster
