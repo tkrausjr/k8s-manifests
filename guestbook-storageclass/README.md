@@ -1,4 +1,4 @@
-PKS Guestbook App with Persistent Storage(via VCP/Hatchway) & Load Balancer
+## PKS Guestbook App with Persistent Storage(via VCP/Hatchway) & Load Balancer
 1. [ ] cd github/kubernetes/guestbook-storageclass
     1. [ ] kubectl apply -f .
     2. [ ] kubectl apply -f redis-sc.yaml
