@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: configmap-logging-cntr
-      image: gcr.io/google_containers/busybox
+      image: harbor.tpmlab.vmware.com/library/busybox
       command: [ "/bin/sh", "-c", "env" ]
 
   restartPolicy: Never

@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: configmap-logging-cntr
-      image: gcr.io/google_containers/busybox
+      image: harbor.tpmlab.vmware.com/library/busybox
       command: [ "/bin/sh", "-c", "echo Error Level is: $(LOG_LEVEL) - Error Location is: $(LOG_LOCATION)" ]
       env:
         - name: LOG_LEVEL
