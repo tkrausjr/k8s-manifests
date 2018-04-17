@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env-vars
+spec:
+  containers:
+    - name: configmap-logging-cntr
+      image: gcr.io/google_containers/busybox
+      command: [ "/bin/sh", "-c", "env" ]
+
+  restartPolicy: Never
