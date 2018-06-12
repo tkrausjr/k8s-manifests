@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+ name: http-svc
+spec:
+ rules:
+   - host: ##REPLACEME##
+     http:
+       paths:
+         - path: /test1
+           backend:
+             serviceName: http-svc
+             servicePort: 80
+         - path: /test2
+           backend:
+             serviceName: http-svc
+             servicePort: 80
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-svc
+  labels:
+    app: http-svc
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 8080
+    protocol: TCP
+    name: https
+  selector:
+    app: http-svc
+
+
