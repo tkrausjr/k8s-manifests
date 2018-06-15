@@ -1,18 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
- name: conference-app
- annotations:
-   ncp/rewrite_target: "/"
+  name: conference-app-simple-ingress
 spec:
- rules:
- - http:
-     paths:
-     - path: /tea/* #Matches /tea, /tea/, /teacup, /teacup/, /tea/a, /teacup/b, etc.
-       backend:
-         serviceName: conference-app-svc
-         servicePort: 80
-     - path: /coffee/.* #Matches /coffee/, /coffee/a but NOT /coffee, /coffeecup, etc.
-       backend:
-         serviceName: conference-app-svc
-         servicePort: 80
+  backend:
+    serviceName: conference-app-svc
+    servicePort: 80
