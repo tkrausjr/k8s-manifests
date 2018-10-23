@@ -25,7 +25,7 @@ netmask: 255.255.255.0
 nsx_manager_ip: 110.371.13.82
 nsx_manager_username: admin
 nsx_manager_password: *******
-nsx_manager_assigned_hostname: "nsxt-mgr-23" # this hostname+dns_domain will be FQDN
+nsx_manager_assigned_hostname: "nsxt-mgr" # this hostname+dns_domain will be FQDN
 nsx_manager_root_pwd: *******    # Min 8 chars, upper, lower, number, special digit
 nsx_manager_deployment_size: small   # Recommended for real barebones demo, smallest setup
 nsx_manager_ssh_enabled: true
@@ -94,7 +94,7 @@ per_cluster_vlans: 0  #Comma seprated, order of VLANs applied same as order of c
 
 esx_ips: "" # additional esx hosts, if any, to be individually installed
 esx_os_version: "6.5.0"
-esx_root_password: "ca$hc0w"
+esx_root_password: "*******"
 esx_hostname_prefix: "esx-host"
 
 esx_available_vmnic: "vmnic1" # comma separated physical NICs, applies to both cluster installation or ESXi installation
@@ -107,6 +107,13 @@ nsx_t_t1router_logical_switches_spec: |
     - name: PKS-Mgmt
       logical_switch_gw: 10.31.0.1 # Last octet should be 1 rather than 0
       subnet_mask: 24
+    - name: PKS-K8s
+
+  - name: PKS-K8s  # PKS 1.2 ONLY needs a LS for K8s but not sure you can just add a switch without a LR
+    switches: 
+    - name: PKS-K8s 
+      logical_switch_gw: 10.41.0.1 # Last octet should be 1 rather than 0 
+      subnet_mask: 16
 
 nsx_t_container_ip_block_spec: |
   container_ip_blocks:
@@ -122,7 +129,7 @@ nsx_t_external_ip_pool_spec: |
 
   - name: snat-vip-pool-for-pks
     cidr: 10.51.0.0/24
-    start: 10.51.0.10 # Should not include gateway
+    start: 10.51.0.20 # Should not include gateway
     end: 10.51.0.200  # Should not include gateway
 
   - name: tep-ip-pool2
@@ -137,34 +144,34 @@ nsx_t_nat_rules_spec: |
   - t0_router: PKS-T0
     nat_type: snat
     source_network: 10.31.0.0/24      # PKS Infra network cidr
-    translated_network: 192.168.40.31      # SNAT External Address for PKS networks
+    translated_network: 10.51.0.13      # SNAT External Address for PKS networks
     rule_priority: 8001                  # Lower priority
 
   # Sample entry for PKS-Services network
   - t0_router: PKS-T0
     nat_type: snat
     source_network: 10.41.0.0/24      # PKS Clusters network cidr
-    translated_network: 192.168.40.41     # SNAT External Address for PKS networks
+    translated_network: 10.51.0.14     # SNAT External Address for PKS networks
     rule_priority: 8001                  # Lower priority
 
   # Sample entry for allowing inbound to PKS Ops manager
   - t0_router: PKS-T0
     nat_type: dnat
-    destination_network: 192.168.40.2     # External IP address for PKS opsmanager
+    destination_network: 10.51.0.2     # External IP address for PKS opsmanager
     translated_network: 10.31.0.2    # Internal IP of PKS Ops manager
     rule_priority: 1024                  # Higher priority
 
   # Sample entry for allowing inbound to PKS Controller
   - t0_router: PKS-T0
     nat_type: dnat
-    destination_network: 192.168.40.4     # External IP address for PKS controller
+    destination_network: 10.51.0.4     # External IP address for PKS controller
     translated_network: 10.31.0.4     # Internal IP of PKS Controller
     rule_priority: 1024                  # Higher priority
 
   # Sample entry for allowing outbound from PKS Controller to external
   - t0_router: PKS-T0
     nat_type: dnat
-    destination_network: 192.168.40.5       # Internal IP of PKS controller
+    destination_network: 10.51.0.5       # Internal IP of PKS controller
     translated_network: 10.31.0.5      # External IP address for PKS controller
     rule_priority: 1024                  # Higher priority
 
