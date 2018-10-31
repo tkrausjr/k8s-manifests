@@ -23,7 +23,7 @@ spec:
         run: conference-app
     spec:
       containers:
-      - image: harbor.tpmlab.vmware.com/library/conference-app:latest
+      - image: tkrausjr/conference-app
         name: conference-app
         ports:
         - containerPort: 8080
