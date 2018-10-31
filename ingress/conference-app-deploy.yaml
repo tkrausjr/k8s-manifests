@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: conference-app
-  name: conference-app
+    run: conference-app-ingress
+  name: conference-app-ingress
   namespace: default
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
-      run: conference-app
+      run: conference-app-ingress
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -18,10 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        run: conference-app
+        run: conference-app-ingress
     spec:
       containers:
-      - image: harbor.tpmlab.vmware.com/library/conference-app
+      - image: tkrausjr/conference-app
         imagePullPolicy: Always
         name: conference-app
         ports:
