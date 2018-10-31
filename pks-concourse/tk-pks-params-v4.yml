@@ -1,12 +1,12 @@
 # Pipeline resource configuration
-pivnet_token: **************   # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
+pivnet_token: s4pauPiuoD7KYGEaVWx3   # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
 opsman_major_minor_version: ^2\.3.*$   # PCF Ops Manager minor version to track
 pks_major_minor_version: ^1\.2.0$         # use PKS v1.2
 
 # vCenter configuration
 vcenter_host: vcsa.tpmlab.vmware.com          # vCenter host or IP
 vcenter_usr: administrator@vsphere.local             # vCenter username. If user is tied to a domain, then escape the \, example `domain\\user`
-vcenter_pwd: "*******"          # vCenter password
+vcenter_pwd: "***REMOVED***"          # vCenter password
 vcenter_data_center: Datacenter       # vCenter datacenter
 vcenter_insecure: 1        # vCenter skip TLS cert validation; enter `1` to disable cert verification, `0` to enable verification
 vcenter_ca_cert:           # vCenter CA cert at the API endpoint; enter a value if `vcenter_insecure: 0`
@@ -18,15 +18,15 @@ opsman_domain_or_ip_address: opsman.tpmlab.vmware.com       # FQDN to access Ops
 # opsman.tpmlab.vmware.com resolves to DNAT address on T0 Uplink 110.371.13.161
 
 opsman_admin_username: admin          # Username for Ops Manager admin account
-opsman_admin_password: "*******"    # Password for Ops Manager admin account
-om_ssh_pwd: "*******"                 # SSH password for Ops Manager (ssh user is ubuntu)
-om_decryption_pwd: "*******"        # Decryption password for Ops Manager exported settings
+opsman_admin_password: "***REMOVED***"    # Password for Ops Manager admin account
+om_ssh_pwd: "***REMOVED***"                 # SSH password for Ops Manager (ssh user is ubuntu)
+om_decryption_pwd: "***REMOVED***"        # Decryption password for Ops Manager exported settings
 om_ntp_servers: 110.371.13.90       # Comma-separated list of NTP Servers
 om_dns_servers: 110.371.13.90           # Comma-separated list of DNS Servers
 om_gateway: 10.31.0.1               # Gateway for Ops Manager network
 om_netmask: 255.255.255.0             # Netmask for Ops Manager network
 om_ip: 10.31.0.2                    # IP to assign to Ops Manager VM
-om_vm_network: PKS-Mgmt             # vCenter network name to use to deploy Ops Manager in
+om_vm_network: PKS-Mgmt-LS             # vCenter network name to use to deploy Ops Manager in
 om_vm_name: opsmgr-concourse         # Name to use for Ops Manager VM
 opsman_disk_type: "thick"  # Disk type for Ops Manager VM (thick|thin)
 om_vm_power_state: true   # Whether to power on Ops Manager VM after creation
@@ -67,8 +67,8 @@ max_threads: 30               # Max threads count for deploying VMs
 
 # BOSH Management Network configuration for Opsman, Bosh Director, PKS Controller, Harbor
 icmp_checks_enabled: false    # Enable or disable ICMP checks
-infra_network_name: "Management"
-infra_vsphere_network: "PKS-Mgmt"       # vCenter Infrastructure network name
+infra_network_name: "PKS-Mgmt-LS"
+infra_vsphere_network: "PKS-Mgmt-LS"       # vCenter Infrastructure network name
 infra_nw_cidr: 10.31.0.0/24              # Infrastructure network CIDR, ex: 10.0.0.0/22
 infra_excluded_range: 10.31.0.1-10.31.0.2      # Infrastructure network exclusion range
 infra_nw_dns: 110.371.13.90                    # Infrastructure network DNS
@@ -79,11 +79,11 @@ nsx_networking_enabled: true              # (true|false) to use nsx networking f
 nsx_mode: nsx-t                           # Valid values: nsx-t, nsx-v
 nsx_address: nsxt-mgr.tpmlab.vmware.com    # address of Nsx Mgr FQDN, not IP
 nsx_username: admin                       # username for nsx access
-nsx_password: "*******"                # password for nsx access
+nsx_password: "***REMOVED***"                # password for nsx access
 
 # Bosh network for Kubernetes Nodes and Management  
-pks_network_name: "Compute-K8s"             # Logical switch for PKS-Services
-pks_vsphere_network: "PKS-K8s"          # vCenter PKS-Services  network name for PKS - if empty quotes, then this network would be skipped
+pks_network_name: "PKS-K8s-LS"             # Logical switch for PKS-Services
+pks_vsphere_network: "PKS-K8s-LS"          # vCenter PKS-Services  network name for PKS - if empty quotes, then this network would be skipped
 pks_nw_cidr: 10.41.0.0/16          # PKS-Services network CIDR, ex: 10.0.0.0/22
 pks_excluded_range: 10.41.0.1      # PKS-Services network exclusion range
 pks_nw_dns: 110.371.13.90               # PKS-Services network DNS
@@ -104,7 +104,7 @@ pks_tile_uaa_domain_prefix: pks # Would be used for UAA as ${prefix}.${pks_syste
 # External IP that would be routable via the NSX T0 Router and mapped to ${pks_tile_uaa_domain_prefix}.${pks_system_domain}
 pks_tile_uaa_system_domain_ip: 10.51.0.4
 pks_tile_cli_username: admin
-pks_tile_cli_password: "*******"
+pks_tile_cli_password: "***REMOVED***"
 pks_tile_cli_useremail: pksadmin@corp.com
 pks_tile_cert_pem: # Would be generated or provide
 #cert_pem: |
@@ -119,7 +119,7 @@ pks_tile_private_key_pem: # Would be generated
 # All the following fields need to be filled in
 pks_tile_vcenter_host: vcsa.tpmlab.vmware.com          # REQUIRED
 pks_tile_vcenter_usr: administrator@vsphere.local            # REQUIRED
-pks_tile_vcenter_pwd: "*******"            # REQUIRED
+pks_tile_vcenter_pwd: "***REMOVED***"            # REQUIRED
 pks_tile_vcenter_data_center: Datacenter   # REQUIRED
 pks_tile_vcenter_cluster: Nested-PKS        # REQUIRED
 pks_tile_vcenter_datastore: nfs-ubuntu-01     # REQUIRED
@@ -127,8 +127,8 @@ pks_tile_vm_folder: pks_vms              # REQUIRED
 
 pks_tile_singleton_job_az: az1-mgmt           # Check
 pks_tile_nw_azs: az1-mgmt 
-pks_tile_deployment_network_name: Management      # Can be any network created already, default: INFRASTRUCTURE
-pks_tile_cluster_service_network_name: Compute-K8s   # Should match the PKS-Services network created already
+pks_tile_deployment_network_name: PKS-Mgmt-LS      # Can be any network created already, default: INFRASTRUCTURE
+pks_tile_cluster_service_network_name: PKS-K8s-LS   # Should match the PKS-Services network created already
 
 # ALERT - The underlying Edge instances should be large, 8 vcpus.
 # Otherwise the pks-nsx-t-precheck errrand would fail.
@@ -140,7 +140,7 @@ pks_tile_disable_nsx_t_precheck_errand: false                          # Default
 # PKS Main configs
 pks_tile_t0_router_name: PKS-T0                               # EDIT - Name of T0 Router to be used for PKS
 pks_tile_nsx_nat_mode: true                                            # Set to true
-pks_tile_external_ip_pool_name: snat-vip-pool-for-pks # EDIT - Name of External Floating IP Pool in NSX Mgr to be used for PKS
+pks_tile_external_ip_pool_name: PKS-snat-vip-pool # EDIT - Name of External Floating IP Pool in NSX Mgr to be used for PKS
 pks_tile_container_ip_block_name: PKS-pod-ip-block   # EDIT - Name of Container IP Block in NSX Mgr to be used for PKS
 pks_tile_nodes_ip_block_name: PKS-node-ip-block     # EDIT - Name of Node IP Block in NSX Mgr to be used for PKS nodes in v1.1
 pks_tile_vcenter_cluster_list: Nested-PKS            # EDIT - List of vcenter clusters for PKS to deploy k8s clusters
