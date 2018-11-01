@@ -164,6 +164,7 @@ auth:
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ##
 securityContext:
+  # TK - Deployment fails if you change value beloe to false
   enabled: true
   fsGroup: 1001
   runAsUser: 1001
@@ -172,7 +173,8 @@ securityContext:
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ##
 service:
-  type: ClusterIP
+  # TK - Changed below from NodePort
+  type: LoadBalancer
   port: 9092
 
 ## Kafka data Persistent Volume Storage Class
@@ -184,7 +186,8 @@ service:
 ##
 persistence:
   enabled: true
-  # storageClass: "-"
+  # storageClass: "-"   TK Added below 
+  storageClass: thin-disk
   accessModes:
     - ReadWriteOnce
   size: 8Gi
