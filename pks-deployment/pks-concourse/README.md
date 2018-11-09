@@ -11,10 +11,17 @@ Make sure your Concourse Docker Containers are still running, using docker ps to
 ## Install PKS 
 1. mkdir -p /root/pks
 2. cd /root/pks 
-2. /root/pks $ wget https://raw.githubusercontent.com/sparameswaran/nsx-t-ci-pipeline/blob/master/pipelines/install-pks-pipeline.yml .
+2. /root/pks $ wget https://raw.githubusercontent.com/sparameswaran/nsx-t-ci-pipeline/master/pipelines/install-pks-pipeline.yml .
 3. /root/pks $ wget https://raw.githubusercontent.com/tkrausjr/k8s-manifests/master/pks-deployment/pks-concourse/tk-pks-params-v4.yml .
 4. /root/pks $ vim tk-pks-params-v4.yml
 5. /root/pks $ fly targets
 6.  fly --target main login --concourse-url http://10.173.13.90:8080
 7. /root/pks $  fly --target main set-pipeline -p pks-pipeline -c /root/pks/install-pks-pipeline.yml -l /root/pks/tk-pks-params-v4.yml
+        apply configuration [yN]: y
+        Hit YES
+8. In a browser, navigate to http://10.173.13.90:8080 (Concourse) and login to Main.
+9. Click hamburger Menu in Top Left to show both pipelines
+10. Unpause pks-pipeline
+
+
 
