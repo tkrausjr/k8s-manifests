@@ -1,26 +1,26 @@
 # Pipeline resource configuration
-pivnet_token: s4pauPiuoD7KYGEaVWx3   # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
+pivnet_token: s4pauPiuoD7********   # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
 opsman_major_minor_version: ^2\.3.*$   # PCF Ops Manager minor version to track
 pks_major_minor_version: ^1\.2.0$         # use PKS v1.2
 
 # vCenter configuration
-vcenter_host: vcsa.tpmlab.vmware.com          # vCenter host or IP
+vcenter_host: vcsa.lab.corp.com          # vCenter host or IP
 vcenter_usr: administrator@vsphere.local             # vCenter username. If user is tied to a domain, then escape the \, example `domain\\user`
-vcenter_pwd: "VMware1!"          # vCenter password
+vcenter_pwd: "*****"          # vCenter password
 vcenter_data_center: Datacenter       # vCenter datacenter
 vcenter_insecure: 1        # vCenter skip TLS cert validation; enter `1` to disable cert verification, `0` to enable verification
 vcenter_ca_cert:           # vCenter CA cert at the API endpoint; enter a value if `vcenter_insecure: 0`
 
 # Ops Manager VM configuration
-om_vm_host:  vcsa.tpmlab.vmware.com                        # Optional - vCenter host to deploy Ops Manager in
+om_vm_host:  vcsa.lab.corp.com                        # Optional - vCenter host to deploy Ops Manager in
 om_data_store: nfs-ubuntu-01                   # vCenter datastore name to deploy Ops Manager in
-opsman_domain_or_ip_address: opsman.tpmlab.vmware.com       # FQDN to access Ops Manager without protocol (will use https), ex: opsmgr.example.com
+opsman_domain_or_ip_address: opsman.lab.corp.com       # FQDN to access Ops Manager without protocol (will use https), ex: opsmgr.example.com
 # opsman.tpmlab.vmware.com resolves to DNAT address on T0 Uplink 110.371.13.161
 
 opsman_admin_username: admin          # Username for Ops Manager admin account
-opsman_admin_password: "VMware1!"    # Password for Ops Manager admin account
-om_ssh_pwd: "VMware1!"                 # SSH password for Ops Manager (ssh user is ubuntu)
-om_decryption_pwd: "VMware1!"        # Decryption password for Ops Manager exported settings
+opsman_admin_password: "*****"    # Password for Ops Manager admin account
+om_ssh_pwd: "*****"                 # SSH password for Ops Manager (ssh user is ubuntu)
+om_decryption_pwd: "*****"        # Decryption password for Ops Manager exported settings
 om_ntp_servers: 110.371.13.90       # Comma-separated list of NTP Servers
 om_dns_servers: 110.371.13.90           # Comma-separated list of DNS Servers
 om_gateway: 10.31.0.1               # Gateway for Ops Manager network
@@ -79,7 +79,7 @@ nsx_networking_enabled: true              # (true|false) to use nsx networking f
 nsx_mode: nsx-t                           # Valid values: nsx-t, nsx-v
 nsx_address: nsxt-mgr.tpmlab.vmware.com    # address of Nsx Mgr FQDN, not IP
 nsx_username: admin                       # username for nsx access
-nsx_password: "VMware1!"                # password for nsx access
+nsx_password: "*****"                # password for nsx access
 
 # Bosh network for Kubernetes Nodes and Management  
 pks_network_name: "PKS-K8s-LS"             # Logical switch for PKS-Services
@@ -95,7 +95,7 @@ is_service_network: true  # Required select service network option in Ops man tr
 ######################
 
 # Create DNS entry in the loadbalancer and DNAT/SNAT entries for following
-pks_tile_system_domain: tpmlab.vmware.com
+pks_tile_system_domain: lab.corp.com
 # Just provide the prefix like uaa or api for domain_prefix.
 # The prefix together with system domain would be used like api.pks.test.corp.com or uaa.pks.test.corp.com
 pks_tile_uaa_domain_prefix: pks # Would be used for UAA as ${prefix}.${pks_system_domain}
@@ -104,7 +104,7 @@ pks_tile_uaa_domain_prefix: pks # Would be used for UAA as ${prefix}.${pks_syste
 # External IP that would be routable via the NSX T0 Router and mapped to ${pks_tile_uaa_domain_prefix}.${pks_system_domain}
 pks_tile_uaa_system_domain_ip: 10.51.0.4
 pks_tile_cli_username: admin
-pks_tile_cli_password: "VMware1!"
+pks_tile_cli_password: "*****"
 pks_tile_cli_useremail: pksadmin@corp.com
 pks_tile_cert_pem: # Would be generated or provide
 #cert_pem: |
@@ -117,9 +117,9 @@ pks_tile_cert_pem: # Would be generated or provide
 pks_tile_private_key_pem: # Would be generated
 
 # All the following fields need to be filled in
-pks_tile_vcenter_host: vcsa.tpmlab.vmware.com          # REQUIRED
+pks_tile_vcenter_host: vcsa.lab.corp.com         # REQUIRED
 pks_tile_vcenter_usr: administrator@vsphere.local            # REQUIRED
-pks_tile_vcenter_pwd: "VMware1!"            # REQUIRED
+pks_tile_vcenter_pwd: "****"            # REQUIRED
 pks_tile_vcenter_data_center: Datacenter   # REQUIRED
 pks_tile_vcenter_cluster: Nested-PKS        # REQUIRED
 pks_tile_vcenter_datastore: nfs-ubuntu-01     # REQUIRED
