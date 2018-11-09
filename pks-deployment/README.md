@@ -2,13 +2,13 @@
 
 
 ## Prerequisites
-Ubuntu VM / Machine with docker, git CLI, and fly CLI installed.
+Ubuntu VM / Machine with docker, git CLI, and fly CLI installed.  Ubuntu machine will run Docker Containers which will need access to the internet to pull down GIT repos and Docker images.
 
 
 ## Installation
 
-    ### Follow steps for NSX-T deployment in nsxt-deployment README.
+    ### Follow steps for NSX-T deployment in nsxt-concourse README.
     
     ### Leave Concourse Containers running after NSX-T deployment
     
-    ### Follow README in pks-deployment folder.
+    ### Follow README in pks-concourse folder.
