@@ -1,6 +1,6 @@
-## To RUN it like a CUSTOMER - Pulling CONCOURSE SERVER as a DOCKER IMAGE https://github.com/vmware/nsx-t-datacenter-ci-pipelines
+#### REFERENCE https://github.com/vmware/nsx-t-datacenter-ci-pipelines
 
-## FOR Cleaning up a previous NSX-T Environment see bottom of this NOTE:
+#### FOR Cleaning up a previous NSX-T Environment see bottom of this NOTE:
 
 ## FROM an UBUNTU Jumpbox - 110.371.13.90
 
