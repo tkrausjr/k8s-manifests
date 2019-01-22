@@ -36,3 +36,16 @@ docker system prune
 cd /home/concourse && rm -rf keys/ docker-compose.yml pipeline_config_internal.yml generate-keys.sh
 Rerun the command
 docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock -v /home/concourse:/home/concourse -e CONCOURSE_URL="http://110.371.13.90:8080" -e EXTERNAL_DNS="110.371.13.90" -e IMAGE_WEBSERVER_PORT=40001 nsx-t-install
+
+You will also need to delete the NSX-T Virtual Machines (Manager, Controller, Edges) and unregister the vSphere extension.
+
+https://vcenter-fqdn.domain.com/mob
+Login with VC Creds
+ - Content
+ - ExtensionManager
+ - extensionList["com.vmware.nsx.management.nsxt"]	
+ - UnregisterExtension
+ - Paste "com.vmware.nsx.management.nsxt"
+ - Invoke Method.
+ 
+
