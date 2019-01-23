@@ -32,11 +32,11 @@ nsx-t-install "/home/run.sh" 3 minutes ago Up 3 minutes nsx-t-install
 
 ## To restart the pipeline
 If pipeline fails and needs to be rerun, you will need to start over and clean up Docker containers.
-docker rm -f $(docker ps -qa)
+```docker rm -f $(docker ps -qa)
 docker system prune
 cd /home/concourse && rm -rf keys/ docker-compose.yml pipeline_config_internal.yml generate-keys.sh
 Rerun the command
-docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock -v /home/concourse:/home/concourse -e CONCOURSE_URL="http://110.371.13.90:8080" -e EXTERNAL_DNS="110.371.13.90" -e IMAGE_WEBSERVER_PORT=40001 nsx-t-install
+docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock -v /home/concourse:/home/concourse -e CONCOURSE_URL="http://110.371.13.90:8080" -e EXTERNAL_DNS="110.371.13.90" -e IMAGE_WEBSERVER_PORT=40001 nsx-t-install```
 
 You will also need to delete the NSX-T Virtual Machines (Manager, Controller, Edges) and unregister the vSphere extension.
 
