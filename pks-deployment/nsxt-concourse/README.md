@@ -28,11 +28,11 @@ docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock 
 ```
 
 When finished use docker ps to check that the following 5 Containers are running.
-1. concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes concourse_concourse-worker_1
-2. concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes 0.0.0.0:8080->8080/tcp concourse_concourse-web_1
-3. postgres "docker-entrypoint..." 3 minutes ago Up 3 minutes 5432/tcp concourse_concourse-db_1
-4. nginx "nginx -g 'daemon ..." 3 minutes ago Up 3 minutes 0.0.0.0:40001->80/tcp nginx-server
-5. nsx-t-install "/home/run.sh" 3 minutes ago Up 3 minutes nsx-t-install
+  * concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes concourse_concourse-worker_1
+  * concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes 0.0.0.0:8080->8080/tcp concourse_concourse-web_1
+  * postgres "docker-entrypoint..." 3 minutes ago Up 3 minutes 5432/tcp concourse_concourse-db_1
+  * nginx "nginx -g 'daemon ..." 3 minutes ago Up 3 minutes 0.0.0.0:40001->80/tcp nginx-server
+  * nsx-t-install "/home/run.sh" 3 minutes ago Up 3 minutes nsx-t-install
 
 10. In a browser, navigate to http://110.371.13.90:8080 and Start the pipeline
 
