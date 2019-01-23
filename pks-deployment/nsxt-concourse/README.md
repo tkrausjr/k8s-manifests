@@ -16,17 +16,23 @@ https://my.vmware.com/group/vmware/details?downloadGroup=OVFTOOL430&productId=74
 8. Put parameters file ( nsx_pipeline_config.yml ) into /home/concourse
 DONT Rename his file.
 Make sure you uncomment out the following lines and put the correct file names from Step 5 & 6 above.
-```ova_file_name: "nsx-unified-appliance-2.3.0.0.0.10085405.ova" #Uncomment this if downloaded file manually and placed under /home/concourse```
-```ovftool_file_name: "VMware-ovftool-4.3.0-10104578-lin.x86_64.bundle" #Uncomment this if downloaded file manually and placed under /home/concourse```
+```
+ova_file_name: "nsx-unified-appliance-2.3.0.0.0.10085405.ova" #Uncomment this if downloaded file manually and placed under /home/concourse
+```
+```
+ovftool_file_name: "VMware-ovftool-4.3.0-10104578-lin.x86_64.bundle" #Uncomment this if downloaded file manually and placed under /home/concourse
+```
 9. Now run the following command to start the docker container which will run docker-compose and spin up multiple containers including nginx and concourse worker and web.
-```docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock -v /home/concourse:/home/concourse -e CONCOURSE_URL="http://110.371.13.90:8080" -e EXTERNAL_DNS="110.371.13.90" -e IMAGE_WEBSERVER_PORT=40001 nsx-t-install```
+```
+docker run --name nsx-t-install -d -v /var/run/docker.sock:/var/run/docker.sock -v /home/concourse:/home/concourse -e CONCOURSE_URL="http://110.371.13.90:8080" -e EXTERNAL_DNS="110.371.13.90" -e IMAGE_WEBSERVER_PORT=40001 nsx-t-install
+```
 
 When finished use docker ps to check that the following 5 Containers are running.
-concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes concourse_concourse-worker_1
-concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes 0.0.0.0:8080->8080/tcp concourse_concourse-web_1
-postgres "docker-entrypoint..." 3 minutes ago Up 3 minutes 5432/tcp concourse_concourse-db_1
-nginx "nginx -g 'daemon ..." 3 minutes ago Up 3 minutes 0.0.0.0:40001->80/tcp nginx-server
-nsx-t-install "/home/run.sh" 3 minutes ago Up 3 minutes nsx-t-install
+1.concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes concourse_concourse-worker_1
+2. concourse/concourse:3.14.1 "/usr/local/bin/du..." 3 minutes ago Up 3 minutes 0.0.0.0:8080->8080/tcp concourse_concourse-web_1
+3. postgres "docker-entrypoint..." 3 minutes ago Up 3 minutes 5432/tcp concourse_concourse-db_1
+4. nginx "nginx -g 'daemon ..." 3 minutes ago Up 3 minutes 0.0.0.0:40001->80/tcp nginx-server
+5. nsx-t-install "/home/run.sh" 3 minutes ago Up 3 minutes nsx-t-install
 
 10. In a browser, navigate to http://110.371.13.90:8080 and Start the pipeline
 
