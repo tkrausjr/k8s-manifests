@@ -17,8 +17,8 @@ Make sure your Concourse Docker Containers are still running, using docker ps to
 5. /root/pks $ fly targets
 6.  fly --target main login --concourse-url http://10.173.13.90:8080
 7. /root/pks $  fly --target main set-pipeline -p pks-pipeline -c /root/pks/install-pks-pipeline.yml -l /root/pks/tk-pks-params-v4.yml
-        apply configuration [yN]: y
-        Hit YES
+  * apply configuration [yN]: y
+  * Hit YES
 8. In a browser, navigate to http://10.173.13.90:8080 (Concourse) and login to Main.
 9. Click hamburger Menu in Top Left to show both pipelines
 10. Unpause pks-pipeline
