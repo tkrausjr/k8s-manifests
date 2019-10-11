@@ -1,0 +1,82 @@
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: vrops-cadvisor
+  namespace: kube-system
+  labels:
+    app: vrops-cadvisor
+spec:
+  selector:
+    matchLabels:
+      name: vrops-cadvisor
+  template:
+    metadata:
+      labels:
+        name: vrops-cadvisor
+        version: v0.31.0
+    spec:
+      hostNetwork: true
+      containers:
+      - name: vrops-cadvisor
+        image: google/cadvisor:v0.31.0
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: rootfs
+          mountPath: /rootfs
+          readOnly: true
+        - name: var-run
+          mountPath: /var/run
+          readOnly: false
+        - name: sys
+          mountPath: /sys
+          readOnly: true
+        - name: docker
+          mountPath: /var/lib/docker
+          readOnly: true
+        - name: docker-sock
+          mountPath: /var/run/docker.sock
+          readOnly: true
+        - name: containerd-sock
+          mountPath: /var/run/containerd.sock
+          readOnly: true
+        - name: disk
+          mountPath: /dev/disk
+          readOnly: true
+        ports:
+        - name: http
+          containerPort: 31194
+          hostPort: 31194
+          protocol: TCP
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - NET_BIND_SERVICE
+        args:
+          - --port=31194
+          - --profiling
+          - --housekeeping_interval=1s
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: rootfs
+        hostPath:
+          path: /
+      - name: var-run
+        hostPath:
+          path: /var/run
+      - name: sys
+        hostPath:
+          path: /sys
+      - name: docker
+        hostPath:
+          path: /var/vcap/store/docker/docker
+      - name: docker-sock
+        hostPath:
+          path: /var/vcap/sys/run/docker/docker.sock
+      - name: containerd-sock
+        hostPath:
+          path: /var/run/docker/containerd/docker-containerd.sock
+      - name: disk
+        hostPath:
+          path: /dev/disk
