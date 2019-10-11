@@ -1,11 +1,14 @@
 singleuser:
-  storage:
-    type: none
-
-image:
+  image:
     name: jupyter/scipy-notebook
     tag: ae885c0a6226
 
+  storage:
+    type: none
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["/usr/bin/git", "clone", "https://github.com/tkrausjr/finance-analysis.git", "finance-analysis"]
 proxy:
   secretToken: "c86a373144e4e8b1341fa5661cdc70f165856ba48eb54028eb844d41f1f2aeb4d4a0cca29b9548d52cb9b4c2fb901aa00537a9d37451a6f77953add34039ca56"
 
