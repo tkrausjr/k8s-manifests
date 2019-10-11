@@ -4,6 +4,7 @@ metadata:
   name: redis-master-claim
   annotations:
     volume.beta.kubernetes.io/storage-class: thin-disk
+  namespace: sandbox
 spec:
   accessModes:
     - ReadWriteOnce

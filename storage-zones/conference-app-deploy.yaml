@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: conference-app-ingress
+  name: conference-app-ingress
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      run: conference-app-ingress
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: conference-app-ingress
+    spec:
+      containers:
+      - image: tkrausjr/conference-app
+        imagePullPolicy: Always
+        name: conference-app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
