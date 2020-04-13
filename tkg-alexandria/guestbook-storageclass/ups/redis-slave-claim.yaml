@@ -3,8 +3,8 @@ apiVersion: v1
 metadata:
   name: redis-slave-claim
   annotations:
-    volume.beta.kubernetes.io/storage-class: space-efficient
-  namespace: default
+    volume.beta.kubernetes.io/storage-class: thin-disk
+  namespace: sandbox
 spec:
   accessModes:
     - ReadWriteOnce
