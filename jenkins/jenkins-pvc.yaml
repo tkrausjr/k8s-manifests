@@ -1,13 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: redis-slave-claim
+  name: jenkins-data
   annotations:
-    volume.beta.kubernetes.io/storage-class: space-efficient
-  namespace: default
+    volume.beta.kubernetes.io/storage-class: default-thin
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 10Gi
