@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: guestbook-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  rules:
+  - host: contour.tpmlab.vmware.com
+    http:
+      paths:
+      - path: /guestbook
+        backend:
+          serviceName: gb-frontend
+          servicePort: 80
