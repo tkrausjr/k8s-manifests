@@ -10,5 +10,5 @@ spec:
 
   ingress:
   - ports:
-    - port: 80
+    - port: 89
     from: []
