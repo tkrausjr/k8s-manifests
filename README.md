@@ -7,5 +7,5 @@ To build a TKG Cluster start with the following
 If you already have a Kubernetes cluster you can start with the following.
 1. [ ] Simple Conference Web Application with Service Type Load Balancer
 2. [ ] Guestbook Application with Persistent Storage and Ingress Rules
-3. [ ] Machine Learning and Data Science iPython(pacific/applications/jupyter-hub/README.md)
+3. [ ] [Machine Learning and Data Science iPython](pacific/applications/jupyter-hub/README.md)
 4. [ ] 
