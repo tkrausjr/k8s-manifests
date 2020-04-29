@@ -1,10 +1,12 @@
-# To provision a Kubernetes cluster use the following:
+# Kubernetes Applications & Manifests 
+To provision a Kubernetes cluster use the following:
 
+## If you need to provision a cluster (Coming Soon)
 To build a TKG Cluster start with the following 
-1. [ ] vSphere 7 with Kubernetes - PP
+1. [ ] vSphere 7 with Kubernetes GA 
 2. [ ] TKG GA Standalone 
 
-# Kubernetes Application instructions for vSphere 7 w/ Kubernetes
+## Kubernetes Application instructions for vSphere 7 w/ Kubernetes
 If you already have a vSphere 7 Kubernetes guest cluster you can deploy the following.
 1. Simple Conference Web Application with Service Type Load Balancer
 2. Guestbook Application with Persistent Storage and Ingress Rules
