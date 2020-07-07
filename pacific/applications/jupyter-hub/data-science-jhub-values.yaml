@@ -33,18 +33,18 @@ hub:
         - ReadWriteOnce
       storage: 3Gi
       subPath:
-      storageClassName: projectpacific-storage-policy
+      storageClassName: pacific-gold-storage-policy
 singleuser:
   image:
     name: jupyter/scipy-notebook
     tag: a95cb64dfe10
   memory:
     limit: 5G
-    guarantee: 3.5G
+    guarantee: 2G
   storage:
     type: dynamic
     dynamic:
-      storageClass: projectpacific-storage-policy
+      storageClass: pacific-gold-storage-policy
   lifecycleHooks:
     postStart:
       exec:
