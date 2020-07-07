@@ -1,11 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: redis-master-claim
+  name: nextflow-1
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: pacific-gold-storage-policy
   resources:
     requests:
-      storage: 2Gi
+      storage: 4Gi
