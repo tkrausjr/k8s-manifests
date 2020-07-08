@@ -1,108 +1,75 @@
-# jupyter-hub_on_PKS
-Instructions to get Jupyter Hub deployed and running on Kubernetes Cluster operated by PKS
+# jupyter-hub_on_vSphere7_w_Kubernetes
+Instructions to get Jupyter Hub with embedded example notebooks for Machine Learning an Data Analysis using pandas and scitkitlearn deployed and running on Kubernetes TKG Guest Cluster running on vSphere 7 with Kubernetes.
 
-## Assumptions:
-* PKS v1.2+
-* NSX-T v2.3+
-* A PKS Kubernetes cluster with at least 1 master and 1 worker nodes
-* A PKS Kubernetes cluster based on a BOSH Plan that has the following security settings configured in the Plan. NOTE: Use with Caution
-** "Enable Privileged Containers"
-** "Disable DenyEscalatingExec"
-* Ensure you have a storage class created by the name 'default', this storage class will be used by the Persistent Volume claims needed for stateful sets.
+## Requirements:
+* Kubernetes TKG Guest Cluster running on vSphere 7(GA) with Kubernetes
+* HELM 3.0 
+* jupyterhub repo added to HELM.
+* A K8s guest cluster deployed with updated Clusterrolebinding for PSP psp-system-privileged by system:authenticated
+* A Storage Class configured
+
  
-* To add a storage class, copy the following into a file and name it pks-storageclass.yaml
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: default
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: kubernetes.io/vsphere-volume
-parameters:
-  diskformat: thin  
-  
-kubectl apply -f pks-storageclass.yaml
  ```
-## Helm
+## Add the jupyterhub Repo to Helm
 
-Helm is the package manager for Kubernetes that runs on a local machine with kubectl access to the Kubernetes cluster. The installation process for Prometheus and the Certificate Manager leverage Helm charts available on the public Helm repo. For more information, see using [Helm with PKS](https://docs.pivotal.io/runtimes/pks/1-3/helm.html).  
+    `helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/` 
+    `helm repo update`
 
-* Download and install the [Helm CLI](https://github.com/helm/helm/releases) if you haven't already done so.  
+## Install Jupyter-Hub Helm chart
 
-* Create a service account for Tiller and bind it to the cluster-admin role. Copy the following into a file and name it rbac-config.yaml
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: tiller
-  namespace: kube-system
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: tiller-clusterrolebinding
-subjects:
-- kind: ServiceAccount
-  name: tiller
-  namespace: kube-system
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
- 
-kubectl apply -f rbac-config.yaml
- or 
-  
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-clusterrolebinding --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-  ```
-
-* Deploy Helm using the service account by running the following command:
-
-    `helm init --service-account tiller`
-
-
-## Install Jupyter-Hub
+Clone this repository for a working values file (data-science-jhub-values.yaml) to use for installation.
+     `git clone https://github.com/tkrausjr/k8s-manifests.git  `
+     `cd ./k8s-manifests/jupyter-hub  `
 
 From a Linux machine, generate a random hex string to be used as a security token by Jupyter Hub.
 
     `openssl rand -hex 32`
     `c46350ed823f9433312d110bf39700a765ee3cbc08f0220dff86cc63a570d3be`
 
+Get the name of a StorageClass in kubernetes that you can use
+    'kubectl get sc'
 
-We are going to edit update the values.yaml for our jupyter-hub HELM package installation to include the hex string above.
+Edit the data-science-jhub-values.yaml values file for our jupyter-hub HELM package installation to include the hex string above and the name of the Kuberntes Storage Class.
 
 ```yaml
+hub:
+  uid: 1000
+  fsGid: 1000
+  concurrentSpawnLimit: 64
+  consecutiveFailureLimit: 5
+  db:
+    pvc:
+      accessModes:
+        - ReadWriteOnce
+      storage: 3Gi
+      subPath:
+      storageClassName: projectpacific-storage-policy
 singleuser:
   image:
     name: jupyter/scipy-notebook
     tag: a95cb64dfe10
-
+  memory:
+    limit: 5G
+    guarantee: 3.5G
   storage:
-    type: none
+    type: dynamic
+    dynamic:
+      storageClass: projectpacific-storage-policy
   lifecycleHooks:
     postStart:
       exec:
-        command: ["/usr/bin/git", "clone", "https://github.com/CNA-Tech/Apps-on-PKS.git", "data-analysis"]
+        command: ["/usr/bin/git", "clone", "https://github.com/tkrausjr/data-science-demos.git", "finance-analysis"]
 proxy:
-  secretToken: "--put-your-randome-hex-value-here--"
+  secretToken: "c46350ed823f9433312d110bf39700a765ee3cbc08f0220dff86cc63a570d3be"
 ```
     
 * We will deploy Jupyter Hub components in a separate jupyter namespace.  Let's create the namespace : 
 
     `kubectl create namespace jupyter`  
     
-
-* Add the jupyterhub HELM Repo
-
-    `helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/` 
-    `helm repo update`
-
 * Install Jupyter Hub using helm chart and reference the values.yml
 
-    `helm upgrade --install jupyter-hub jupyterhub/jupyterhub --values values.yaml --namespace jupyter --timeout 450`  
+    `helm install jhub-pacific jupyterhub/jupyterhub --values data-science-jhub-values.yaml --timeout 210s --namespace jupyter`  
     
     
 ## Jupyter Hub Validation
@@ -137,6 +104,14 @@ kubectl get all -n jupyter
 
 * To use JupyterHub, enter the external IP for the proxy-public service in to a browser. you You can access the Jupyter Hub UI using http://10.51.0.68.  JupyterHub is running with a default dummy authenticator so entering any username and password combination will let you enter the hub.
 
-* To access the newer JupyterLab UI you can use http://10.51.0.68/lab/.
+* To access the newer JupyterLab UI you can use http://10.51.0.68   on port 80.
+
+* Login with user admin and any password or blank.
+
+*  Open the / finance-analysis / jupyter-hub   folder
+    1. Open the ml-stock-predictor-knn-v4
+        1. Menu —>  Cell —> RUN ALL 
+    2. Open the industry-revenue-analysis
+        1. Menu —>  Cell —> RUN ALL 
  
 

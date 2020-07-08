@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: projectpacific-storage-policy
+  storageClassName: pacific-gold-storage-policy
   resources:
     requests:
       storage: 2Gi
