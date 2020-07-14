@@ -6,7 +6,9 @@ metadata:
     run: springmusic
   name: springmusic
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       run: springmusic
@@ -19,7 +21,7 @@ spec:
       - image: eoghank/springmusic:postgres1107
         name: springmusic
         #imagePullPolicy: Always
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
@@ -28,7 +30,7 @@ spec:
           protocol: TCP
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:postgresql://ahead-news-postgresql:5432/postgres"
+          value: "jdbc:postgresql://ahead-news-postgresql.default.svc.cluster.local:5432/postgres"
         - name: SPRING_DATASOURCE_USERNAME
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
