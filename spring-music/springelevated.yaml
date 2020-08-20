@@ -28,11 +28,11 @@ spec:
           protocol: TCP
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:postgresql://ahead-news-postgresql:5432/postgres"
+          value: "jdbc:postgresql://ahead-news-postgresql.default.svc.cluster.local:5432/postgres"
         - name: SPRING_DATASOURCE_USERNAME
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
-          value: "VMWare1!"
+          value: "VMware1!"
         - name: SPRING_PROFILES_ACTIVE
           value: "postgres"
         - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
