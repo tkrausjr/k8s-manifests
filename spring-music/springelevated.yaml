@@ -6,7 +6,9 @@ metadata:
     run: springmusic
   name: springmusic
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       run: springmusic
@@ -19,7 +21,7 @@ spec:
       - image: eoghank/springmusic:postgres1107
         name: springmusic
         #imagePullPolicy: Always
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
