@@ -1,0 +1,3 @@
+cf create-user-provided-service postgres -p '{"uri":"postgresql://postgres:"VMWare1!"@10.197.98.151:5432/postgres"}'
+cf bind-service springmusic postgres
+cf restart springmusic
