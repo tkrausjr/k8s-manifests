@@ -4,9 +4,9 @@ imagePullSecret:
   create: true
   automaticReferenceInjection: true
 #  registry: 
-  username: 'mytkrausjr'
-  email: 'tkrausjr@gmail.com'
-  password: 'Bl@ckbelt2019'
+  username: 'a-username'
+  email: 'a-email'
+  password: 'a-password'
 
 hub:
   service:
@@ -22,7 +22,7 @@ hub:
       accessModes:
         - ReadWriteOnce
       storage: 3Gi
-      storageClassName: nfs-datastore-thin  ## <<Change this to your Storage Class Name>>
+      storageClassName: nfs-datastore-thin  ## <Change to your Storage Class>
 singleuser:
   image:
     name: jupyter/scipy-notebook
@@ -34,7 +34,7 @@ singleuser:
   storage:
     type: dynamic
     dynamic:
-      storageClass: nfs-datastore-thin  ## <<Change this to your Storage Class Name>>
+      storageClass: nfs-datastore-thin  ## <Change to your Storage Class>
 proxy:
   secretToken: "c86a373144e4e8b1341fa5661cdc70f165856ba48eb54028eb844d41f1f2aeb4d4a0cca29b9548d52cb9b4c2fb901aa00537a9d37451a6f77953add34039ca56" ## <<Change the token to your random hex string from Step 1>>
 
