@@ -1,0 +1,44 @@
+# imagePullSecret is configuration to create a k8s Secret that Helm chart's pods
+# can get credentials from to pull their images.
+imagePullSecret:
+  create: true
+  automaticReferenceInjection: true
+registry: 
+  username: 'mytkrausjr'
+  email: 'tkrausjr@gmail.com'
+  password: 'Bl@ckbelt2019'
+hub:
+  service:
+    type: ClusterIP
+  uid: 1000
+  fsGid: 1000
+  deploymentStrategy:
+    type: Recreate
+  db:
+    type: sqlite-pvc
+    upgrade:
+    pvc:
+      accessModes:
+        - ReadWriteOnce
+      storage: 3Gi
+      storageClassName: standard  ## <Change to your Storage Class>
+singleuser:
+  image:
+    name: jupyter/scipy-notebook
+    tag: latest
+  memory:
+    limit: 5G
+    guarantee: 2.5G
+  defaultUrl: "/lab"
+  storage:
+    type: dynamic
+    dynamic:
+      storageClass: standard  ## <Change to your Storage Class>
+proxy:
+  service:
+    type: LoadBalancer
+  secretToken: "c86a373144e4e8b1341fa5661cdc70f165856ba48eb54028eb844d41f1f2aeb4d4a0cca29b9548d52cb9b4c2fb901aa00537a9d37451a6f77953add34039ca56" ## <<Change the token to your random hex string from Step 1>>
+
+
+
+

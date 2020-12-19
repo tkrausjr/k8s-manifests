@@ -1,0 +1,38 @@
+# APP DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: springmusic
+  name: springmusic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: springmusic
+  template:
+    metadata:
+      labels:
+        run: springmusic
+    spec:
+      containers:
+      - image: eoghank/springmusic:postgres1107
+        name: springmusic
+        #imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:postgresql://ahead-news-postgresql:5432/postgres"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "postgres"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "***REMOVED***"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "postgres"
+        - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+          value: "org.hibernate.dialect.PostgreSQLDialect"
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: "update"
