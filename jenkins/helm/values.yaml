@@ -1,0 +1,106 @@
+master:
+# List of plugins to be install during Jenkins master start
+  installPlugins:
+    - kubernetes:1.18.2
+    - workflow-job:2.33
+    - workflow-aggregator:2.6
+    - credentials-binding:1.19
+    - git:3.11.0
+    - authentication-tokens:1.3
+    - command-launcher:1.3
+    - docker-commons:1.15
+    - docker-build-step:2.4
+
+agent:
+  enabled: true
+  image: "jenkins/jnlp-slave"
+  tag: "3.27-1"
+  customJenkinsLabels: []
+  # name of the secret to be used for image pulling
+  imagePullSecretName:
+  componentName: "jenkins-slave"
+  privileged: true         # Changed this TK to allow docker in docker
+  resources:
+    requests:
+      cpu: "512m"
+      memory: "512Mi"
+    limits:
+      cpu: "512m"
+      memory: "512Mi"
+  # You may want to change this to true while testing a new image
+  alwaysPullImage: false
+  # Controls how agent pods are retained after the Jenkins build completes
+  # Possible values: Always, Never, OnFailure
+  podRetention: "Never"
+  # You can define the volumes that you want to mount for this container
+  # Allowed types are: ConfigMap, EmptyDir, HostPath, Nfs, Pod, Secret
+  # Configure the attributes as they appear in the corresponding Java class for that type
+  # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
+  # Pod-wide ennvironment, these vars are visible to any container in the agent pod
+  envVars: []
+  # - name: PATH
+  #   value: /usr/local/bin
+  volumes: 
+  - type: HostPath
+    mountPath: "/var/run/docker.sock"
+    hostPath: "/var/run/docker.sock"
+  #  - type: HostPath
+  #  mountPath: "/usr/bin/docker"
+  #  hostPath: "$(which docker)"
+  nodeSelector: {}
+  # Key Value selectors. Ex:
+  # jenkins-agent: v1
+
+  # Executed command when side container gets started
+  command:
+  args:
+  # Side container name
+  sideContainerName: "jnlp"
+  # Doesn't allocate pseudo TTY by default
+  TTYEnabled: false
+  # Max number of spawned agent
+  containerCap: 10
+  # Pod name
+  podName: "default"
+  # Allows the Pod to remain active for reuse until the configured number of
+  # minutes has passed since the last step was executed on it.
+  idleMinutes: 0
+  # Raw yaml template for the Pod. For example this allows usage of toleration for agent pods.
+  # https://github.com/jenkinsci/kubernetes-plugin#using-yaml-to-define-pod-templates
+  # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  yamlTemplate: ""
+  # yamlTemplate: |-
+  #   apiVersion: v1
+  #   kind: Pod
+  #   spec:
+  #     tolerations:
+  #     - key: "key"
+  #       operator: "Equal"
+  #       value: "value"
+
+
+persistence:
+  enabled: true
+  ## A manually managed Persistent Volume and Claim
+  ## Requires persistence.enabled: true
+  ## If defined, PVC must be created manually before volume will be bound
+  existingClaim:
+  ## jenkins data Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  storageClass: default-thin
+  annotations: {}
+  accessMode: "ReadWriteOnce"
+  size: "8Gi"
+  volumes:
+  #  - name: nothing
+  #    emptyDir: {}
+  mounts:
+  #  - mountPath: /var/nothing
+  #    name: nothing
+  #    readOnly: true
+

@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nextflow-rw-many
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: rw-many
+  resources:
+    requests:
+      storage: 4Gi

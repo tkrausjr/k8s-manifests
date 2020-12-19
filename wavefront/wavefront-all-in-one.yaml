@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    app: wavefront-proxy
+    name: wavefront-proxy
+  name: wavefront-proxy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    app: wavefront-proxy
+  template:
+    metadata:
+      labels:
+        app: wavefront-proxy
+    spec:
+      containers:
+      - name: wavefront-proxy
+        image: harbor.tpmlab.vmware.com/library/wavefront-proxy-squid:latest
+        imagePullPolicy: Always
+        env:
+        - name: WAVEFRONT_URL
+          value: https://longboard.wavefront.com/api/
+        - name: WAVEFRONT_TOKEN
+          value: 18574d35-7e20-4153-b0e9-9afaec6abffa
+        ports:
+        - containerPort: 2878
+          protocol: TCP
+        - containerPort: 4242
+          protocol: TCP
+        securityContext:
+          privileged: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wavefront-proxy
+  labels:
+    app: wavefront-proxy
+spec:
+  ports:
+  - name: wavefront
+    port: 2878
+    protocol: TCP
+  - name: opentsdb
+    port: 4242
+    protocol: TCP
+  selector:
+    app: wavefront-proxy
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: heapster
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:heapster
+subjects:
+- kind: ServiceAccount
+  name: heapster
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: heapster
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    k8s-app: heapster
+    name: heapster
+    version: v6
+  name: heapster
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    k8s-app: heapster
+    version: v6
+  template:
+    metadata:
+      labels:
+        k8s-app: heapster
+        version: v6
+    spec:
+      serviceAccount: "heapster"
+      containers:
+      - name: heapster
+        image: harbor.tpmlab.vmware.com/library/wavefronthq/heapster-amd64:latest
+        imagePullPolicy: Always
+        command:
+        - /heapster
+        - --source=kubernetes.summary_api:''
+        - --sink=wavefront:wavefront-proxy.default.svc.cluster.local:2878?clusterName=pks-sap-demo-11&includeLabels=true
+        volumeMounts:
+        - name: ssl-certs
+          mountPath: /etc/ssl/certs
+          readOnly: true
+        ports:
+        - containerPort: 8082
+          protocol: TCP
+      volumes:
+      - name: ssl-certs
+        hostPath:
+          path: /etc/ssl/certs    
+

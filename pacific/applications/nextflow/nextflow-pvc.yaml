@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nextflow-1
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: pacific-gold-storage-policy
+  resources:
+    requests:
+      storage: 4Gi

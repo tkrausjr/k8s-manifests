@@ -1,0 +1,10 @@
+Jul-07 08:49:44.845 [main] DEBUG nextflow.cli.Launcher - $> nextflow kuberun hello -v 'nextflow-rw-many:/mount/pvc'
+Jul-07 08:49:45.003 [main] DEBUG nextflow.scm.AssetManager - Listing projects in folder: /home/ubuntu/.nextflow/assets
+Jul-07 08:49:45.464 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/ubuntu/.nextflow/assets/nextflow-io/hello/.git/config; branch: master; remote: origin; url: https://github.com/nextflow-io/hello.git
+Jul-07 08:49:45.476 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/ubuntu/.nextflow/assets/nextflow-io/hello/.git/config; branch: master; remote: origin; url: https://github.com/nextflow-io/hello.git
+Jul-07 08:49:45.484 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /home/ubuntu/.nextflow/assets/nextflow-io/hello/nextflow.config
+Jul-07 08:49:45.485 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/ubuntu/.nextflow/assets/nextflow-io/hello/nextflow.config
+Jul-07 08:49:45.491 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-07 08:49:45.654 [main] DEBUG nextflow.k8s.K8sConfig - Kubernetes workDir=/mount/pvc/ubuntu/work; projectDir=/mount/pvc/projects; volumeClaims=[nextflow-rw-many]
+Jul-07 08:49:45.976 [main] DEBUG nextflow.k8s.K8sDriverLauncher - Created K8s configMap with name: nf-config-3819b1b3
+Jul-07 08:49:47.086 [main] WARN  nextflow.k8s.client.K8sClient - K8s pod cannot be scheduled -- pod has unbound immediate PersistentVolumeClaims (repeated 5 times)
