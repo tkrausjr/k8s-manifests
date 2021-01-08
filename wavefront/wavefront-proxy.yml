@@ -23,7 +23,11 @@ spec:
         - name: WAVEFRONT_URL
           value: https://vmware.wavefront.com/api/
         - name: WAVEFRONT_TOKEN
+<<<<<<< HEAD
           value: 8d3e2198-fb76-4860-8912-03cae9f0fda8
+=======
+          value: <>
+>>>>>>> ece5f9ae12717009eecde6650d5502ae021ebf06
         ports:
         - containerPort: 2878
           protocol: TCP
