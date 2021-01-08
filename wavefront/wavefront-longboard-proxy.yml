@@ -23,7 +23,11 @@ spec:
         - name: WAVEFRONT_URL
           value: https://longboard.wavefront.com/api/
         - name: WAVEFRONT_TOKEN
+<<<<<<< HEAD
           value: 18574d35-7e20-4153-b0e9-9afaec6abffa
+=======
+          value: <>
+>>>>>>> ece5f9ae12717009eecde6650d5502ae021ebf06
         ports:
         - containerPort: 2878
           protocol: TCP
