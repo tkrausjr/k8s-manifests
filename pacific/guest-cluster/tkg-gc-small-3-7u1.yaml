@@ -1,0 +1,20 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1               #TKG API endpoint
+kind: TanzuKubernetesCluster                            #required parameter
+metadata:
+  name: tkg-cluster-4                            #cluster name, user defined 
+  namespace: third                                     #supervisor namespace
+spec:
+  distribution:
+    version: v1.18                                      #resolved kubernetes version
+  topology:
+    controlPlane:
+      count: 1                                          #number of control plane nodes
+      class: best-effort-medium                     #vmclass for control plane nodes
+      storageClass: gold-storage-policy         #storageclass for control plane
+    workers:
+      count: 1                                        #number of worker nodes
+      class: best-effort-medium                       #vmclass for worker nodes
+      storageClass: gold-storage-policy         #storageclass for worker nodes
+  settings:
+    storage:
+      defaultClass: gold-storage-policy                     #Default PVC storage class
