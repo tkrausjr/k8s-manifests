@@ -1,1 +1,14 @@
+#No files from backup directory  
+
+# No CSV
+*.csv
+
+# No zip
+*.zip
+
+# No json
+*.json
+*.tar
+*.tgz
+*.jar
 
