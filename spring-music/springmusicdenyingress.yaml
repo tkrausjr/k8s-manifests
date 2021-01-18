@@ -31,7 +31,7 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
-          value: "***REMOVED***"
+          value: "changeme"
         - name: SPRING_PROFILES_ACTIVE
           value: "postgres"
         - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
