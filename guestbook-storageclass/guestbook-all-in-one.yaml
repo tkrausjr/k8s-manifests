@@ -17,7 +17,7 @@ spec:
     tier: backend
     role: master
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-master
@@ -34,11 +34,11 @@ spec:
   replicas: 1
   # selector can be applied automatically
   # from the labels in the pod template if not set
-  # selector:
-  #   matchLabels:
-  #     app: guestbook
-  #     role: master
-  #     tier: backend
+  selector:
+    matchLabels:
+      app: redis
+      role: master
+      tier: backend
   template:
     metadata:
       labels:
@@ -81,7 +81,7 @@ spec:
     tier: backend
     role: slave
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-slave
@@ -98,11 +98,11 @@ spec:
   replicas: 1
   # selector can be applied automatically
   # from the labels in the pod template if not set
-  # selector:
-  #   matchLabels:
-  #     app: guestbook
-  #     role: slave
-  #     tier: backend
+  selector:
+    matchLabels:
+      app: redis
+      role: slave
+      tier: backend
   template:
     metadata:
       labels:
@@ -154,7 +154,7 @@ spec:
     app: guestbook
     tier: frontend
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
@@ -170,10 +170,10 @@ spec:
   replicas: 3
   # selector can be applied automatically
   # from the labels in the pod template if not set
-  # selector:
-  #   matchLabels:
-  #     app: guestbook
-  #     tier: frontend
+  selector:
+    matchLabels:
+      app: guestbook
+      tier: frontend
   template:
     metadata:
       labels:
