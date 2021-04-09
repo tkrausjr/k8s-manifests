@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 cf create-user-provided-service postgres -p '{"uri":"postgresql://postgres:"VMWare1!"@10.197.98.151:5432/postgres"}'
+=======
+cf create-user-provided-service postgres -p '{"uri":"postgresql://postgres:"***REMOVED***"@10.197.98.151:5432/postgres"}'
+>>>>>>> b285619d51741baf8ffe07cc4e6ec8ae55aace31
 cf bind-service springmusic postgres
 cf restart springmusic
