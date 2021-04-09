@@ -2,7 +2,7 @@ apiVersion: run.tanzu.vmware.com/v1alpha1               #TKG API endpoint
 kind: TanzuKubernetesCluster                            #required parameter
 metadata:
   name: tkg-gc-calico                           #cluster name, user defined 
-  namespace: first                                  #supervisor namespace
+  namespace: tkg-ns1                                    #supervisor namespace
 spec:
   distribution:
     version: v1.18                                      #resolved kubernetes version
@@ -10,14 +10,14 @@ spec:
     controlPlane:
       count: 1                                          #number of control plane nodes
       class: best-effort-medium                      #vmclass for control plane nodes
-      storageClass: gold-policy         #storageclass for control plane
+      storageClass: default-sc         #storageclass for control plane
     workers:
-      count: 2                                        #number of worker nodes
+      count: 1                                     #number of worker nodes
       class: best-effort-medium                        #vmclass for worker nodes
-      storageClass: gold-policy         #storageclass for worker nodes
+      storageClass: default-sc         #storageclass for worker nodes
   settings:
     storage:
-      defaultClass: silver-policy                     #Default PVC storage class
+      defaultClass: default-sc                    #Default PVC storage class
     network:
       cni:
         name: calico

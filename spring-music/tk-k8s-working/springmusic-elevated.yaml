@@ -34,7 +34,11 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
+<<<<<<< HEAD
           value: "VMware1!"
+=======
+          value: "***REMOVED***"
+>>>>>>> b285619d51741baf8ffe07cc4e6ec8ae55aace31
         - name: SPRING_PROFILES_ACTIVE
           value: "postgres"
         - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
