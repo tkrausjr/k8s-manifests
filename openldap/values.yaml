@@ -64,8 +64,13 @@ env:
 # Default Passwords to use, stored as a secret. If unset, passwords are auto-generated.
 # You can override these at install time with
 # helm install openldap --set openldap.adminPassword=<passwd>,openldap.configPassword=<passwd>
+<<<<<<< HEAD
 adminPassword: VMware1!
 configPassword: VMware1!
+=======
+adminPassword: ***REMOVED***
+configPassword: ***REMOVED***
+>>>>>>> b285619d51741baf8ffe07cc4e6ec8ae55aace31
 
 # Custom openldap configuration files used to override default settings
 # customLdifFiles:
