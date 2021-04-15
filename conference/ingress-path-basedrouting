@@ -1154,7 +1154,7 @@ redis-slave          ClusterIP      10.100.200.94    <none>        6379/TCP     
  1489  chmod +x /usr/local/bin/pks
  1490  pks --version
  1491  pks login -a pks.tpmlab.vmware.com -u pksadmin -p password -k
- 1492  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k
+ 1492  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k
  1493  pks clusters
  1494  pks plans
  1495  pks create-cluster
@@ -1448,7 +1448,7 @@ redis-slave          ClusterIP      10.100.200.94    <none>        6379/TCP     
  1783  pwd
  1784  ssh ubuntu@192.168.40.11
  1785  pks clusters
- 1786  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k
+ 1786  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k
  1787  pks clusters
  1788  k get po
  1789  k get ns
@@ -1496,13 +1496,13 @@ redis-slave          ClusterIP      10.100.200.94    <none>        6379/TCP     
  1831  export CERTIFICATE_ID="25f4edcb-dd3c-4d3c-8699-acfb7caa34c2
  1832  "
  1833  export CERTIFICATE_ID="25f4edcb-dd3c-4d3c-8699-acfb7caa34c2"
- 1834  curl --insecure -u admin:'***REMOVED***' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
- 1835  curl --insecure -u admin:'***REMOVED******REMOVED***' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
+ 1834  curl --insecure -u admin:'VMware1!' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
+ 1835  curl --insecure -u admin:'VMware1!VMware1!' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
  1836  export CERTIFICATE_ID="4d3d610a-fee2-4228-91cd-0b0544ec123d"
- 1837  curl --insecure -u admin:'***REMOVED******REMOVED***' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
+ 1837  curl --insecure -u admin:'VMware1!VMware1!' -X POST "https://$NSX_MANAGER_IP_ADDRESS/api/v1/cluster/api-certificate?action=set_cluster_certificate&certificate_id=$CERTIFICATE_ID"
  1838  pks
  1839  pks clusters
- 1840  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k
+ 1840  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k
  1841  k get po
  1842  k config get-contexts
  1843  k get po
@@ -1512,10 +1512,10 @@ redis-slave          ClusterIP      10.100.200.94    <none>        6379/TCP     
  1847  k get svc
  1848  k delete svc conference-svc
  1849  k get ing
- 1850  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k
- 1851  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k ***REMOVED***
+ 1850  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k
+ 1851  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k VMware1!
  1852  ping harbor
- 1853  pks login -a pks.tpmlab.vmware.com -u pksadmin -p ***REMOVED*** -k
+ 1853  pks login -a pks.tpmlab.vmware.com -u pksadmin -p VMware1! -k
  1854  pks clusters
  1855  pks delete-cluster vmugdemo
  1856  ls

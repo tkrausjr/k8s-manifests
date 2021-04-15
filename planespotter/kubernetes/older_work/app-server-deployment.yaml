@@ -39,7 +39,7 @@ data:
   config.cfg: |
     DATABASE_URL = 'mysql.yves.local'
     DATABASE_USER = 'planespotter'
-    DATABASE_PWD = '***REMOVED***'
+    DATABASE_PWD = 'VMware1!'
     DATABASE = 'planespotter'
     REDIS_HOST = 'redis-server'
     REDIS_PORT = '6379'

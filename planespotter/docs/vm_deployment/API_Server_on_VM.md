@@ -55,7 +55,7 @@ And we need to populate the Config file that points the API App Server to the Ba
 cat << EOF > /home/ubuntu/planespotter/app-server/app/config/config.cfg
 DATABASE_URL = 'mysql.yflab.de'
 DATABASE_USER = 'planespotter'
-DATABASE_PWD = '***REMOVED***'
+DATABASE_PWD = 'VMware1!'
 DATABASE = 'planespotter'
 REDIS_HOST = 'redis.yflab.de'
 REDIS_PORT = '6379'

@@ -31,7 +31,7 @@ spec:
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
 <<<<<<< HEAD
-          value: "***REMOVED***"
+          value: "VMWare1!"
 =======
           value: "changeme"
 >>>>>>> 6adad2737d768715e248a97956f90aa0271230e0
