@@ -1,4 +1,0 @@
-Flask
-flask-paginate
-requests
-netifaces
