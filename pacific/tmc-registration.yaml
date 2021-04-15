@@ -1,0 +1,10 @@
+apiVersion: installers.tmc.cloud.vmware.com/v1alpha1
+kind: AgentInstall
+metadata:
+  name: tmc-agent-installer-config
+  namespace: svc-tmc-c4007
+spec:
+  operation: INSTALL
+  registrationLink: https://verizoncore.tmc.cloud.vmware.com/installer?id=0a6df3ba73c4778cced58ec1cbbc3270ca67cdf7fe1da64cd1a22580123a0277&source=registration
+
+
