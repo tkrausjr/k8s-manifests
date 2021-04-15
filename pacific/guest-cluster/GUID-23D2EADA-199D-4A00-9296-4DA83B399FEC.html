@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Header assets -->
+  <meta name="product" content="VMware vSphere 7.0, vCenter Server 7.0, VMware ESXi 7.0" ><meta name="keywords" content="" ><meta name="subject" content="" ><meta name="author" content="lparis" ><meta name="primary-product-version" content="7.0" ><meta name="format" content="HTML5" ><meta name="description" content="In preparation for deploying one or more TKG Extensions, download TKG Extensions Bundle from VMware." ><meta name="language" content="en" ><meta name="type" content="task" ><meta name="title" content="Download the TKG Extensions Bundle" ><meta name="machine translated" content="no" ><meta name="publication-author" content="lparis@vmware.com" ><meta name="last modified" content="24/03/2021 13:39:15" ><meta name="abstract" content="" ><meta name="edit-review-id" content="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC" ><meta name="primary-product-name" content="VMware vSphere" ><meta name="guid" content="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC" ><!-- OG tags --><title>Download the TKG Extensions Bundle</title><meta property="og:title" content="Download the TKG Extensions Bundle" ><meta property="og:image" content="https://docs.vmware.com/uicontent/images/vmware-docs-default.png" ><meta property="og:description" content="In preparation for deploying one or more TKG Extensions, download TKG Extensions Bundle from VMware." ><meta property="og:type" content="article" ><meta property="og:locale" content="en" ><meta property="og:url" content="https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC.html" ><meta property="og:locale:alternate" content="de" ><meta property="og:locale:alternate" content="tw" ><meta property="og:locale:alternate" content="jp" ><meta property="og:locale:alternate" content="kr" ><meta property="og:locale:alternate" content="cn" ><meta property="og:locale:alternate" content="fr" ><meta property="og:locale:alternate" content="es" ><link rel="stylesheet" type="text/css" href="/common/commonltr.css"><link rel="stylesheet" type="text/css" href="/common/non-draft.vmware.productdocs.css"><link rel="canonical" href="https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC.html" /><meta name="cdf-utag" content="https://tags.tiqcdn.com/utag/vmware/cdf-privacy/prod/utag.js"><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="b9242434-9feb-47be-a894-3a9e658fdd50"></script><script type="text/javascript">function OptanonWrapper() { }</script>
+<script src="/uicontent/scripts/v2-locale.bundle.20200911172508.js"></script>
+<script id="utag_data"></script>
+
+<!-- Place favicon.ico in the root directory -->
+<!--<link rel="shortcut icon" type="image/x-icon" href="/uicontent/images/v2-favicon.ico" />-->
+<link rel="icon" href="https://www.vmware.com/favicon.ico" type="image/x-icon">
+<link class="user" href="https://www.vmware.com/content/dam/vmwaredesigns/scrapercontent/vm-footer.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/uicontent/styles/v2-global.20200911172508.css">
+
+
+
+  
+
+</head>
+
+<body data-page="tech-pub" class='$languageISO tech-pub-body'>
+  <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  <header class='tech-pub-header'>
+    <!-- Including session level alert messages - start -->
+<div class="session-level-alerts-wrapper">
+
+    <!-- An alert when session is about to expire -->
+    <div class="alert alert-warning m-0 text-center session-alert-wrapper session-expiry-msg-container" role="alert">
+        <span class="warning-icon">
+            <svg version="1.1" class="has-solid " viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" aria-hidden="true" role="img">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M18,21.32a1.3,1.3,0,0,0,1.3-1.3V14a1.3,1.3,0,1,0-2.6,0v6A1.3,1.3,0,0,0,18,21.32Z"></path>
+                <circle class="clr-i-outline clr-i-outline-path-2" cx="17.95" cy="24.27" r="1.5"></circle>
+                <path class="clr-i-outline clr-i-outline-path-3" d="M30.33,25.54,20.59,7.6a3,3,0,0,0-5.27,0L5.57,25.54A3,3,0,0,0,8.21,30H27.69a3,3,0,0,0,2.64-4.43Zm-1.78,1.94a1,1,0,0,1-.86.49H8.21a1,1,0,0,1-.88-1.48L17.07,8.55a1,1,0,0,1,1.76,0l9.74,17.94A1,1,0,0,1,28.55,27.48Z"></path>
+            </svg>
+        </span>
+        <span class="mx-1 session-expiry-msg" data-i18n data-i18n-session-expiry-msg></span>
+        <button class="btn continue-session-btn" data-i18n data-i18n-continue-session-btn></button>
+        <span class='close-icon'>
+            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" aria-hidden="true" role="img">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+            </svg>
+        </span>
+    </div>
+
+    <!-- Expired session alert -->
+    <div class="alert alert-warning m-0 text-center session-alert-wrapper session-expired-msg-container" role="alert">
+        <span class="warning-icon">
+            <svg version="1.1" class="has-solid " viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" aria-hidden="true" role="img">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M18,21.32a1.3,1.3,0,0,0,1.3-1.3V14a1.3,1.3,0,1,0-2.6,0v6A1.3,1.3,0,0,0,18,21.32Z"></path>
+                <circle class="clr-i-outline clr-i-outline-path-2" cx="17.95" cy="24.27" r="1.5"></circle>
+                <path class="clr-i-outline clr-i-outline-path-3" d="M30.33,25.54,20.59,7.6a3,3,0,0,0-5.27,0L5.57,25.54A3,3,0,0,0,8.21,30H27.69a3,3,0,0,0,2.64-4.43Zm-1.78,1.94a1,1,0,0,1-.86.49H8.21a1,1,0,0,1-.88-1.48L17.07,8.55a1,1,0,0,1,1.76,0l9.74,17.94A1,1,0,0,1,28.55,27.48Z"></path>
+            </svg>
+        </span>
+        <span class="mx-1 session-expired-msg" data-i18n data-i18n-session-expired-msg></span>
+        <span class='close-icon'>
+            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" aria-hidden="true" role="img">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+            </svg>
+        </span>
+    </div>
+
+    <!-- User Details alert -->
+    <div class="alert alert-success m-0 text-left session-alert-wrapper user-details-wrapper" role="alert">
+        <span class="user-details">
+            <span class="hello-txt" data-i18n data-i18n-hello-msg></span>
+            <span class='username'></span>
+        </span>
+        <span class='close-icon'>
+            <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" aria-hidden="true" role="img">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+            </svg>
+        </span>
+    </div>
+</div>
+
+<!-- Including session level alert messages - end -->
+
+<div id="header" class="global-header col-12">
+  <div class="row desktop-header h-100">
+    <div class="col col-md-3 align-self-center header-logo-wrapper">
+      <div class="d-inline-flex align-items-center justify-content-start w-100">
+        <div class="d-inline-flex align-items-center w-100">
+          <span class='my-auto d-md-none header-menu-icon'><i class="fa fa-bars"></i></span>
+          <a href="/" class="d-inline-flex align-items-center my-auto nav-link header-logo-url pl-md-1 pl-xl-3">
+              <span class='mr-2'>
+                  <img src="/uicontent/images/vm-logo.png" alt="VMware Logo">
+              </span>
+              <span class="vm-logo-title">Docs</span>
+    	  </a>
+        </div>
+        <div class="align-items-center">
+          <span id="toggleTOC" class="d-md-none header-toc-icon">
+            <i class="fa fa-ellipsis-v px-2"></i>
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div class="col d-none d-md-block align-self-center position-relative p-0 desktop-search">
+      <div class="mx-auto align-items-center w-75 position-relative search-box-container">
+        <!-- Including Search category radio buttons for Book Search -->
+        <div class='d-inline-flex search-categories-radio-btn-container search-radio-group hide'>
+    <div class="ml-1 search-radio-button all-radio-button">
+        <span class='px-2 py-1 option-label option-all' data-search-type="all" data-i18n data-i18n-option-all></span>
+    </div>
+    <div class="mr-1 search-radio-button book-radio-button">
+        <span class='px-2 py-1 option-label option-book' data-search-type="book" data-i18n data-i18n-option-book></span>
+    </div>
+</div>
+
+        <div class="icon-addon d-inline-flex align-items-center left-addon w-100">
+          <i class="fa fa-search search-btn"></i>
+          <input type="text" autocomplete="off" class="search-box-input desktop form-control w-100" id="headerSearchInput" placeholder="" data-i18n data-i18n-search-place-holder>
+          <a class='icon-advanced-search advanced-search-page-link' aria-label="Advanced Search Link" data-toggle='tooltip' data-placement='left' href='/advanced-search.html'></a>
+        </div>
+      </div>
+      <div class='suggestion-wrapper  w-100 position-absolute'>
+          <!-- Including suggestions -->
+          <section class='suggestions-container'>
+    <section class='search-category-container' data-search-categories='false'>
+        <div class='selected-category-container list-item'>
+            <span class='fa fa-angle-right icon-expand-collapse'></span>
+            <span class='search-category-label' data-i18n data-i18n-filter-by></span>
+            <span class='search-category-value pl-2'></span>
+        </div>
+        <div class='search-category-list'>
+            <div class='list-item all-option' data-search-type='all' data-i18n data-i18n-option-all></div>
+            <div class='list-item book-option hide' data-search-type='book' data-i18n data-i18n-option-book></div>
+        </div>
+    </section>
+
+    <div class='items suggest-box'>
+        <!-- Keyword suggestions loaded dynamically -->
+    </div>
+</section>
+
+      </div>
+    </div>
+    <div class="col col-md-4 d-none d-md-block align-self-center menu-options home-menu-options">
+      <div class="d-inline-flex align-items-center justify-content-end w-100">
+        <div class="px-lg-2 menu-option py-2 languages px-md-1">
+          <div class="dropdown">
+            <span id="localeDropDownMenuButton" class="dropdown-label dropdown-toggle header-label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class='header-globe-shape align-middle'>
+                <svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- <title>world-line</title> -->
+                    <path d="M26.54,18a19.38,19.38,0,0,0-.43-4h3.6a12.3,12.3,0,0,0-.67-1.6H25.69A19.72,19.72,0,0,0,22.8,6.53a12.3,12.3,0,0,0-2.55-.76,17.83,17.83,0,0,1,3.89,6.59H18.75V5.6c-.25,0-.51,0-.77,0s-.49,0-.73,0v6.77H11.86a17.83,17.83,0,0,1,3.9-6.6,12.28,12.28,0,0,0-2.54.75,19.72,19.72,0,0,0-2.91,5.85H6.94A12.3,12.3,0,0,0,6.26,14H9.89a19.38,19.38,0,0,0-.43,4,19.67,19.67,0,0,0,.5,4.37H6.42A12.34,12.34,0,0,0,7.16,24h3.23a19.32,19.32,0,0,0,2.69,5.36,12.28,12.28,0,0,0,2.61.79A17.91,17.91,0,0,1,12,24h5.26v6.34c.24,0,.49,0,.73,0s.51,0,.77,0V24H24a17.9,17.9,0,0,1-3.7,6.15,12.28,12.28,0,0,0,2.62-.81A19.32,19.32,0,0,0,25.61,24h3.2a12.34,12.34,0,0,0,.74-1.6H26A19.67,19.67,0,0,0,26.54,18Zm-9.29,4.37H11.51a17.69,17.69,0,0,1-.09-8.4h5.83Zm7.24,0H18.75V14h5.83A18.21,18.21,0,0,1,25,18,18.12,18.12,0,0,1,24.49,22.37Z" class="clr-i-outline clr-i-outline-path-1"></path><path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm0,30A14,14,0,1,1,32,18,14,14,0,0,1,18,32Z" class="clr-i-outline clr-i-outline-path-2"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                </svg>
+              </span>
+              <span class=" align-middle currentLocale text-uppercase"></span>
+            </span>
+            <div class="dropdown-menu" aria-labelledby="localeDropDownMenuButton">
+              <span class="dropdown-menu-arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="p-lg-2 menu-option tour px-md-1">
+          <span class='hidden-xs-up hidden'>
+              <span class='tour-label header-label' data-i18n data-i18n-tour-label></span>
+          </span>
+        </div>
+        <div class="px-lg-2 menu-option py-2 pages px-md-1">
+          <div class="dropdown">
+            <span data-i18n data-i18n-vmware-pages-options class="dropdown-label dropdown-toggle header-label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+            <div class="dropdown-menu vmware-pages-container" aria-labelledby="dropdownMenuButton">
+              <span class="dropdown-menu-arrow"></span>
+              <a href="" class='dropdown-item link-communities' data-i18n data-i18n-header-communities></a>
+              <a href="" class='dropdown-item link-support' data-i18n data-i18n-header-support></a>
+              <a href="" class='dropdown-item link-downloads' data-i18n data-i18n-header-downloads></a>
+            </div>
+          </div>
+        </div>
+        <div class="p-lg-2 menu-option header-mylibrary-link px-md-1">
+            <span id="myLibraryLink" class="header-label">MyLibrary</span>
+        </div>
+        <div class="p-lg-2 menu-option login-logout position-relative ml-2 pl-xl-3 mr-md-1 px-md-1 mr-xl-4">
+          <span class='header-login' id='loginBtn'>
+            <span data-i18n data-i18n-login class="header-label"></span>
+          </span>
+          <span class='header-logout' id='logoutBtn'>
+            <span data-i18n data-i18n-logout class="header-label"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mobile-search-header h-50 d-md-none">
+    <div class="col align-self-center position-relative">
+      <div class="d-inline-flex align-items-center icon-addon left-addon w-100">
+        <!-- Including Search category radio buttons for Book Search -->
+        <div class='d-inline-flex search-categories-radio-btn-container search-radio-group hide'>
+    <div class="ml-1 search-radio-button all-radio-button">
+        <span class='px-2 py-1 option-label option-all' data-search-type="all" data-i18n data-i18n-option-all></span>
+    </div>
+    <div class="mr-1 search-radio-button book-radio-button">
+        <span class='px-2 py-1 option-label option-book' data-search-type="book" data-i18n data-i18n-option-book></span>
+    </div>
+</div>
+
+        <i class="fa fa-search search-btn"></i>
+        <input type="text" autocomplete="off" class="search-box-input mobile form-control w-100" id="headerSearchInput" placeholder="" data-i18n-search-place-holder>
+        <!-- <i class="fa fa-times-circle-o hide clear-header-search"></i> -->
+        <a aria-label="Advanced Search Link" class='icon-advanced-search advanced-search-page-link' href='/advanced-search.html'></a>
+      </div>
+      <div class='suggestion-wrapper position-absolute'>
+          <!-- Including suggestions -->
+          <section class='suggestions-container'>
+    <section class='search-category-container' data-search-categories='false'>
+        <div class='selected-category-container list-item'>
+            <span class='fa fa-angle-right icon-expand-collapse'></span>
+            <span class='search-category-label' data-i18n data-i18n-filter-by></span>
+            <span class='search-category-value pl-2'></span>
+        </div>
+        <div class='search-category-list'>
+            <div class='list-item all-option' data-search-type='all' data-i18n data-i18n-option-all></div>
+            <div class='list-item book-option hide' data-search-type='book' data-i18n data-i18n-option-book></div>
+        </div>
+    </section>
+
+    <div class='items suggest-box'>
+        <!-- Keyword suggestions loaded dynamically -->
+    </div>
+</section>
+
+      </div>
+    </div>
+  </div>
+  <div class="">
+      <!-- Including Menu -->
+      <div class="mobile-menu position-fixed">
+    <div class="backdrop w-100 position-absolute h-100"></div>
+    <div class="menu position-fixed" id="js-mobile-menu">
+        <div class="gradientdivider position-absolute w-100"></div>
+        <div class="menuheader d-flex justify-content-between align-items-center">
+            <span class="title" data-i18n data-i18n-vmware-docs></span>
+            <span class="closemenu" shape="close">
+                <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>times</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+                </svg>
+            </span>
+        </div>
+        <section class="menucontent">
+            <ul class='rm-default-ul-styles'>
+                <li class='mb-2 user-details-wrapper'>
+                    <span class='user-details w-100 item'>
+                        <span class='hello-txt' data-i18n data-i18n-hello-msg></span>
+                        <span class='username'></span>
+                    </span>
+                </li>
+                <li>
+                    <a class="home-link w-100 item" href="/" data-i18n data-i18n-home-page></a>
+                </li>
+                <li class='mobile-lang-list toggleSubMenu'>
+                    <h4 class="section m-0 position-relative" data-i18n data-i18n-languages></h4>
+                    <ul class='rm-default-ul-styles'>
+                    </ul>
+                </li>
+                <li class='mobile-pages toggleSubMenu'>
+                    <h4 class="section m-0 position-relative" data-i18n data-i18n-vmware-pages-options></h4>
+                    <ul class="vmware-pages-container rm-default-ul-styles">
+                        <li>
+                            <a href="" class='sub-item w-100 link-communities' data-i18n data-i18n-header-communities></a>
+                        </li>
+                        <li>
+                            <a href="" class='sub-item w-100 link-support' data-i18n data-i18n-header-support></a>
+                        </li>
+                        <li>
+                            <a href="" class='sub-item w-100 link-downloads' data-i18n data-i18n-header-downloads></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="w-100 item"><span id="myLibraryLink">MyLibrary</span></a>
+                </li>
+                <li>
+                    <span class='header-login w-100 item' id='loginMenuBtn'>
+                        <span data-i18n data-i18n-login></span>
+                    </span>
+                </li>
+                <li>
+                    <span class='header-logout w-100 item' id='logoutMenuBtn'>
+                        <span data-i18n data-i18n-logout></span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+        <section class="menucontent mobile-subheader mt-5">
+            <ul class='rm-default-ul-styles'>
+                <li class="product-name-container">
+                    <a class="w-100 item sub-title product-documentation"></a>
+                </li>
+                <li class="sub-nav-container">
+                    <a href="#" class="w-100 item d-none product-documentation" data-i18n data-i18n-sub-nav-product-documentation></a>
+                </li>
+                <li class="sub-nav-container">
+                    <a href="#" class="w-100 item d-none technical-articles" data-i18n data-i18n-sub-nav-technical-articles></a>
+                </li>
+                <li class="sub-nav-container">
+                    <a href="#" class="w-100 item d-none blogs" data-i18n data-i18n-sub-nav-blogs></a>
+                </li>
+                <li class="sub-nav-container">
+                    <a href="#" class="w-100 item d-none faq" data-i18n data-i18n-sub-nav-faq></a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+  </div>
+</div>
+  <div class="col-12 vmware-gradient w-100 px-0 mx-0">
+  
+  </div>
+
+    
+  </header>
+  <div class="sub-header">
+    <div id="sub-header" class="col-12 d-none d-md-block">
+  <div class="row h-100">
+    <div class="col-2 align-self-center product-name-container">
+        <a class='mr-3 my-2 position-relative sub-header-product-name product-documentation'></a>
+    </div>
+    <div class="col align-self-center text-right sub-nav-container">
+      <a href="#" class="mx-3 my-2 position-relative d-none product-documentation" data-i18n data-i18n-sub-nav-product-documentation></a>
+      <a href="#" class="mx-3 my-2 position-relative d-none technical-articles" data-i18n data-i18n-sub-nav-technical-articles></a>
+      <a href="#" class="mx-3 my-2 position-relative d-none blogs" data-i18n data-i18n-sub-nav-blogs></a>
+      <a href="#" class="mx-3 my-2 position-relative d-none faq" data-i18n data-i18n-sub-nav-faq></a>
+    </div>
+  </div>
+</div>
+
+
+    
+  </div>
+
+  <div class='tech-pub-container main-container d-flex flex-column'>
+    <section class='tech-pub-section d-flex flex-md-row'>
+      <div class='lhs lhs-container col-md-3 col-lg-3'>
+        <div class="backdrop">
+
+</div>
+<div class="left-panel">
+   <div class="panel-header position-relative hidden-xs">
+      <div class="panel-header-left d-flex justify-content-between align-items-center">
+         <span class="container-collapse-expand">
+            <span class='expand-tree'>
+               <span class='lhs-expand-shape align-middle'>
+                 <!--<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>expand-card-line</title> 
+                     <path d="M33,6H3A1,1,0,0,0,2,7V29a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V7A1,1,0,0,0,33,6ZM32,28H4V8H32Z" class="clr-i-outline clr-i-outline-path-1"></path><path d="M13.48,15.86,18,11.34l4.52,4.52a.77.77,0,0,0,.56.24.81.81,0,0,0,.57-1.37L18,9.08l-5.65,5.65a.8.8,0,1,0,1.13,1.13Z" class="clr-i-outline clr-i-outline-path-2"></path><path d="M13.48,21.86,18,17.34l4.52,4.52a.77.77,0,0,0,.56.24.81.81,0,0,0,.57-1.37L18,15.08l-5.65,5.65a.8.8,0,1,0,1.13,1.13Z" class="clr-i-outline clr-i-outline-path-3"></path>
+                     <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                 </svg> -->
+                 <i class="fa fa-chevron-down"></i>
+
+               </span>
+               <span class="expand-text align-middle" data-i18n data-i18n-expand-all></span>
+            </span>
+            <span class='collapse-tree hide'>
+               <span class='lhs-collapse-shape align-middle'>
+                    <!--<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>collapse-card-line</title> 
+                        <path d="M33,21H3a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V22A1,1,0,0,0,33,21Zm-1,6H4V23H32Z" class="clr-i-outline clr-i-outline-path-1"></path>
+                        <path d="M18,20.22l5.65-5.65a.81.81,0,0,0,0-1.14.8.8,0,0,0-1.13,0L18,18l-4.52-4.52a.8.8,0,0,0-1.13,0,.81.81,0,0,0,0,1.14Z" class="clr-i-outline clr-i-outline-path-2"></path>
+                        <path d="M18,14.22l5.65-5.65a.81.81,0,0,0,0-1.14.8.8,0,0,0-1.13,0L18,12,13.48,7.43a.8.8,0,0,0-1.13,0,.81.81,0,0,0,0,1.14Z" class="clr-i-outline clr-i-outline-path-3"></path>
+                   </svg>-->
+                   <i class="fa fa-chevron-up"></i>
+               </span>
+               <span class="collapse-text align-middle" data-i18n data-i18n-collapse-all></span>
+            </span>
+         </span>
+         <span class='lhs-icons'>
+           <span class='share-topic-container active-icon'>
+               <span class="share-topic-btn">
+                <img src="/uicontent/images/share-mylibrary.svg"></img>
+                <!--<svg version="1.1" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                     <title>share-line</title> 
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M27.53,24a5,5,0,0,0-3.6,1.55L11.74,19.45a4.47,4.47,0,0,0,0-2.8l12.21-6.21a5.12,5.12,0,1,0-1.07-1.7L10.79,14.89a5,5,0,1,0,0,6.33l12.06,6.07A4.93,4.93,0,0,0,22.54,29a5,5,0,1,0,5-5Zm0-20a3,3,0,1,1-3,3A3,3,0,0,1,27.53,4ZM7,21a3,3,0,1,1,3-3A3,3,0,0,1,7,21ZM27.53,32a3,3,0,1,1,3-3A3,3,0,0,1,27.53,32Z"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                </svg>-->
+               </span>
+               <!-- <span class="share-label" data-i18n data-i18n-share-icon-tooltip></span> -->
+           </span>
+           <a class="word-container" aria-label="Word Link">
+            <span class='icon-word word-btn lhs-icon' data-toggle="tooltip" data-i18n data-i18n-word-icon-tooltip></span>
+            <!-- <span class='word-label' data-i18n data-i18n-word-icon-tooltip></span> -->
+            </a>
+           <a class="pdf-container" aria-label="PDF Link" rel="nofollow" target="_blank">
+              <span class='icon-pdf pdf-btn lhs-icon' data-toggle="tooltip" data-i18n data-i18n-pdf-icon-tooltip>
+                </span>
+              <!-- <span class='pdf-label' data-i18n data-i18n-pdf-icon-tooltip></span> -->
+           </a>
+           <span class='add-topic-btn-container' data-toggle="tooltip">
+               <span class="icon-add-selected-to-mydocs lhs-icon">
+                <img src="/uicontent/images/add-to-library-colorless.svg"></img>
+                 <!--<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">
+                      <title>plus</title>
+                     <path class="clr-i-outline clr-i-outline-path-1" d="M30,17H19V6a1,1,0,1,0-2,0V17H6a1,1,0,0,0-1,1,.91.91,0,0,0,1,.94H17V30a1,1,0,1,0,2,0V19H30a1,1,0,0,0,1-1A1,1,0,0,0,30,17Z"></path>
+                 </svg>-->
+               </span>
+               <!-- <span class="add-topic-btn" data-i18n data-i18n-add-icon-tooltip></span> -->
+           </span>
+           <span class='remove-topic-btn-container'>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+               <!--<span class="icon-remove-selected-from-mydocs lhs-icon">
+  
+                 <svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                     <title>minus-line</title> 
+                     <path d="M26,17H10a1,1,0,0,0,0,2H26a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-1"></path>
+                     <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                 </svg>
+               </span>-->
+               <!-- <span class="remove-topic-btn" data-i18n data-i18n-remove-icon-tooltip></span> -->
+           </span>
+            <span class="header-toc-closemenu d-md-none" shape="close">
+                <i class="fa fa-times"></i>
+                  
+                
+                <!--<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                     <title>times</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+                </svg> -->
+            </span>
+         </span>
+      </div>
+   </div>
+   <div class="panel-content p-2">
+        <div class="dropdown collection-dropdown-container w-100">
+            <button class="btn w-100 text-left dropdown-toggle collection-name"
+                    type="button"
+                    id="collectionDropdwnBtn"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-label="Collection Dropdown"
+                    aria-expanded="false">
+                <span class='label'></span>
+                <span class='float-right icon-down pl-2 fa fa-angle-down'></span>
+            </button>
+            <div class="dropdown-menu w-100" id="collectionMenu" aria-labelledby="collectionDropdwnBtn">
+            </div>
+        </div>
+        <div id='tree' class="mt-2">
+
+        </div>
+        <div class='d-none w-100 px-2 toc-product-container'>
+            <a class="mr-3 my-2 position-relative toc-product-link">
+                <span class="toc-product-name"></span>
+                <span class='localized-page-name'></span>
+            </a>
+        </div>
+   </div>
+</div>
+
+
+        
+      </div>
+      <div class='rhs rhs-container col-md-9 col-lg-7'>
+        <div class='rhs-top'>
+            <div class='rhs-top-container-top d-flex flex-row justify-content-between'>
+  <div class="primary-header">
+    <!-- Authored title placeholder -->
+    
+  </div>
+  <div class='social-media-icons-container d-none'>
+    <!-- including social media icons -->
+    <div class='share-icons d-flex'>
+      <a href="" target="_blank" aria-label="Twitter" data-type="Twitter" class="twitter-icon pr-2">
+        <img src="/uicontent/images/twitter.svg"></img>
+      </a>
+        <a href="" target="_blank" aria-label="Facebook" data-type="Facebook" class="facebook-icon pr-2"> 
+          <img src="/uicontent/images/facebook.svg"></img>
+        </a>
+        <a href="" target="_blank" aria-label="LinkedIn" data-type="LinkedIn" class="linkedin-icon">
+          <img src="/uicontent/images/linkedin.svg"></img>
+        </a>
+        <a href="" target="_blank" aria-label="Weibo" data-type="Weibo" class="weibo-icon hide">
+          <img src="/uicontent/images/weibo.svg"></img>
+        </a>
+    
+    </div>
+  </div>
+  </div>
+  
+  <div class="rhs-top-container-middle d-flex flex-row justify-content-between">
+   <div class="left-aligned-details d-flex flex-row flex-wrap justify-content-start"> 
+    <div class="add-topic-btn middle-content">
+      <img src="/uicontent/images/add-to-library.svg"></img>
+      <span class="d-none d-lg-block" data-i18n data-i18n-add-to-library></span>
+    </div>
+
+    <div class='remove-topic-btn middle-content'>
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+      </svg>
+      <span class="d-none d-lg-block" data-i18n data-i18n-remove-topic></span>
+    </div>
+  
+    <div class="rss-container middle-content d-none">
+    <a href="" target="_blank" aria-label="RSS Feed" data-type="RSS" class="rss-icon">
+      <img src="/uicontent/images/rss.svg"></img>
+      <span class="d-none d-lg-block">RSS</span>
+    </a>
+    </div>
+  
+    <!--<div class="pdf-button-container middle-content d-none">-->
+    <a class="pdf-container middle-content d-none" aria-label="PDF Link" rel="nofollow" target="_blank">
+      <img src="/uicontent/images/pdf.svg"></img>
+      <span class="d-none d-lg-block" data-i18n data-i18n-download-pdf></span>
+   </a>
+   <!--</div>-->
+
+  
+    <div class="esp-feedback-container middle-content">
+      <img src="/uicontent/images/feedback.png"></img>
+      <span data-i18n data-i18n-feedback></span>
+    </div>
+  
+    <div class="edit-content d-none middle-content">
+      <img src="/uicontent/images/edit.svg"></img>
+      <span data-i18n data-i18n-edit></span>
+    </div>
+    <div class="review-content d-none middle-content">
+      <img src="/uicontent/images/review.svg"></img>
+      <span data-i18n data-i18n-review></span>
+    </div>
+  </div>
+  <div class="right-aligned-details">
+    <div class="mob-view-share-icon middle-content d-none">
+        <i class="fa fa-share-alt"></i>
+        <span data-i18n data-i18n-share></span>
+      </div>
+  </div>
+  <div class='social-media-icons-container d-none'>
+    <div class='share-icons d-flex flex-column justify-content-between'>
+      <a href="" target="_blank" aria-label="Twitter" data-type="Twitter" class="twitter-icon">
+        <i class="fa fa-twitter"></i>
+        Twitter
+      </a>
+        <a href="" target="_blank" aria-label="Facebook" data-type="Facebook" class="facebook-icon"> 
+          <i class="fa fa-facebook"></i>
+          Facebook
+        </a>
+        <a href="" target="_blank" aria-label="LinkedIn" data-type="LinkedIn" class="linkedin-icon">
+          <i class="fa fa-linkedin"></i>
+          LinkedIn
+        </a>
+        <a href="" target="_blank" aria-label="Weibo" data-type="Weibo" class="weibo-icon hide">
+          <i class="fa fa-weibo"></i>
+          微博
+        </a>
+    
+    </div>
+  </div> 
+  </div>
+  
+  <div class='rhs-top-container-bottom'>
+  <div class='last-updated-container'>  
+    <div class='calendar-icon'>
+      <svg version="1.1" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- <title>calendar-line</title> -->
+        <path class="clr-i-outline clr-i-outline-path-1" d="M32.25,6H29V8h3V30H4V8H7V6H3.75A1.78,1.78,0,0,0,2,7.81V30.19A1.78,1.78,0,0,0,3.75,32h28.5A1.78,1.78,0,0,0,34,30.19V7.81A1.78,1.78,0,0,0,32.25,6Z"></path>
+        <rect class="clr-i-outline clr-i-outline-path-2" x="8" y="14" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-3" x="14" y="14" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-4" x="20" y="14" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-5" x="26" y="14" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-6" x="8" y="19" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-7" x="14" y="19" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-8" x="20" y="19" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-9" x="26" y="19" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-10" x="8" y="24" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-11" x="14" y="24" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-12" x="20" y="24" width="2" height="2"></rect>
+        <rect class="clr-i-outline clr-i-outline-path-13" x="26" y="24" width="2" height="2"></rect>
+        <path class="clr-i-outline clr-i-outline-path-14" d="M10,10a1,1,0,0,0,1-1V3A1,1,0,0,0,9,3V9A1,1,0,0,0,10,10Z"></path>
+        <path class="clr-i-outline clr-i-outline-path-15" d="M26,10a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V9A1,1,0,0,0,26,10Z"></path>
+        <rect class="clr-i-outline clr-i-outline-path-16" x="13" y="6" width="10" height="2"></rect>
+        <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+      </svg>
+    </div>
+    <span class='last-updated-label' data-i18n-updated-on></span>
+    &nbsp;
+    <span class='last-updated-date-ph'></span>
+  </div>
+  <div class="d-flex flex-row justify-content-md-between align-items-center">
+    <div class="left-aligned-details relocate-version-selector">
+      <div class='version-selector-wrapper float-left'>
+          <div class="dropdown version-selector-container">
+    <span data-i18n data-i18n-relocate-version-switcher-label class="float-left my-2 select-product-version-label" style="display: none;"></span>
+  <button type="button" id="versionSelectorDropdwnBtn" class="version-selector-btn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-label="Version Dropdown" aria-expanded="false">
+      <span class='active-version'>
+          <span class='label'></span>
+          <span class='icon-down pl-2 fa fa-angle-down'></span>
+      </span>
+  </button>
+  <div class="dropdown-menu version-list-wrapper" aria-labelledby="versionSelectorDropdwnBtn">
+
+      <!-- Product versions to be loaded -->
+  </div>
+</div>
+
+          
+      </div>
+    </div>
+  </div>
+</div>
+  <!--<div class='right-aligned-details communities-wrapper'>-->
+    <!-- Including communities component -->
+    
+  
+
+  
+
+
+        </div>
+
+        <div class='rhs-center article-wrapper'>
+          <!-- Authored content placeholder -->
+
+          
+
+  <main role="main">
+ <article role="article" aria-labelledby="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-F8CDD06E-9072-4D18-AD83-4F76007C553F">  
+  <div class="body taskbody" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-87CFE02B-2B5B-4F3C-B6C6-C40FC6023F96">
+   <p class="shortdesc">In preparation for deploying one or more TKG Extensions, download TKG Extensions Bundle from VMware.</p>
+   <section class="section context" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-FA4CD2B6-20C0-4F4B-B732-87E47045184A">
+    <div class="tasklabel">
+     <h2 class="sectiontitle tasklabel"></h2>
+    </div> 
+    <p class="p">The TKG Extensions are packaged as a separate bundle that you download from VMware.</p> 
+   </section>
+   <div class="tasklabel">
+    <h2 class="sectiontitle tasklabel">Procedure</h2>
+   </div>
+   <ol class="ol steps" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-39238140-9CDD-4F32-B0CA-F7D41E1FAEEE">
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-8F542E12-34A8-48B2-80AF-36E798A88283">On the system that you use as your Kubernetes client machine and run <code class="ph codeph vm-code-block prettyprint">kubectl</code> comands, go to <a class="xref" href="https://www.vmware.com/go/get-tkg" target="_blank">https://www.vmware.com/go/get-tkg</a>.</span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-5C430D48-9405-49EF-B610-23C8BE25ADF6">Log in with your My VMware credentials.</span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-492EF71D-332D-4085-BD83-1750726E4B17">Under <span class="ph uicontrol">Product Downloads</span>, click <span class="ph uicontrol">Go to Downloads</span>.</span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-C005E0CF-F167-4C96-9BBB-D1C32FFD9779">Scroll to the entry for <span class="ph uicontrol">VMware Tanzu Kubernetes Grid Extensions Manifest X.X.X</span>. </span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-6BC992BF-F390-473F-9AD0-BC07C811D780">Select the latest version or the version you are targeting and click <span class="ph uicontrol">Download Now</span>. </span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-F70FDCAA-F607-458A-8318-DD1A45B2CAD2">Download the extensions to the same location where you run <code class="ph codeph vm-code-block prettyprint">kubectl</code> commands.</span> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-59A63038-73E7-4CCC-A1C2-1FBEBC430009">Use either the <code class="ph codeph vm-code-block prettyprint">tar</code> command or the extraction tool of your choice to unpack the bundle of YAML manifest files for the TKG extensions.</span> 
+     <div class="itemgroup info"> 
+      <pre class="pre codeblock vm-code-block prettyprint">tar -xzf tkg-extensions-manifests-vX.X.X-vmware.1.tar.gz</pre> 
+     </div> </li>
+    <li class="li step stepexpand"> <span class="ph cmd" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-F2418139-A36E-4159-B380-84DDE6740763">Verify the TKG Extensions download.</span> 
+     <div class="itemgroup info">
+      Navigate to the following path and verify the 
+      <code class="ph codeph vm-code-block prettyprint">/extensions</code> directory. This directory is the home path for the TKG Extensions.
+      <pre class="pre codeblock vm-code-block prettyprint">/Downloads/tkg-extensions-manifests-vX.X.X-vmware.1.tar/tkg-extensions-manifests-vX.X.X-vmware.1/tkg-extensions-vX.X.X+vmware.1/extensions</pre>
+      <div class="note important note_important" id="GUID-23D2EADA-199D-4A00-9296-4DA83B399FEC__GUID-E930D2D5-5D61-4DE8-BC48-26ED8948A516">
+       <span class="note__title">Important:</span> In the documentation for installing and updating TKG Extensions, the home path is referred to as 
+       <code class="ph codeph vm-code-block prettyprint">/tkg-extensions/extensions</code>. In this directory are the various subdirectories for each of the extensions as shown below.
+      </div>
+      <figure class="fig fignone">
+       <figcaption>
+        <span class="fig--title-label">Figure 1. </span>TKG Extensions Home
+       </figcaption> 
+       <img class="image" src="images/GUID-4075B267-1966-4DBE-A115-C55BC8D4F6A6-high.jpg" /> 
+      </figure>
+     </div> </li>
+   </ol>
+  </div> 
+  <nav role="navigation" class="related-links">
+   <div class="familylinks">
+    <div class="parentlink">
+     <strong>Parent topic:</strong> 
+     <a class="link" href="GUID-FF143B3C-9532-477D-B381-FCB29F03EC48.html" title="There are some tasks you may need to perform to administer the TKG Extensions.">Administering TKG Extensions</a>
+    </div>
+   </div>
+  </nav>
+ </article>
+</main>
+
+</div>
+<!--end of rhs-center-->
+<div class='rhs-bottom'>
+    <div class='topic-navigation my-2 row'>
+    <div class='col-6 text-left prev-topic-nav'>
+        <a class='prev-topic' href=''>
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <span data-i18n data-i18n-previous></span>
+        </a>
+    </div>
+    <div class='col-6 text-right next-topic-nav'>
+        <a class='next-topic' href=''>
+            <span data-i18n data-i18n-next></span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<div class='cards-wrapper'>
+    <!-- Including Tech-pub Cards -->
+    <div class='cards-container d-flex flex-md-row justify-content-between'>
+    <!-- Including Related links Card -->
+    <div class="card card-component related-links-card">
+    <div class="card-header py-2 header">
+        <span class='title related-links-title hide' data-i18n data-i18n-related-links></span>
+        <span class='title recommended-content-title hide' data-i18n data-i18n-recommended-content></span>
+    </div>
+    <div class="card-body py-2 body">
+        <ul class='related-links rm-default-ul-styles'>
+            <!-- Content will loaded dynamically after service call -->
+        </ul>
+        <div class='error-message mt-4' data-i18n data-i18n-error-message></div>
+    </div>
+</div>
+
+
+    <!-- Including Feedback Card -->
+    
+</div>
+
+</div>
+
+
+    
+</div>
+</div>
+<!--end of rhs-container-->
+<div class='message-container'>
+    <div class='alert-messages-container'>
+    <div class='rhs-alert text-center'>
+        <span class="d-inline-flex p-3">
+            <span class='mx-1 success-alert svg-alert'>
+                <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>check-circle-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                    <path class="clr-i-outline clr-i-outline-path-2" d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
+                </svg>
+            </span>
+            <span class='mx-1 error-alert svg-alert'>
+                <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>exclamation-circle-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                    <path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path>
+                    <circle class="clr-i-outline clr-i-outline-path-3" cx="17.95" cy="23.02" r="1.5"></circle>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect>
+                </svg>
+            </span>
+            <span class='d-inline-flex flex-column flex-md-row justify-content-between mx-1 message-description'>
+                <span class='message-text'>
+                    <span class='topic-count'></span>
+                    <span class='alert-message' data-i18n></span>
+                    <span class='collection-name'></span>
+                </span>
+                <a class='pl-2 message-link collection-link' href="/mycollections.html">
+                    <span data-i18n data-i18n-collection-link></span>
+                </a>
+            </span>
+            <span class="mx-1 icon-close-alert">
+                <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>close-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M19.41,18l8.29-8.29a1,1,0,0,0-1.41-1.41L18,16.59,9.71,8.29A1,1,0,0,0,8.29,9.71L16.59,18,8.29,26.29a1,1,0,1,0,1.41,1.41L18,19.41l8.29,8.29a1,1,0,0,0,1.41-1.41Z"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                </svg>
+            </span>
+        </span>
+    </div>
+</div>
+
+
+
+</div>
+<!--Scroll-to-top icon division -->
+<div class='d-none scroll-to-top'>
+    <img class = 'scroll-up' src="/uicontent/images/scroll-to-top.png" alt="Scroll to top icon">
+</div>
+
+<!--collapsed version of TOC-->
+<div class='rhs-right-container-collapsed'>
+    <div class='toc-expand'>
+        <i class='fa fa-chevron-left'></i>
+    </div>
+  </div>
+  <!--rhs-right-container which is visible only in screens bigger than tablets-->
+  <div class="loader-container-toc col-lg-2 w-100" style="display:none;">
+    <span class="spinner"></span>
+</div>
+  <div class = "rhs-right-container d-none d-lg-block col-lg-2">
+  <div class = "rhs-right-panel d-none">  <!--Initially it be hidden once the TOC is fully loaded, it will be displayed-->
+    <div class="rhs-right-panel-header d-flex justify-content-between">
+        <div class="rhs-right-panel-title">
+        </div>
+        <div class='toc-collapse'>
+        <i class="fa fa-times" aria-hidden="true"></i> 
+        </div> 
+    </div>
+    <div class="onpage-toc-container d-flex flex-column">
+            
+    </div>
+     <!--<div class="quick-links-container">
+         <div class="right-panel-title">Quick Links
+         </div>
+         
+         <nav>
+                    <ul class="nav navbar-nav">
+                    <li class="rhs-right-content">Compare Versions</li>
+                    <li class="rhs-right-content">Products supported</li>
+                    <li class="rhs-right-content">Version History</li>
+                    </ul>
+            
+         </nav>
+     </div>
+     
+     <div class="product-download">
+         Product Download >
+     </div> -->
+     <div class="esp-feedback-container">
+        <div class="rhs-right-panel-header">
+			<div class="esp-title d-flex justify-content-start">
+				<img src="/uicontent/images/feedback.png"></img>
+				<span data-i18n data-i18n-send-feedback></span>
+			</div>
+        </div>
+	</div>
+	<div class="product-download-container d-none">
+          <a href="#" id="productDownloadLink" target="_blank">
+              <div class="product-download d-flex justify-content-start">
+                  <span data-i18n data-i18n-product-download></span>
+                  <i class="icon-topic-collapse fa fa-angle-right" aria-hidden="true"></i>
+
+              </div>
+          </a>
+      </div>
+  </div>
+  </div>
+
+
+</section>
+</div>
+
+<footer class='tech-pub-footer'>
+    <!--<div class="colored-divisor vmware-gradient d-flex flex-row p-0"></div>
+<div class="pt-5 pb-4 ml-4 pl-2 page-footer d-flex flex-column align-items-md-start">
+    <div class="mb-3 m-md-0 links rm-default-ul-styles d-flex flex-md-row flex-wrap my-0">
+      <div class="mb-md-4 m-md-0"> 
+        <a href="https://vmware.com">
+          <img src="/uicontent/images/vm-logo.png" alt="VMware Logo">
+        </a>
+      </div>
+    </div>
+    <div class="mb-3 m-md-0 links primary-links rm-default-ul-styles headings content-links d-flex flex-md-row flex-wrap my-0">-->
+        <!-- Load content links dynamically based on locale -->
+   <!-- </div>
+    <div class="mb-3 m-md-0 links secondary-links rm-default-ul-styles d-flex flex-md-row  flex-wrap my-0">
+      <div class="item  m-md-0 mb-md-4">
+        <span class="text">
+          <span> © </span>
+          <span class="footerYear"></span><span>VMware, Inc </span>
+        </span>
+      </div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-legal></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-privacy></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-accessibility></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-site-index></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-trademarks></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title" target="_self" href="#" data-i18n data-i18n-help></a></div>
+      <div class="item  m-md-0 mb-md-4"><a class="title feedback-footer" target="_self"   data-i18n data-i18n-feedback></a></div>
+      <div class="item  mt-4 mt-md-0 m-md-0 mb-md-4">
+        <div class="social-footer rm-default-ul-styles d-flex flex-wrap">-->
+          <!-- Load social icons and links dynamically based on locale -->
+    <!-- </div>
+      </div>
+    </div>
+    <div class="row">-->
+      <!-- including pop-up modal -->
+    
+  
+ <div id="page-footer"></div>
+  <!-- Loads footer content link dynamically based on locale -->
+  <script src=" https://www.vmware.com/content/dam/vmwaredesigns/scrapercontent/responsive.js" type="text/javascript" charset="UTF-8"></script>
+  
+  
+   <!--temporary feedback fix for proactive feedback since it is not available in product landing page-->
+ <span id="yesFeedback" class="feedback-option-wrapper feedback-widget-wrapper" data-option="Yes">
+</span>
+
+
+
+<div class='vm-cdf-scripts vm-cdf-global-scripts-container'>
+   <script src="/uicontent/scripts/v2-vendor.static.bundle.20200911183712.js"></script>
+  <script id="mcx_interceptor"></script>
+  <script id="mcx_ext"></script>
+</div>
+
+  <!-- including social media icons -->
+ <div class='icons-container hide position-fixed'>
+  <a href="" target="_blank" aria-label="RSS Feed" data-type="RSS" class="d-flex rss-icon fa fa-rss justify-content-center"></a>
+  <a href="" target="_blank" aria-label="Facebook" data-type="Facebook" class="d-flex facebook-icon fa fa-facebook justify-content-center"></a>
+  <a href="" target="_blank" aria-label="Twitter" data-type="Twitter" class="d-flex twitter-icon fa fa-twitter justify-content-center"></a>
+  <a href="" target="_blank" aria-label="LinkedIn" data-type="LinkedIn" class="d-flex linkedin-icon fa fa-linkedin justify-content-center"></a>
+  <a href="" target="_blank" aria-label="Weibo" data-type="Weibo" class="d-flex weibo-icon fa fa-weibo justify-content-center hide"></a>
+</div>
+
+
+    
+</footer>
+<!-- Including loader -->
+<div class="loader-container w-100 h-100 position-fixed">
+  <span class="spinner"></span>
+</div>
+
+
+
+
+<div class='vm-cdf-scripts vm-cdf-tech-pub-scripts-container'>
+    <div class="row">
+    <!-- including pop-up modal -->
+    <div class="modal fade" id="sharePopupModal" tabindex="-1" role="dialog" aria-labelledby="sharePopupModalLabel">
+  <div class="w-75 modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" data-i18n data-i18n-share id="sharePopupModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row modal-controls">
+          <div class="col-md-12 justify-content-between d-flex flex-column flex-md-row mb-md-3">
+          <div class="text-left modal-switch-container">
+            <label for="switch-share" class="switch">
+              <input type="checkbox" class='toggleShare' name="toggle-share" aria-label="Toggle Share" id="switch-share">
+              <div class="slider round"></div>
+            </label>
+            <span class="inline-loader"></span>
+          </div>
+          <div class="modal-buttons-container">
+            <div class="modal-footer p-0 mt-2 mb-4 m-md-0 d-flex flex-column flex-md-row">
+              <button type="button" class="mx-0 my-2 mx-md-1 my-md-0 align-self-start btn btn-share">
+                <span class='share-btn-status share-on' data-i18n data-i18n-share-on></span>
+                <span class='share-btn-status share-off' data-i18n data-i18n-share-off></span>
+              </button>
+              <button data-clipboard-target="#shareLinkURL" type="button" class="mx-0 my-2 mx-md-1 my-md-0 align-self-start btn copy-btn">
+                  <i class="icon-link fa fa-link" aria-hidden="true"></i>
+                  <span data-i18n data-i18n-copy-link></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="row social-media mb-3 text-center text-md-right">
+          <div class="col-12">
+            <a class="px-3 facebook" aria-label="Facebook"  target="_blank" href=""><span class="fa fa-facebook-square"></span></a>
+            <a class="px-3 twitter" aria-label="Twitter"   target="_blank" href=""><span class="fa fa-twitter"></span></a>
+            <a class="px-3 linkedin" aria-label="Linkedin"  target="_blank" href=""><span class="fa fa-linkedin-square"></span></a>
+          </div>
+        </div>
+        <div class='modal-content-container'>
+          <textarea readonly="readonly" aria-label="Share Link" id='shareLinkURL' class='share-url'></textarea>
+          <p class='share-description' data-i18n data-i18n-share-topic-description></p>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-- Annotation Comment Modal -->
+<div class="modal fade p-0 text-center" id="commentPopupModal" tabindex="-1" role="dialog" aria-labelledby="commentPopupModalLabel">
+    <div class="w-100 text-left modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="p-3 modal-header">
+                <div class="modal-title" id="commentPopupModalLabel">
+                    <span class='add-comment add-comment-header' data-i18n data-i18n-add-note></span>
+                    <span class='delete-comment delete-comment-header' data-i18n data-i18n-delete-note></span>
+                </div>
+                <button type="button" class="close close-btn" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="p-3 modal-body">
+                <div class="add-comment form-group">
+                    <label for="enterNoteInput" data-i18n data-i18n-enter-note></label>
+                    <textarea class="form-control" id="enterNoteInput"></textarea>
+                </div>
+                <div class='delete-comment comment-container'></div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="p-3 modal-footer">
+                <button type="button" class="mr-2 btn cancel-btn" data-dismiss="modal">
+                    <span class='cancel-btn-label' data-i18n data-i18n-cancel></span>
+                </button>
+                <button type="button" class="mr-0 ml-1 btn add-comment submit-btn">
+                    <span class='submit-btn-label' data-i18n data-i18n-submit></span>
+                </button>
+                <button type="button" class="mr-0 ml-1 btn delete-comment delete-btn">
+                    <span class='delete-btn-label' data-i18n data-i18n-delete></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="questionPopupModal" tabindex="-1" role="dialog" aria-labelledby="questionPopupModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" data-i18n data-i18n-ask-question  id="questionPopupModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="col-12 ml-3 mr-3 pt-3 pb-3 pl-0 pr-0 custom-alert danger-alert hideAlert alert-dismissible errorQuestion" role="alert">
+          <div class="row">
+            <div class='col-12 d-flex'>
+              <span class='alert-icon'>
+                <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <title>exclamation-circle-line</title>
+                  <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                  <path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path>
+                  <circle class="clr-i-outline clr-i-outline-path-3" cx="17.95" cy="23.02" r="1.5"></circle>
+                  <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                </svg>
+              </span>
+              <div class='alert-label' data-i18n data-i18n-question-failure></div>
+            </div>
+           </div>
+        </div>
+        <div class="col-12 ml-3 mr-3 pt-3 pb-3 pl-0 pr-0 custom-alert success-alert hideAlert alert-dismissible successQuestion" role="alert">
+          <div class="row">
+            <div class='col-12 d-flex'>
+             <span class='alert-icon'>
+              <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>check-circle-line</title>
+                <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                <path class="clr-i-outline clr-i-outline-path-2" d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path>
+                <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+              </svg>
+             </span>
+             <div>
+              <div class="alert-label pb-3" data-i18n data-i18n-question-success></div>
+              <a href="#" id="threadLink" aria-label="Communities Thread Link" target="_blank"></a>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body-top form-inline p-3">
+          <div class="form-group row col-12 mb-2">
+            <label class="col-4 pl-0 text-left justify-content-start" for="questionSubjectInpt" data-i18n data-i18n-enter-subject></label>
+            <input type="text" class="form-control customInput col-8" id="questionSubjectInpt">
+          </div>
+          <div class="form-group row col-12 mt-2">
+            <label class="col-4 pl-0 text-left justify-content-start" for="questionTextInpt" data-i18n data-i18n-enter-question></label>
+            <textarea class="form-control col-8" id="questionTextInpt"></textarea>
+          </div>
+          <div class="hint-text mt-4 pt-3 pb-3 font-italic">
+            <span data-i18n data-i18n-community-hint-text></span>
+            <div>
+                <a href="#" id='globalCommunityLink' target="_blank" data-i18n data-i18n-community-link-label></a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body-bottom p-3">
+          <span data-i18n data-i18n-relevant-tags></span> :
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal" data-i18n data-i18n-cancel></button>
+        <button id='submitQuestionBtn' disabled type="button" class="btn">
+          <i class='fa fa-circle-o-notch fa-spin'></i>
+          <span data-i18n data-i18n-submit></span>
+        </button>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="communityLoginPopupModal" tabindex="-1" role="dialog" aria-labelledby="communityLoginPopupModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="communityLoginPopupModalLabel" data-i18n data-i18n-create-vmware-username></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+          <div class="col-12 ml-3 mr-3 pt-3 pb-3 pl-0 pr-0 custom-alert danger-alert hideAlert alert-dismissible errorUserName" role="alert">
+            <div class="row">
+              <div class='col-12 d-flex'>
+                <span class='alert-icon'>
+                  <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>exclamation-circle-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                    <path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path>
+                    <circle class="clr-i-outline clr-i-outline-path-3" cx="17.95" cy="23.02" r="1.5"></circle>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                  </svg>
+                </span>
+                <div>
+                  <div class='alert-label pb-3' data-i18n data-i18n-username-failure></div>
+                  <a href="#" class="pr-2" id='myVMwareLink' target="_blank" data-i18n data-i18n-myvmware></a>|
+                  <a href="#" target="_blank" id='supportLink' class="pl-2" data-i18n data-i18n-support></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 ml-3 mr-3 pt-3 pb-3 pl-0 pr-0 custom-alert success-alert hideAlert alert-dismissible successUserName" role="alert">
+            <div class="row">
+              <div class='col-12 d-flex'>
+                <span class='alert-icon'>
+                  <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>check-circle-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                    <path class="clr-i-outline clr-i-outline-path-2" d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                  </svg>
+                </span>
+                <div class="alert-label pb-3" data-i18n data-i18n-username-success></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 ml-3 mr-3 pt-3 pb-3 pl-0 pr-0 custom-alert danger-alert hideAlert alert-dismissible incorrectUserName" role="alert">
+            <div class="row">
+              <div class='col-12 d-flex'>
+                <span class='alert-icon'>
+                  <svg version="1.1" viewBox="0 0 36 36" width="30" height="30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>exclamation-circle-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path>
+                    <path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path>
+                    <circle class="clr-i-outline clr-i-outline-path-3" cx="17.95" cy="23.02" r="1.5"></circle>
+                    <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+                  </svg>
+                </span>
+                <div class='alert-label' data-i18n-incorrect-username></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body-content p-3">
+            <p data-i18n data-i18n-enter-username></p>
+            <input type="text" name="name" aria-label="Enter Jive UserName" class="form-control w-50 customInput" id='jiveInputName'/>
+            <span class="inline-loader hidden"></span>
+            <span class='success-status hidden'><i class="fa fa-check-circle" aria-hidden="true"></i> <span data-i18n data-i18n-jive-available></span></span>
+            <span class='error-status hidden'>x <span data-i18n data-i18n-jive-not-available></span></span>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal" data-i18n data-i18n-cancel></button>
+        <button type="button" class="btn" disabled id='createJIVEBtn'>
+          <i class='fa fa-circle-o-notch fa-spin'></i>
+          <span data-i18n data-i18n-create></span>
+        </button>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel" data-i18n data-i18n-delete></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span data-i18n data-i18n-confirm-delete></span>
+        <span class="if-default" data-i18n-default></span>
+        <span data-i18n-collection></span>"
+        <span class="collection-name"></span>"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">
+          <span data-i18n data-i18n-cancel></span>
+        </button>
+        <button type="button" class="btn delete-button">
+          <span data-i18n data-i18n-delete></span>
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div id="aboutLibraryVideoPopUp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="aboutLibraryVideoPopUp">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="/uicontent/scripts/v2-techpub-plugins.20191209135319.js"></script>
+
+<script src="/uicontent/scripts/v2-tech-pub.bundle.20191209135319.js"></script>
+
+
+    
+</div>
+<button style="display:none;" id="ot-sdk-btn" class="ot-sdk-show-settings"> Cookie Settings</button>
+</body>
+
+</html>
