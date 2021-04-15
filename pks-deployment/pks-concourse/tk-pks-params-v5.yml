@@ -6,7 +6,7 @@ pks_major_minor_version: ^1\.3.*$         # use latest minor release of PKS v1.3
 # vCenter configuration
 vcenter_host: vcsa.tpmlab.vmware.com          # vCenter host or IP
 vcenter_usr: administrator@vsphere.local             # vCenter username. If user is tied to a domain, then escape the \, example `domain\\user`
-vcenter_pwd: "***REMOVED***"          # vCenter password
+vcenter_pwd: "VMware1!"          # vCenter password
 vcenter_data_center: Datacenter       # vCenter datacenter
 vcenter_insecure: 1        # vCenter skip TLS cert validation; enter `1` to disable cert verification, `0` to enable verification
 vcenter_ca_cert:           # vCenter CA cert at the API endpoint; enter a value if `vcenter_insecure: 0`
@@ -18,9 +18,9 @@ opsman_domain_or_ip_address: opsman.tpmlab.vmware.com       # FQDN to access Ops
 # opsman.tpmlab.****.com resolves to DNAT address on T0 Uplink 10.173.13.161
 
 opsman_admin_username: admin          # Username for Ops Manager admin account
-opsman_admin_password: "***REMOVED***"    # Password for Ops Manager admin account
-om_ssh_pwd: "***REMOVED***"                 # SSH password for Ops Manager (ssh user is ubuntu)
-om_decryption_pwd: "***REMOVED***"        # Decryption password for Ops Manager exported settings
+opsman_admin_password: "VMware1!"    # Password for Ops Manager admin account
+om_ssh_pwd: "VMware1!"                 # SSH password for Ops Manager (ssh user is ubuntu)
+om_decryption_pwd: "VMware1!"        # Decryption password for Ops Manager exported settings
 om_ntp_servers: 10.173.13.90       # Comma-separated list of NTP Servers
 om_dns_servers: 10.173.13.90           # Comma-separated list of DNS Servers
 om_gateway: 10.31.0.1               # Gateway for Ops Manager network
@@ -79,7 +79,7 @@ nsx_networking_enabled: true              # (true|false) to use nsx networking f
 nsx_mode: nsx-t                           # Valid values: nsx-t, nsx-v
 nsx_address: nsxt-mgr.tpmlab.vmware.com    # address of Nsx Mgr FQDN, not IP
 nsx_username: admin                       # username for nsx access
-nsx_password: "***REMOVED***"                # password for nsx access
+nsx_password: "VMware1!"                # password for nsx access
 
 # Bosh Services network for Kubernetes Nodes and Management  
 pks_network_name: "PKS-K8s-LS"         # BOSH Network Name for PKS-Services
@@ -104,7 +104,7 @@ pks_tile_uaa_domain_prefix: pks # Would be used for UAA as ${prefix}.${pks_syste
 # External IP that would be routable via the NSX T0 Router and mapped to ${pks_tile_uaa_domain_prefix}.${pks_system_domain}
 pks_tile_uaa_system_domain_ip: 10.51.0.4
 pks_tile_cli_username: admin
-pks_tile_cli_password: "***REMOVED***"
+pks_tile_cli_password: "VMware1!"
 pks_tile_cli_useremail: pksadmin@tpmlab.vmware.com
 pks_tile_cert_pem: # Would be generated or provide
 #cert_pem: |
@@ -119,7 +119,7 @@ pks_tile_private_key_pem: # Would be generated
 # All the following fields need to be filled in
 pks_tile_vcenter_host: vcsa.tpmlab.vmware.com          # REQUIRED
 pks_tile_vcenter_usr: administrator@vsphere.local            # REQUIRED
-pks_tile_vcenter_pwd: "***REMOVED***"            # REQUIRED
+pks_tile_vcenter_pwd: "VMware1!"            # REQUIRED
 pks_tile_vcenter_data_center: Datacenter   # REQUIRED
 pks_tile_vcenter_cluster: Nested-PKS        # REQUIRED
 pks_tile_vcenter_datastore: nfs-ubuntu-01     # REQUIRED
@@ -317,7 +317,7 @@ harbor_properties: |
   ### The password for the system administrator
   .properties.admin_password:
     value:
-      secret: ***REMOVED***
+      secret: VMware1!
   ######## Authentication Mode
   ### Options:
   ### - db_auth        (Internal, i.e. Harbor internal user management)
