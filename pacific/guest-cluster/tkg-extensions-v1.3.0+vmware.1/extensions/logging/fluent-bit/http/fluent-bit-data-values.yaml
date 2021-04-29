@@ -1,0 +1,17 @@
+#@data/values
+#@overlay/match-child-defaults missing_ok=True
+---
+logging:
+  image:
+    repository: projects.registry.vmware.com/tkg
+tkg:
+  instance_name: "vsphere-cox"
+  cluster_name: "tkg-cluster-2"
+fluent_bit:
+  output_plugin: "http"
+  http:
+    host: "logs-01.loggly.com"
+    port: "80"
+    uri: "/bulk/"
+    header_key_value: "b1af884d-7fa2-4153-baef-6c4463119596"
+    format: "json"
