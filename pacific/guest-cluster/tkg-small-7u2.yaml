@@ -8,7 +8,7 @@ spec:
   topology:
     controlPlane:
       count: 1                                          #number of control plane nodes
-      class: best-effort-small                     #vmclass for control plane nodes
+      class: best-effort-medium                     #vmclass for control plane nodes
       storageClass: default-sc        #storageclass for control plane
     workers:
       count: 1                                        #number of worker nodes
