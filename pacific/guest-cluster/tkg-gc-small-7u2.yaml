@@ -15,5 +15,12 @@ spec:
       class: best-effort-medium                       #vmclass for worker nodes
       storageClass: default-sc        #storageclass for worker nodes
   settings:
+    network:
+ #    cni:                                      #Uncomment for Calico.  Antrea is default as of 1.17
+ #      name: calico                            #Uncomment for Calico.  Antrea is default as of 1.17
+      services:
+        cidrBlocks: ["198.51.100.0/12"]          #Cannot overlap with Supervisor Cluster
+      pods:
+        cidrBlocks: ["192.0.2.0/16"]             #Cannot overlap with Supervisor Cluster
     storage:
       defaultClass: default-sc                     #Default PVC storage class

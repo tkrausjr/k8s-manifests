@@ -1,7 +1,7 @@
 apiVersion: run.tanzu.vmware.com/v1alpha1               #TKG API endpoint
 kind: TanzuKubernetesCluster                            #required parameter
 metadata:
-  name: tkg-cluster-2                           #cluster name, user defined 
+  name: cl2                           #cluster name, user defined 
 spec:
   distribution:
     version: v1.18                                      #resolved kubernetes version
@@ -11,7 +11,7 @@ spec:
       class: best-effort-medium                     #vmclass for control plane nodes
       storageClass: default-sc        #storageclass for control plane
     workers:
-      count: 1                                        #number of worker nodes
+      count: 2                                        #number of worker nodes
       class: best-effort-medium                       #vmclass for worker nodes
       storageClass: default-sc        #storageclass for worker nodes
   settings:
