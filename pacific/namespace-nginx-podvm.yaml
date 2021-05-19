@@ -11,7 +11,7 @@ spec:               #The spec part defines the characteristics that a given Kube
                     # In our example, the spec instructs that this object (the pod) should have one container with some attributes.
   containers:
   - name: webserver  # The name that this container will have.
-    image: harbor.tpmlab.vmware.com/proxy/bitnami/nginx:latest # The image on which it is based.
+    image: nginx:latest # The image on which it is based.
     ports:               # The port(s) that will be open.
     - containerPort: 80
 
