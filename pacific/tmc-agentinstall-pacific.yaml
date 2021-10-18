@@ -5,7 +5,16 @@ metadata:
   namespace: svc-tmc-c4007
 spec:
   operation: INSTALL
+<<<<<<< HEAD
   registrationLink: https://verizoncore.tmc.cloud.vmware.com/installer?id=6acd06f5ee28210d37a3350e2c2f50c1bc190e3ed5428060f7e50cf528114f4b&source=registration&type=tkgs
+=======
+  registrationLink: https://cna.tmc.cloud.vmware.com/installer?id=af817f1137e5c2e69bce76b11848f067e2e23a7db99a2caf1b127df302830180&source=registration&type=tkgs
+
+
+
+ 
+
+>>>>>>> 8767f9019feadeb1c3a8d14a62927a2a5febe72e
 
 
 

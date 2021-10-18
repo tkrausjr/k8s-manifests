@@ -1,0 +1,45 @@
+datapower:
+  env:
+    defaultLogFormat: json-icp
+    workerThreads: 3
+  gatewaySshLocalAddress: 0.0.0.0
+  gatewaySshPort: 9022
+  gatewaySshState: enabled
+  image:
+    pullPolicy: IfNotPresent
+    pullSecret: null
+    repository: harbor.tpmlab.vmware.com/proxy/ibmcom/datapower
+    tag: 2018.4.1.16.330899
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 8
+      memory: 64Gi
+    requests:
+      cpu: 3
+      memory: 6Gi
+  restManagementLocalAddress: 0.0.0.0
+  restManagementPort: 5554
+  restManagementState: enabled
+  snmpLocalAddress: 0.0.0.0
+  snmpPort: 1161
+  snmpState: enabled
+  webGuiManagementLocalAddress: 0.0.0.0
+  webGuiManagementPort: 9090
+  webGuiManagementState: enabled
+  xmlManagementLocalAddress: 0.0.0.0
+  xmlManagementPort: 5550
+  xmlManagementState: disabled
+crypto:
+  frontsideSecret: null
+health:
+  livenessPort: 7879
+  readinessPort: 7878
+patternName: restProxy
+restProxy:
+  backendURL: https://www.ibm.com
+  containerPort: 8443
+service:
+  name: datapower
+  type: LoadBalancer
+
