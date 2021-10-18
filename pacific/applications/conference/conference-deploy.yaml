@@ -3,8 +3,9 @@ kind: Deployment
 metadata:
   labels:
     run: conference
+    app.kubernetes.io/part-of: tk-apps
   name: conference
-  namespace: default
+  namespace: scratch
 spec:
   replicas: 3
   selector:
@@ -19,6 +20,7 @@ spec:
     metadata:
       labels:
         run: conference
+        app.kubernetes.io/part-of: tk-apps
     spec:
       containers:
       - image: tkrausjr/conference-app
