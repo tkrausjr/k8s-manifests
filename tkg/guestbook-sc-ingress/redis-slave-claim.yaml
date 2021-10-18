@@ -1,13 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: redis-master-claim
-  annotations:
-    volume.beta.kubernetes.io/storage-class: vsphere-csi-thin
+  name: redis-slave-claim
   namespace: default
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: 
   resources:
     requests:
       storage: 2Gi

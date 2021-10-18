@@ -16,17 +16,17 @@ datapower:
       cpu: 8
       memory: 64Gi
     requests:
-      cpu: 3
+      cpu: 2
       memory: 6Gi
   restManagementLocalAddress: 0.0.0.0
   restManagementPort: 5554
-  restManagementState: enabled
+  restManagementState: "enabled"
   snmpLocalAddress: 0.0.0.0
   snmpPort: 1161
   snmpState: enabled
   webGuiManagementLocalAddress: 0.0.0.0
   webGuiManagementPort: 9090
-  webGuiManagementState: enabled
+  webGuiManagementState: "enabled"
   xmlManagementLocalAddress: 0.0.0.0
   xmlManagementPort: 5550
   xmlManagementState: disabled
