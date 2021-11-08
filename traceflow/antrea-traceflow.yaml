@@ -1,0 +1,19 @@
+apiVersion: ops.antrea.tanzu.vmware.com/v1alpha1
+kind: Traceflow
+metadata:
+  name: tf-test
+spec:
+  source:
+    namespace: default
+    pod: nginx-hello-579755844f-6bct8
+  destination:
+    namespace: sandbox
+    pod: conference-app-d845d548c-fjl6f
+    # destination can also be an IP address ('ip' field) or a Service name ('service' field); the 3 choices are mutually exclusive.
+  packet:
+    ipHeader: # If ipHeader/ipv6Header is not set, the default value is IPv4+ICMP.
+      protocol: 6 # Protocol here can be 6 (TCP), 17 (UDP) or 1 (ICMP), default value is 1 (ICMP)
+    transportHeader:
+      tcp:
+        srcPort: 10000 # Source port needs to be set when Protocol is TCP/UDP.
+        dstPort: 80 # Destination port needs to be set when Protocol is TCP/UDP.

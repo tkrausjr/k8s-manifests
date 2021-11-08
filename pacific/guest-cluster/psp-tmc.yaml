@@ -3,7 +3,7 @@ kind: PodSecurityPolicy
 metadata:
   name: permissive
 spec:
-  privileged: false
+  privileged: true
   runAsUser:
     rule: RunAsAny
   seLinux:
@@ -44,4 +44,7 @@ subjects:
   - kind: Group
     name: system:serviceaccounts
     namespace: vmware-system-tmc
- 
+  - kind: Group
+    name: system:serviceaccounts
+    namespace: default
+
