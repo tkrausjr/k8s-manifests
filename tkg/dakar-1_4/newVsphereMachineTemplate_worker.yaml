@@ -1,0 +1,24 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: VSphereMachineTemplate
+metadata:
+  annotations:
+  name: worker-tap-4cpu-80g-disk
+  namespace: default
+spec:
+  template:
+    spec:
+      cloneMode: fullClone
+      datacenter: /Santa-Clara-TPM-Lab
+      datastore: /Santa-Clara-TPM-Lab/datastore/datastore-iscsi
+      diskGiB: 80
+      folder: /Santa-Clara-TPM-Lab/vm/Discovered virtual machine
+      memoryMiB: 8192
+      network:
+        devices:
+        - dhcp4: true
+          networkName: /Santa-Clara-TPM-Lab/network/VLAN_104
+      numCPUs: 4
+      resourcePool: /Santa-Clara-TPM-Lab/host/Parent-Physical/Resources/TKG-Dakar-LAB
+      server: vcsa.tpmlab.vmware.com
+      storagePolicyName: ""
+      template: /Santa-Clara-TPM-Lab/vm/TKG_Dakar_VMs/ubuntu-2004-kube-v1.21.2+vmware.1

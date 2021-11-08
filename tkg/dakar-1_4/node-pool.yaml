@@ -1,0 +1,17 @@
+name: tkg-nodepool-2-md1
+replicas: 1
+labels:
+  nodepool: two
+  size: large
+vsphere:
+  memoryMiB: 7162
+  diskGiB: 61
+  numCPUs: 3
+  # datacenter: dc0
+  datastore: ubuntu-nfs-01
+  #storagePolicyName: name
+  folder: /Santa-Clara-TPM-Lab/vm/NodePool2
+  resourcePool: NodePool2
+  vcIP: 10.0.0.1
+  cloneMode: clone-mode
+  network: VLAN_104

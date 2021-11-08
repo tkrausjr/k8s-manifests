@@ -3,12 +3,11 @@
 # No CSV
 *.csv
 
-# No zip
-*.zip
-
-# No json
+# No json tar tgz jars or zips
 *.json
 *.tar
 *.tgz
 *.jar
+*.zip
+*.tgz
 
