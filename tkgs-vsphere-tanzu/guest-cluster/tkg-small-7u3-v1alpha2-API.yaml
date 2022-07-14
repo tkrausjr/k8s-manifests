@@ -1,0 +1,36 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: gc-v1alpha2-extravol
+  namespace: cs-poc
+spec:
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: best-effort-small
+      storageClass: nfs-policy
+      volumes:
+        - name: etcd
+          mountPath: /var/lib/etcd
+          capacity:
+            storage: 4Gi
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 2
+      vmClass: best-effort-small
+      storageClass: nfs-policy
+      volumes:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          capacity:
+            storage: 30Gi      
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+  settings:
+    storage:
+      classes: ["nfs-policy"]      
+      defaultClass: nfs-policy                     #Default PVC storage class

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: busy-broken-pod
+spec:
+  containers:
+  - name: liveness
+    image: harbor.tpmlab.vmware.com/proxy/library/busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 5; rm -rf /tmp/healthy; sleep 9000
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 2
+      periodSeconds: 5
+  restartPolicy: Never
+
