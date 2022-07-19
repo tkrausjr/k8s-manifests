@@ -1,0 +1,29 @@
+apiVersion: run.tanzu.vmware.com/v1alpha3
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkc-01
+spec:
+  topology:
+    controlPlane:
+      tkr:
+        reference:
+          name: v1.22.8---vmware.1-tkg.2-zshippable
+      replicas: 1
+      vmClass: best-effort-small
+      storageClass: wcpglobal-storage-profile
+    nodePools:
+    - replicas: 1
+      name: np-2
+      vmClass: best-effort-small
+      storageClass: wcpglobal-storage-profile
+  settings:
+    network:
+      cni:
+        name: antrea
+      services:
+        cidrBlocks:
+        - 198.51.100.0/12
+      pods:
+        cidrBlocks:
+        - 192.0.2.0/16
+      serviceDomain: cluster.local

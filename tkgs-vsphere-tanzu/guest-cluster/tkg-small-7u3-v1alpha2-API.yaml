@@ -34,3 +34,10 @@ spec:
     storage:
       classes: ["nfs-policy"]      
       defaultClass: nfs-policy                     #Default PVC storage class
+    network:
+      cni:
+        name: antrea
+      pods:
+        cidrBlocks: ["192.0.0.0/16"]
+      services:
+        cidrBlocks: ["198.51.100.0/24"]
