@@ -1,7 +1,7 @@
-apiVersion: run.tanzu.vmware.com/v1alpha3
+apiVersion: run.tanzu.vmware.com/v1alpha2
 kind: TanzuKubernetesCluster
 metadata:
-  name: tkc-01-v1alpha3
+  name: tkc-01-3zones
 spec:
   topology:
     controlPlane:
@@ -10,12 +10,23 @@ spec:
           name: v1.23.8---vmware.2-tkg.1-zshippable
       replicas: 1
       vmClass: best-effort-small
-      storageClass: vsan
+      storageClass: local-datastores
     nodePools:
     - replicas: 1
       name: np-1
+      failureDomain: zone-1
       vmClass: best-effort-small
-      storageClass: vsan
+      storageClass: local-datastores
+    - replicas: 1
+      name: np-2
+      failureDomain: zone-2
+      vmClass: best-effort-small
+      storageClass: local-datastores
+    - replicas: 1
+      name: np-3
+      failureDomain: zone-3
+      vmClass: best-effort-small
+      storageClass: local-datastores
   settings:
     network:
       cni:

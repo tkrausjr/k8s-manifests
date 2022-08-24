@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zone-pod-k8s-deployment
+    foo: bar
+  name: zone-pod-k8s-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zone-pod-k8s-deployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: zone-pod-k8s-deployment
+    spec:
+      containers:
+      - image: k8s.gcr.io/pause:3.1
+        name: pause
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: failure-domain.beta.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            foo: bar
+
