@@ -1,0 +1,53 @@
+fullName:
+  managementClusterName: "mc-rtm-fedex-mitm"
+  name: condescending-swanson2
+  provisionerName: "fedex-012345"
+meta:
+  labels: null
+spec:
+  clusterGroupName: default
+  proxyName: "tk-mitm-tpmlab-cacert"
+  tkgVsphere:
+    distribution:
+      version: v1.22.8+vmware.1-tkg.1
+      workspace:
+        datacenter: "Datacenter"
+        datastore: "nfs02-pacific"
+        folder: "/Datacenter/vm"
+        network: "/Datacenter/network/nsxt-108-network"
+        resourcePool: "/Datacenter/host/cluster-1-tkgm/Resources/Fedex-Workload"
+    settings:
+      network:
+        apiServerPort: "443"
+        controlPlaneEndpoint: ""
+        pods:
+          cidrBlocks:
+          - 172.20.0.0/16
+        services:
+          cidrBlocks:
+          - 10.96.0.0/16
+      security:
+        sshKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDGb2bXo5uUbw4YXJqTH1kEgmI/PW3TQwBZIhyp4sqK4C3yDuJDlhP6UTp3OBoVypYxWuhJsSG5Mgpl9x/UPArgfMcTbBL8REFjv5wK24wNAbnjOidw+4jRgK7LCurKaj3i4bL6esvWtTiI3wSh/kTQu1Jdqyiv+1btJzRByb306WJn1jntqNyYw4CyP+ZZ1+hvUwRlFWAufyI6ogNsJarvF2Jun/xO9u3oHBg2DTtH/xdEU4wPpaYSf+ZHj82aPBRW6xIsmXMigwjcWGhRFN1vChHacktra4eRk32lNXmbGc6/L/g00TYE6Pdw0kyG7pBp1er7hOgpSn8v/kCMyd18dboSNs/OLjI4VfxXqSueDyrKJu73NdrdAUXliqSwu+tvX1g9Gi+ZOAuB/BeY5DRhxmywGviK4MW2XTkK143fOylqgyBKS76Fz0PWA6JWBAradq3ltTQMe41gswj2nrv5YZS6FD5WDTYQDoZNVhQqEseY+DfQHyFV+msB4MwdPqe37Ahz3bv9okjNbutGudBJ/rZ4vV3nppw+WC86klIwQFp1FFZpO8FJwkrqdinSwv3gzJNleow4A/GZGtoR7JVVkJa/obZivlniu/pKWoSAx6r0dyaW2h9tf+TgHGtaw0pvARGY/oW5I7icFxuywE3h56Ernw6ix0HzCq3RogF5FQ== kraust@vmware.com"
+    topology:
+      controlPlane:
+        highAvailability: false
+        vmConfig:
+          cpu: "4"
+          diskGib: "40"
+          memoryMib: "6096"
+      nodePools:
+      - info:
+          description: default description for the nodepool
+          name: node-pool-0
+        spec:
+          tkgVsphere:
+            vmConfig:
+              cpu: "4"
+              diskGib: "40"
+              memoryMib: "6096"
+          workerNodeCount: "2"
+type:
+  kind: Cluster
+  package: vmware.tanzu.manage.v1alpha1.cluster
+  version: v1alpha1
+

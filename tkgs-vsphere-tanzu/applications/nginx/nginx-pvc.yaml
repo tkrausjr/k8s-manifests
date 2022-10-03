@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nginx-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: 
+  resources:
+    requests:
+      storage: 2Gi
