@@ -1,22 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  labels:
+    app: nginx-deploy
+  name: nginx-deploy
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx
-  replicas: 2 # tells deployment to run 2 pods matching the template
+      app: nginx-deploy
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-deploy
     spec:
       containers:
-      - name: nginx
-        image: harbor.tpmlab.vmware.com/library/nginx:stable-alpine
-        # image: nginx:stable-alpine
+      - image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx
+        name: nginx
         ports:
         - containerPort: 80
-        securityContext:
-          privileged: false
+        volumeMounts:
+        - name: nginx-data
+          mountPath: /data
+      volumes:
+      - name: nginx-data
+        persistentVolumeClaim:
+          claimName: nginx-claim
+
