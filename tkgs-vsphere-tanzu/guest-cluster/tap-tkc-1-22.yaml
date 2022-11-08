@@ -1,0 +1,43 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: tap-13-k8s-1-22-9
+  namespace: fedex-grd
+spec:
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: best-effort-medium
+      storageClass: vsan-policy
+      volumes:
+        - name: etcd
+          mountPath: /var/lib/etcd
+          capacity:
+            storage: 10Gi
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 2
+      vmClass: tap-medium
+      storageClass: vsan-policy
+      volumes:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          capacity:
+            storage: 100Gi      
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+  settings:
+    storage:
+      classes: ["nfs-policy"]      
+      defaultClass: nfs-policy                     #Default PVC storage class
+    network:
+      cni:
+        name: antrea
+      pods:
+        cidrBlocks: ["192.0.0.0/16"]
+      services:
+        cidrBlocks: ["198.51.100.0/24"]
