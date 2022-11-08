@@ -1,0 +1,9 @@
+apiVersion: installers.tmc.cloud.vmware.com/v1alpha1
+kind: AgentInstall
+metadata:
+  name: tmc-agent-installer-config
+  namespace: svc-tmc-c8
+spec:
+  operation: INSTALL
+  registrationLink: https://saleseng.tmc.cloud.vmware.com/installer?id=3ca2050bfea9e90148ac0a7142844ae3eb4e148f1f61416fc5ab15d9065ce091&source=registration&type=tkgs
+
