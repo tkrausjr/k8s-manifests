@@ -32,12 +32,12 @@ spec:
           name: v1.23.8---vmware.3-tkg.1
   settings:
     storage:
-      classes: ["vsan-policy"]      
+      classes: ["nfs-policy","vsan-policy"]      
       defaultClass: vsan-policy                     #Default PVC storage class
     network:
       cni:
         name: antrea
       pods:
-        cidrBlocks: ["192.0.0.0/16"]
+        cidrBlocks: ["198.19.0.0/16"]
       services:
         cidrBlocks: ["198.51.100.0/24"]

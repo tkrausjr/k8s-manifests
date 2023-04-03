@@ -1,0 +1,19 @@
+
+Known issue where K8s cluters with certain POD CIDR ranges wont work - loki-stack-0 POD fails to come online
+
+https://github.com/grafana/helm-charts/issues/1584
+
+
+We have solved this. The pod subnet should be in an valid ip-address-range of the following:
+
+10.0.0.0/8
+100.64.0.0/10
+172.16.0.0/12
+192.168.0.0/16
+198.19.0.0/16
+See here:
+https://aws.amazon.com/about-aws/whats-new/2018/10/amazon-eks-now-supports-additional-vpc-cidr-blocks/?nc1=h_ls
+and here under IPv4 CIDR Block Association Restrictions
+https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html
+
+

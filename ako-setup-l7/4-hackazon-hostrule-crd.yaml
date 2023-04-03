@@ -1,0 +1,15 @@
+apiVersion: ako.vmware.com/v1alpha1
+kind: HostRule
+metadata:
+   name: hackazon-rule
+   namespace: default
+spec:
+  virtualhost:
+    fqdn: hackazon.tpmlab.vmware.com
+    tls:
+      sslKeyCertificate: 
+        name: hackazon
+	type: ref
+      sslProfile: System-Standard
+      termination: edge
+

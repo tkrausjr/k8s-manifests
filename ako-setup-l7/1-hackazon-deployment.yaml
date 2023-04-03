@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hackazon-deployment
+  name: hackazon-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hackazon-deployment
+  template:
+    metadata:
+      labels:
+        app: hackazon-deployment
+    spec:
+      containers:
+      - image: harbor-repo.vmware.com/dockerhub-proxy-cache/ianwijaya/hackazon
+        name: hackazon
+        ports:
+        - containerPort: 80
