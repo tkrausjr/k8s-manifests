@@ -5,5 +5,10 @@ metadata:
   namespace: svc-tmc-c8
 spec:
   operation: INSTALL
+<<<<<<< HEAD
   registrationLink: https://saleseng.tmc.cloud.vmware.com/installer?id=3ca2050bfea9e90148ac0a7142844ae3eb4e148f1f61416fc5ab15d9065ce091&source=registration&type=tkgs
+=======
+  registrationLink: https://saleseng.tmc.cloud.vmware.com/installer?id=9208681a024ba4de13db0879ea2456295cc9cf9c24134323a987d1ca2b30b8a2&source=registration&type=tkgs
+
+>>>>>>> 9862ccc794876be9ea0efd7f58fe1f20595b53ad
 

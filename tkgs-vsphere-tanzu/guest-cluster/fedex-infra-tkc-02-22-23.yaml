@@ -1,19 +1,14 @@
 apiVersion: run.tanzu.vmware.com/v1alpha2
 kind: TanzuKubernetesCluster
 metadata:
-<<<<<<< HEAD
-  name: tap-13-k8s-1-22-9
-  namespace: fedex-grd
-=======
-  name: tap-14-k8s
-  namespace: ckad-host66
->>>>>>> 9862ccc794876be9ea0efd7f58fe1f20595b53ad
+  name: infrastructure
+  namespace: spvn
 spec:
   topology:
     controlPlane:
       replicas: 1
-      vmClass: best-effort-medium
-      storageClass: vsan-policy
+      vmClass: best-effort-small
+      storageClass: nfs-policy
       volumes:
         - name: etcd
           mountPath: /var/lib/etcd
@@ -21,24 +16,24 @@ spec:
             storage: 10Gi
       tkr:  
         reference:
-          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+          name: v1.23.8---vmware.3-tkg.1
     nodePools:
-    - name: worker-nodepool-a1
+    - name: np1
       replicas: 2
-      vmClass: tap-medium
-      storageClass: vsan-policy
+      vmClass: infra-fedex
+      storageClass: nfs-policy
       volumes:
         - name: containerd
           mountPath: /var/lib/containerd
           capacity:
-            storage: 100Gi      
+            storage: 50Gi      
       tkr:  
         reference:
-          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+          name: v1.23.8---vmware.3-tkg.1
   settings:
     storage:
-      classes: ["nfs-policy"]      
-      defaultClass: nfs-policy                     #Default PVC storage class
+      classes: ["vsan-policy"]      
+      defaultClass: vsan-policy                     #Default PVC storage class
     network:
       cni:
         name: antrea
