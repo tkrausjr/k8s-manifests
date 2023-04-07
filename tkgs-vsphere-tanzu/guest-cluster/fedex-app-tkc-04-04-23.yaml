@@ -1,14 +1,14 @@
 apiVersion: run.tanzu.vmware.com/v1alpha2
 kind: TanzuKubernetesCluster
 metadata:
-  name: infrastructure
+  name: app-cluster
   namespace: spvn
 spec:
   topology:
     controlPlane:
       replicas: 1
-      vmClass: best-effort-small
-      storageClass: nfs-policy
+      vmClass: best-effort-medium
+      storageClass: vsan-policy
       volumes:
         - name: etcd
           mountPath: /var/lib/etcd
@@ -20,8 +20,8 @@ spec:
     nodePools:
     - name: np1
       replicas: 2
-      vmClass: best-effort-small
-      storageClass: nfs-policy
+      vmClass: best-effort-medium
+      storageClass: vsan-policy
       volumes:
         - name: containerd
           mountPath: /var/lib/containerd
