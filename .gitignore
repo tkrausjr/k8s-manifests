@@ -11,4 +11,8 @@
 *.zip
 *.tgz
 
+<<<<<<< HEAD
+mgt2-fqdn-kubeconfig
+=======
 *.kubeconfig
+>>>>>>> 9862ccc794876be9ea0efd7f58fe1f20595b53ad
