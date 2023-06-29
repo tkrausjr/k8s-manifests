@@ -1,4 +1,4 @@
-## PKS Guestbook App with Persistent Storage(via VCP/Hatchway) & Load Balancer
+## PKS Guestbook App with PVs & SVC type LoadBalancer
 1. cd github/kubernetes/guestbook-storageclass
 2. kubectl apply -f .
     
