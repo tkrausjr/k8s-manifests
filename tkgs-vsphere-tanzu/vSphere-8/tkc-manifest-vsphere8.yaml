@@ -1,0 +1,33 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: test-tkc-to-classy
+  namespace: app-clusters
+spec:
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: best-effort-small
+      storageClass: vsan-wkld-cluster
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+    nodePools:
+    - name: worker-pool-1
+      replicas: 1
+      vmClass: best-effort-small
+      storageClass: vsan-wkld-cluster
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+  settings:
+    storage:
+      classes: ["vsan-wkld-cluster"]      
+      defaultClass: vsan-wkld-cluster                     #Default PVC storage class
+    network:
+      cni:
+        name: antrea
+      pods:
+        cidrBlocks: ["192.0.0.0/16"]
+      services:
+        cidrBlocks: ["198.51.100.0/24"]

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deploy
+  name: nginx-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  template:
+    metadata:
+      labels:
+        app: nginx-deploy
+        run: nginx
+        tier: web
+    spec:
+      containers:
+      - image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx
+        name: nginx

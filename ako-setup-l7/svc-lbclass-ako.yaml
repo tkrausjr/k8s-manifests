@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-lbclass-ako
+  labels:
+    run: nginx
+spec:
+  loadBalancerClass: ako.vmware.com/avi-lb
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    run: nginx
+    tier: web
