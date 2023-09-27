@@ -1,29 +1,4 @@
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: redis-slave-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: 
-  resources:
-    requests:
-      storage: 2Gi
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: redis-master-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: 
-  resources:
-    requests:
-      storage: 2Gi
-
----
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:

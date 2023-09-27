@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-master-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "vsphere-spbm-vsan-k8s-sc" 
+  resources:
+    requests:
+      storage: 2Gi

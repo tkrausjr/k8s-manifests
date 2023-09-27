@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: vsphere-spbm-vsan-k8s-sc
+provisioner: csi.vsphere.vmware.com
+parameters:
+  storagePolicyName: "vsan-k8s"
