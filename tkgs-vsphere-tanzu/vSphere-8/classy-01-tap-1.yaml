@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: k8s-01
+  name: tap-1-kubectl
 spec:
   clusterNetwork:
     services:
@@ -11,21 +11,26 @@ spec:
     serviceDomain: "cluster.local"
   topology:
     class: tanzukubernetescluster
-    version: v1.26.5---vmware.2-fips.1-tkg.1
+    version: v1.26.5+vmware.2-fips.1-tkg.1
     controlPlane:
       replicas: 1
+      vmClass: tap-1-rightsize
     workers:
       # node pools
       machineDeployments:
         - class: node-pool
-          name: node-pool-1
-          replicas: 2
+          name: np-1
+          replicas: 3
+          
+          volumes:
+            - name: containerd
+              mountPath: /var/lib/containerd
+              capacity:
+                storage: 110Gi
     variables:
-      - name: vmClass
-        value:  best-effort-small
+    - name: vmClass
+      value: tap-1-rightsize
       # default storageclass for control plane and node pool
-      - name: storageClass
-        value: nfs-datastores
-      - name: defaultStorageClass
-        value: nfs-datastores
+    - name: storageClass
+      value: nfs-datastores
 
