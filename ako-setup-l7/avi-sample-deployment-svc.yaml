@@ -1,0 +1,42 @@
+# https://vmwire.com/2023/03/27/introduction-to-avi-ingress-and-replacing-contour-for-prometheus-and-grafana/
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: http-ingress-deployment
+  labels:
+    app: http-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-ingress
+  template:
+    metadata:
+      labels:
+        app: http-ingress
+    spec:
+      containers:
+        - name: http-ingress
+          image: ianwijaya/hackazon
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+      imagePullSecrets:
+      - name: regcred
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-svc
+  labels:
+    svc: ingress-svc
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: http-ingress
+  type: NodePort

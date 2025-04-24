@@ -1,0 +1,23 @@
+# https://vmwire.com/2023/03/27/introduction-to-avi-ingress-and-replacing-contour-for-prometheus-and-grafana/
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: avisvcingress
+  annotations:
+    ako.vmware.com/enable-tls: "false"
+  labels:
+    app: avisvcingress
+spec:
+  ingressClassName: avi-lb
+  rules:
+    - host: "hackazon.tpmlab.vmware.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: ingress-svc
+                port:
+                  number: 80

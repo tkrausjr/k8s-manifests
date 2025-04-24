@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: leader
-        image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/redis:6.0.5  # or just image: redis
+        image: harbor.mbentley.net/docker.io/library/redis:6.0.5  # or just image: redis
         resources:
           requests:
             cpu: 100m

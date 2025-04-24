@@ -2,12 +2,10 @@ apiVersion: installers.tmc.cloud.vmware.com/v1alpha1
 kind: AgentInstall
 metadata:
   name: tmc-agent-installer-config
-  namespace: svc-tmc-c2034
+  namespace: svc-tmc-c8
 spec:
   operation: INSTALL
-  registrationLink: https://saleseng.tmc.cloud.vmware.com/installer?id=c04c1c275c079d61cdbd37186c3c69ebee46687d4aeb79703140bdd8cb4380ec&source=registration&type=tkgs
-  
-  
+  registrationLink: https://grey.stacks.whitesand.tmc.cloud.vmware.com/installer?id=d5e0879ae4b0b7241fd9e5fdafcf15b11bcc6ad06a103bf70f51337b91a88283&source=registration&type=tkgs  
 
 
 

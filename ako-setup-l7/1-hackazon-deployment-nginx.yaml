@@ -15,7 +15,7 @@ spec:
         app: hackazon-deployment
     spec:
       containers:
-      - image: harbor.tpmlab.vmware.com/proxy/ianwijaya/hackazon
+      - image: nginx
         name: hackazon
         ports:
         - containerPort: 80

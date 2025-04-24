@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    k8s-app: fluentd-loginsight-logging
+  name: fluentd-loginsight-logging
+  namespace: kube-system
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: fluentd-clusterrole
+rules:
+- apiGroups: [""]
+  resources: ["namespaces", "pods"]
+  verbs: ["list", "get", "watch"]
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: fluentd-clusterrole
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: fluentd-clusterrole
+subjects:
+  - kind: ServiceAccount
+    name: fluentd-loginsight-logging
+    namespace: kube-system
+
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-loginsight-logging
+  namespace: kube-system
+  labels:
+    k8s-app: fluentd-loginsight-logging
+    app: fluentd-loginsight-logging
+    version: v1
+    kubernetes.io/cluster-service: "true"
+spec:
+ selector:
+   matchLabels:
+     name: fluentd-loginsight-logging
+ template:
+   metadata:
+     labels:
+       name: fluentd-loginsight-logging
+       app: fluentd-loginsight-logging
+       version: v1
+       kubernetes.io/cluster-service: "true"
+   spec:
+     serviceAccount: fluentd-loginsight-logging
+     serviceAccountName: fluentd-loginsight-logging
+     tolerations:
+     - key: node-role.kubernetes.io/control-plane
+       effect: NoSchedule
+     containers:
+     - name: fluentd-loginsight
+       image: projects.registry.vmware.com/vrealize_loginsight/fluentd:1.4.0
+       command: ["fluentd", "-c", "/etc/fluentd/fluent.conf", "-p", "/fluentd/plugins"]
+       env:
+       - name: FLUENTD_ARGS
+         value: --no-supervisor -q
+       resources:
+         limits:
+           memory: 500Mi
+         requests:
+           cpu: 100m
+           memory: 200Mi
+       volumeMounts:
+       - name: varlog
+         mountPath: /var/log
+         readOnly: false
+       - name: config-volume
+         mountPath: /etc/fluentd
+         readOnly: true
+     volumes:
+     - name: varlog
+       hostPath:
+         path: /var/log
+     - name: config-volume
+       configMap:
+         name: loginsight-fluentd-config

@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fluentbit-sa
+  namespace: tkg-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: fluentbit-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: fluentbit-sa
+    namespace: tkg-system
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: fluentbit
+  namespace: tkg-system
+spec:
+  serviceAccountName: fluentbit-sa
+  packageRef:
+    refName: fluentbit.tanzu.vmware.com
+    versionSelection:
+      constraints: 1.9.5+vmware.1-tkg.2
+  values:
+  - secretRef:
+      name: fluentbit-data-values
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: fluentbit-data-values
+  namespace: tkg-system
+stringData:
+  values.yml: |
+    ---
+    namespace: tkg-system
+    tkg:
+      instance_name: "tkgs-2.2"
+      cluster_name: "sort-infra"
+    fluentbit:
+      pspNames: "vmware-system-restricted"
+      output_plugin: "syslog"
+      syslog:
+        host: "10.173.13.37"
+        port: "514"
+        mode: "tcp"
+        format: "rfc5424"
+

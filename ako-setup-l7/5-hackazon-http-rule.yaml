@@ -1,0 +1,12 @@
+apiVersion: ako.vmware.com/v1alpha1
+kind: HTTPRule
+metadata:
+   name: my-http-rule
+   namespace: default
+spec:
+  fqdn: hackazon.tpmlab.vmware.com
+  paths:
+  - target: /hackazon-deployment
+    loadBalancerPolicy:
+      algorithm: LB_ALGORITHM_CONSISTENT_HASH
+      hash: LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS
