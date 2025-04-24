@@ -1,8 +1,0 @@
-apiVersion: vmoperator.vmware.com/v1alpha1
-kind: VirtualMachineClass
-metadata:
-  name: tk-best-effort
-spec:
-  hardware:
-    cpus: 2
-    memory: 6Gi
