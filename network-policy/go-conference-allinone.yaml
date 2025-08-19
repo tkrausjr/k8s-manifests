@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: 2018-03-23T17:57:00Z
-  generation: 1
   labels:
     run: conference-app
   name: conference-app
-  namespace: sandbox
+  namespace: dev-webapps
 spec:
   replicas: 2
   selector:
@@ -23,7 +21,8 @@ spec:
         run: conference-app
     spec:
       containers:
-      - image: harbor.tpmlab.vmware.com/proxy/tkrausjr/conference-app
+      # - image: unsafe-registry.somewhere.com/proxy/tkrausjr/conference-app
+      - image: harbor.mbentley.net/docker.io/tkrausjr/conference-app
         name: conference-app
         ports:
         - containerPort: 8080
@@ -38,7 +37,7 @@ metadata:
   labels:
     run: conference-app
   name: conference-app
-  namespace: sandbox
+  namespace: dev-webapps
 spec:
   ports:
   - port: 8080

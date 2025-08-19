@@ -1,8 +1,8 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  namespace: tpk8s-build-run
-  name: build-run-01
+  namespace: payment-app-team
+  name: dev01
 spec:
   clusterNetwork:
     services:
@@ -23,7 +23,7 @@ spec:
           replicas: 2
     variables:
       - name: vmClass
-        value: build-01
+        value: best-effort-small
       # default storageclass for control plane and node pool
       - name: storageClass
         value: k8s-tpk8s-01-cluster

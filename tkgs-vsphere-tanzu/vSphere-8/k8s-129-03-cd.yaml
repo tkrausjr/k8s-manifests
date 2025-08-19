@@ -2,7 +2,15 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   namespace: test-ns-1
-  name: k8s-129-02-apps
+  name: k8s-129-03-test
+  annotations:
+    # this annotation is used to identify the cluster
+    # in the tkg cluster list
+    tkg.tanzu.vmware.com/cluster-name: k8s-129-03-test
+    # this annotation is used to identify the cluster
+    # in the tkg cluster list
+    tkg.tanzu.vmware.com/cluster-type: workload
+    deployedby: argocd
 spec:
   clusterNetwork:
     services:
@@ -29,4 +37,3 @@ spec:
         value: k8s-vsan
       - name: defaultStorageClass
         value: k8s-vsan
-     

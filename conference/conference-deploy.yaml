@@ -4,7 +4,6 @@ metadata:
   labels:
     run: conference
   name: conference
-  namespace: default
 spec:
   replicas: 3
   selector:
@@ -21,7 +20,8 @@ spec:
         run: conference
     spec:
       containers:
-      - image: tkrausjr/conference-app
+      # - image: tkrausjr/conference-app
+      - image: harbor.mbentley.net/tkraus/conference-app@sha256:f860bf8a63f7069a1f297716ae523ce6e158cc31ef64e449a34ade83316a9b8c
         imagePullPolicy: Always
         name: conference-app
         ports:

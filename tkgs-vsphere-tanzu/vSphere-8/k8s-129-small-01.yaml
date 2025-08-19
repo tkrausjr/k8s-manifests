@@ -1,8 +1,8 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  namespace: test-ns-1
-  name: k8s-129-02-apps
+  namespace: clearify-team
+  name: dev01
 spec:
   clusterNetwork:
     services:
@@ -23,10 +23,12 @@ spec:
           replicas: 2
     variables:
       - name: vmClass
-        value: best-effort-medium
+        value: best-effort-small
       # default storageclass for control plane and node pool
       - name: storageClass
-        value: k8s-vsan
+        value: vsan-default-storage-policy
       - name: defaultStorageClass
-        value: k8s-vsan
-     
+        value: vsan-default-storage-policy
+  
+
+
