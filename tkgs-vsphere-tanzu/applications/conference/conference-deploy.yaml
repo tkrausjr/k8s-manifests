@@ -5,7 +5,7 @@ metadata:
     run: conference
     app.kubernetes.io/part-of: tk-apps
   name: conference
-  namespace: scratch
+  namespace: default
 spec:
   replicas: 3
   selector:
@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/part-of: tk-apps
     spec:
       containers:
-      - image: harbor-repo.vmware.com/dockerhub-proxy-cache/tkrausjr/conference-app
+      - image: harbor.mbentley.net/tkraus/conference-app:v4
         imagePullPolicy: Always
         name: conference-app
         ports:

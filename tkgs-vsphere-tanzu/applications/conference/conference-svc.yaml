@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
   name: conference-svc
-  namespace: scratch
+  namespace: default
 spec:
   ports:
     - port: 80
