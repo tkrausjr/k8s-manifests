@@ -1,8 +1,8 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: wkld03-small
-  namespace: test1-nsx-vpc
+  name: wkld03-gitops
+  namespace: test-nsx-vpc
 spec:
   clusterNetwork:
     services:

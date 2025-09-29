@@ -35,6 +35,17 @@ spec:
         value: vsan-default-storage-policy
       - name: defaultStorageClass
         value: vsan-default-storage-policy
+      - name: kubernetes
+        value:
+          security:
+            podSecurityStandard:
+              audit: privileged
+              auditVersion: latest
+              deactivated: false
+              enforce: privileged
+              enforceVersion: latest
+              warn: privileged
+              warnVersion: latest
 
               
 

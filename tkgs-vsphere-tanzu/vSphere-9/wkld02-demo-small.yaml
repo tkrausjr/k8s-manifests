@@ -1,8 +1,8 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: wkld01-small
-  namespace: test1-nsx-vpc
+  name: wkld02-demo
+  namespace: test-nsx-vpc
 spec:
   clusterNetwork:
     services:
@@ -24,17 +24,28 @@ spec:
           variables:
             overrides:
             - name: vmClass
-              value: tmc-sm-rightsize
+              value: best-effort-small
     variables:
       # Default VMClass and will always use for CP Nodes. You can override the machineDeployments
       # VMClass
       - name: vmClass
-        value: tmc-sm-rightsize
+        value: best-effort-small
       # default storageclass for control plane and node pool
       - name: storageClass
         value: vsan-default-storage-policy
       - name: defaultStorageClass
         value: vsan-default-storage-policy
+      - name: kubernetes
+        value:
+          security:
+            podSecurityStandard:
+              audit: privileged
+              auditVersion: latest
+              deactivated: false
+              enforce: privileged
+              enforceVersion: latest
+              warn: privileged
+              warnVersion: latest
 
               
 
