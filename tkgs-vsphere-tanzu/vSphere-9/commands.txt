@@ -1,0 +1,4 @@
+# Common commands you run with kubectl
+
+# To label a namespace with sec policy relaxed when logged into a worklaod cluster.
+kubectl label ns default pod-security.kubernetes.io/enforce=privileged --overwrite=true
