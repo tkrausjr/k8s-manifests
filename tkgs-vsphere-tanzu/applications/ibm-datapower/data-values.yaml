@@ -1,8 +1,0 @@
-datapower:
-  webGuiManagementState: enabled
-  
-  additionalConfig:
-  - domain: "default"
-    config: "default-configmap"
-  - domain: "newdomain"
-    config: "newdomain-configmap"
