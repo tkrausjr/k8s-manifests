@@ -1,0 +1,14 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "demo-policy.example.com"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+    - apiGroups:   ["cluster"]
+      apiVersions: ["v1beta2"]
+      operations:  ["CREATE", "UPDATE"]
+      resources:   ["cluster"]
+  validations:
+    - expression: "object.spec.topology.workers.machineDeployments.replicas <= 1"

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: two-tier-pod-nginx
+  labels:
+    app: two-tier-pod-nginx
+    type: argocd
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: two-tier-pod-nginx
+  template:
+    metadata:
+      labels:
+        app: two-tier-pod-nginx
+        type: argocd
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-creds
+      securityContext:
+        runAsNonRoot: false
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: nginx
+          image: harbor.mbentley.net/tkraus/conference-app@sha256:f860bf8a63f7069a1f297716ae523ce6e158cc31ef64e449a34ade83316a9b8c
+          ports:
+            - containerPort: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: false
+            capabilities:
+              drop:
+                - ALL
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: two-tier-nginx-svc
+spec:
+  selector:
+    app: two-tier-pod-nginx
+    type: argocd
+  ports:
+    - protocol: TCP
+      port: 8084
+      targetPort: 8080
+  type: LoadBalancer
