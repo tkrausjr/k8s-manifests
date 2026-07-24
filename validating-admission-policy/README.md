@@ -1,5 +1,5 @@
 
-# Resources
+### Resources
 ```
 First example is setting policy through VCFA which does ValidatingAdmissionPolicy on backend
 ```
@@ -9,37 +9,45 @@ First example is setting policy through VCFA which does ValidatingAdmissionPolic
 - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
 - https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/validating-admission-policy-binding-v1/
 
-### Simple Test done at a VKS Cluster level with Springone K8s Deployment and replica count
-```
-cd k8s-manifests
-k apply -f validating-admission-policy/basic-replica-vap.yaml
-k apply -f validating-admission-policy/basic-replica-vap-binding.yaml
-k apply -f validating-admission-policy/springone-deploy.yaml
-```
-## Since replica count = 6 and that is more than the policy limit deployment fails.
 
-## Troubleshoot policy violations inside a VKS cluster OR a vSphere Namespace.
-```
-# Check the api-server logs for Policy events
-k logs -n kube-system kube-apiserver-4227e0f6113a21cb67814a8efd676448 | grep ValidatingAdmissionPolicy
-```
-# List policies and policy bindings in a vSphere Namespace or inside a VKS Cluster
-```
-k get validatingadmissionpolicy,validatingadmissionpolicybindings
-```
-
-
-# Testing Controlling VKS Cluster deployments inside a vSphere Namespace
+### Working - Controlling VKS Cluster deployments inside a vSphere Namespace
 ```
 vcf context use supervisor-ctx:demo-ns-vsphere
 cd k8s-manifests
 k apply -f ./validating-admission-policy/cluster-replica-vap.yaml
 k apply -f ./validating-admission-policy/cluster-replica-vap-binding.yaml
 
-# Now test the cluster deploymenty
-k apply -f ./validating-admission-policy/vks-cluster-replica-test.yaml
-$$$  NOT WORKING YET Cluster can still deploy with more replicas than specified
+# Now test the cluster deployment
+k apply -f ./validating-admission-policy/test-vks-cluster-replica.yaml
+
+# If the clusters MachineDeployment.replica count is more than the polcies setting this will fail
+# You will see the message below:
+
+The clusters "vks-cluster-replica-test" is invalid: : ValidatingAdmissionPolicy 'cluster-policy.example.com' with binding 'cluster-binding-test.example.com' denied request: failed expression: object.spec.topology.workers.machineDeployments[0].replicas <= 1
+
 ```
+
+### Simple Test done at a VKS Cluster level with Springone K8s Deployment and replica count
+```
+cd k8s-manifests
+k apply -f validating-admission-policy/basic-replica-vap.yaml
+k apply -f validating-admission-policy/basic-replica-vap-binding.yaml
+k apply -f validating-admission-policy/springone-deploy.yaml
+
+# Since replica count = 6 and that is more than the policy limit deployment fails.
+
+```
+
+### Troubleshoot policy violations inside a VKS cluster OR a vSphere Namespace.
+```
+# Check the api-server logs for Policy events
+k logs -n kube-system kube-apiserver-4227e0f6113a21cb67814a8efd676448 | grep ValidatingAdmissionPolicy
+```
+### List policies and policy bindings in a vSphere Namespace or inside a VKS Cluster
+```
+k get validatingadmissionpolicy,validatingadmissionpolicybindings
+```
+
 
 
 
