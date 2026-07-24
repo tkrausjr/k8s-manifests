@@ -33,9 +33,8 @@ k apply -f ./validating-admission-policy/cluster-replica-vap-binding.yaml
 
 # Now test the cluster deploymenty
 k apply -f ./validating-admission-policy/vks-cluster-replica-test.yaml
-
-
-
+$$$  NOT WORKING YET Cluster can still deploy with more replicas than specified
 ```
+
 
 
