@@ -6,4 +6,5 @@ spec:
   policyName: "cluster-policy.example.com"
   validationActions: [Deny]
 
+
   
