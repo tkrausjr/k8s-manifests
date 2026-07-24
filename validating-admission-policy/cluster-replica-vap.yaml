@@ -9,9 +9,9 @@ spec:
     namespaceSelector: {}
     objectSelector: {}
     resourceRules:
-    - apiGroups:   ["cluster"]
-      apiVersions: ["v1beta2"]
+    - apiGroups:   ["cluster.x-k8s.io"]
+      apiVersions: ["*"]
       operations:  ["CREATE", "UPDATE"]
       resources:   ["clusters"]
   validations:
-    - expression: "object.spec.topology.workers.machineDeployments.replicas <= 1"
+    - expression: object.spec.topology.workers.machineDeployments.replicas <= 1
