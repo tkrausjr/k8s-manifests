@@ -1,8 +1,17 @@
 
-# List the available addons and addonreleases you can install
-https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-service-administration-and-development/9-0/managing-vsphere-kuberenetes-service-clusters-and-workloads/managing-add-ons-in-vks-clusters/view-available-addons.html
+# Resources
 
-# Label the cluster according to the addons it needs
+https://oneuptime.com/blog/post/2026-02-09-cel-validating-admission-policy/view
+https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/validating-admission-policy-binding-v1/
+
+# Simple Test done at a VKS Cluster level with Deployment and replica count
+k apply -f basic-replica-vap.yaml
+k apply -f basic-replica-vap-binding.yaml
+k apply -f springone-deploy.yaml
+
+#
+
+# List policies and policy bindings in a vSphere Namespace
 ```
 k label cluster/demo-cl01 -n shared-svcs-7w8d9 addons-install=headlamp    
     cluster.cluster.x-k8s.io/demo-cl01 labeled
