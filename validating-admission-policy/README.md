@@ -9,7 +9,11 @@ k apply -f basic-replica-vap.yaml
 k apply -f basic-replica-vap-binding.yaml
 k apply -f springone-deploy.yaml
 
-#
+# Since replica count = 6 and that is more than the policy limit deployment fails.
+
+# Troubleshoot policy violations etc.
+# Check the api-server logs for Policy events
+
 
 # List policies and policy bindings in a vSphere Namespace
 ```
