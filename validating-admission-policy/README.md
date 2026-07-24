@@ -6,9 +6,10 @@ https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/valida
 
 # Simple Test done at a VKS Cluster level with Deployment and replica count
 ```
-k apply -f basic-replica-vap.yaml
-k apply -f basic-replica-vap-binding.yaml
-k apply -f springone-deploy.yaml
+cd k8s-manifests
+k apply -f validating-admission-policy/basic-replica-vap.yaml
+k apply -f validating-admission-policy/basic-replica-vap-binding.yaml
+k apply -f validating-admission-policy/springone-deploy.yaml
 ```
 ## Since replica count = 6 and that is more than the policy limit deployment fails.
 
@@ -19,16 +20,17 @@ k logs -n kube-system kube-apiserver-4227e0f6113a21cb67814a8efd676448 | grep Val
 ```
 # List policies and policy bindings in a vSphere Namespace or inside a VKS Cluster
 ```
-k label cluster/demo-cl01 -n shared-svcs-7w8d9 addons-install=headlamp    
-    cluster.cluster.x-k8s.io/demo-cl01 labeled
+k get validatingadmissionpolicy,validatingadmissionpolicybindings
 ```
 
 
 # Testing Controlling VKS Cluster deployments inside a vSphere Namespace
 ```
+vcf context use supervisor-ctx:demo-ns-vsphere
 cd k8s-manifests
 k apply -f ./validating-admission-policy/cluster-replica-vap.yaml
 k apply -f ./validating-admission-policy/cluster-replica-vap-binding.yaml
+
 
 
 ```
