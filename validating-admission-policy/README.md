@@ -9,7 +9,7 @@ First example is setting policy through VCFA which does ValidatingAdmissionPolic
 - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
 - https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/validating-admission-policy-binding-v1/
 
-# Simple Test done at a VKS Cluster level with Deployment and replica count
+### Simple Test done at a VKS Cluster level with Springone K8s Deployment and replica count
 ```
 cd k8s-manifests
 k apply -f validating-admission-policy/basic-replica-vap.yaml
