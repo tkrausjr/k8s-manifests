@@ -1,0 +1,71 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"admissionregistration.k8s.io/v1","kind":"ValidatingAdmissionPolicy","metadata":{"annotations":{},"labels":{"managedBy":"vSphere-AppPlatform"},"name":"appplatform-pinniped-policy"},"spec":{"failurePolicy":"Fail","matchConditions":[{"expression":"request.userInfo.username.startsWith(\"system:serviceaccount:\")","name":"include-service-accounts"},{"expression":"!request.userInfo.username.startsWith(\"system:serviceaccount:kube-system:\")","name":"exclude-kube-system-sa"},{"expression":"request.userInfo.username.startsWith(\"system:serviceaccount:vmware-system-supervisor-services\")\n  || !request.userInfo.username.startsWith(\"system:serviceaccount:vmware-system\")\n","name":"exclude-system-except-for-installation-sa"},{"expression":"!(has(params.spec.firstParty) \u0026\u0026 has(params.spec.firstParty.serviceAccounts) \u0026\u0026 request.userInfo.username in params.spec.firstParty.serviceAccounts)\n","name":"exclude-first-party-installation-sa"},{"expression":"!(has(params.spec.firstParty) \u0026\u0026 has(params.spec.firstParty.namespaces) \u0026\u0026 request.userInfo.username.split(\":\").size() \u003e 2\n  \u0026\u0026 request.userInfo.username.split(\":\")[2] in params.spec.firstParty.namespaces)\n","name":"exclude-first-party-operators"}],"matchConstraints":{"resourceRules":[{"apiGroups":["authentication.concierge.pinniped.dev"],"apiVersions":["v1alpha1"],"operations":["CREATE","UPDATE","DELETE"],"resources":["jwtauthenticators","webhookauthenticators"]},{"apiGroups":["idp.supervisor.pinniped.dev"],"apiVersions":["v1alpha1"],"operations":["CREATE","UPDATE","DELETE"],"resources":["activedirectoryidentityproviders","githubidentityproviders","ldapidentityproviders","oidcidentityproviders"]}]},"paramKind":{"apiVersion":"appplatform.wcp.vmware.com/v1alpha1","kind":"AdmissionPolicyConfig"},"validations":[{"expression":"false","message":"Modification of Pinniped resources is not allowed"}]}}
+  creationTimestamp: "2026-05-05T08:31:54Z"
+  generation: 1
+  labels:
+    managedBy: vSphere-AppPlatform
+  name: appplatform-pinniped-policy
+  resourceVersion: "3686"
+  uid: d40fd6d3-50f2-46b0-a4f1-6161fc527cb3
+spec:
+  failurePolicy: Fail
+  matchConditions:
+  - expression: request.userInfo.username.startsWith("system:serviceaccount:")
+    name: include-service-accounts
+  - expression: '!request.userInfo.username.startsWith("system:serviceaccount:kube-system:")'
+    name: exclude-kube-system-sa
+  - expression: |
+      request.userInfo.username.startsWith("system:serviceaccount:vmware-system-supervisor-services")
+        || !request.userInfo.username.startsWith("system:serviceaccount:vmware-system")
+    name: exclude-system-except-for-installation-sa
+  - expression: |
+      !(has(params.spec.firstParty) && has(params.spec.firstParty.serviceAccounts) && request.userInfo.username in params.spec.firstParty.serviceAccounts)
+    name: exclude-first-party-installation-sa
+  - expression: |
+      !(has(params.spec.firstParty) && has(params.spec.firstParty.namespaces) && request.userInfo.username.split(":").size() > 2
+        && request.userInfo.username.split(":")[2] in params.spec.firstParty.namespaces)
+    name: exclude-first-party-operators
+  matchConstraints:
+    matchPolicy: Equivalent
+    namespaceSelector: {}
+    objectSelector: {}
+    resourceRules:
+    - apiGroups:
+      - authentication.concierge.pinniped.dev
+      apiVersions:
+      - v1alpha1
+      operations:
+      - CREATE
+      - UPDATE
+      - DELETE
+      resources:
+      - jwtauthenticators
+      - webhookauthenticators
+      scope: '*'
+    - apiGroups:
+      - idp.supervisor.pinniped.dev
+      apiVersions:
+      - v1alpha1
+      operations:
+      - CREATE
+      - UPDATE
+      - DELETE
+      resources:
+      - activedirectoryidentityproviders
+      - githubidentityproviders
+      - ldapidentityproviders
+      - oidcidentityproviders
+      scope: '*'
+  paramKind:
+    apiVersion: appplatform.wcp.vmware.com/v1alpha1
+    kind: AdmissionPolicyConfig
+  validations:
+  - expression: "false"
+    message: Modification of Pinniped resources is not allowed
+status:
+  observedGeneration: 1
+  typeChecking: {}
