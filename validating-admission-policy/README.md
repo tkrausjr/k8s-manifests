@@ -1,9 +1,10 @@
 
 ### Resources
-```
-First example is setting policy through VCFA which does ValidatingAdmissionPolicy on backend
-```
+
+For VCFA environments you can use Policy Manager in VCFA.
 - https://blogs.vmware.com/cloud-foundation/2025/10/01/vmware-cloud-foundation-automation-infrastructure-resource-policy-overview/
+
+For vSphere only Supervisor environments you will need to submit regular validatingadmissionpolicy to the vSphere Namespace
 - https://vmw-confluence.broadcom.net/spaces/WCP/pages/2403636802/Add-on+Management+System+How-To+use+VCFA+policy+management
 - https://oneuptime.com/blog/post/2026-02-09-cel-validating-admission-policy/view
 - https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
