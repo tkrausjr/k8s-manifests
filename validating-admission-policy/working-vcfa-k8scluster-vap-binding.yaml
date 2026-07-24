@@ -1,0 +1,24 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  creationTimestamp: "2026-07-24T20:06:56Z"
+  generation: 1
+  labels:
+    namespaceName: shared-svcs-r26b4
+    orgId: cfe8c49c-9d71-45a7-9694-81670c9775c4
+    policyId: 9d565aa4-f034-4d66-a134-d2525993ec66
+    projectId: 5233d880-4873-4939-9ec9-78a48aa3e088
+    validatingAdmissionPolicyName: test-vcfa-k8s-525993ec66
+  name: test-vcfa-k8s-525993ec66-shared-svcs-r26b4
+  resourceVersion: "3402881"
+  uid: 6124fa82-6c7f-4965-8908-d862a23147ea
+spec:
+  matchResources:
+    matchPolicy: Equivalent
+    namespaceSelector:
+      matchLabels:
+        kubernetes.io/metadata.name: shared-svcs-r26b4
+    objectSelector: {}
+  policyName: test-vcfa-k8s-525993ec66
+  validationActions:
+  - Deny

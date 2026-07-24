@@ -1,0 +1,41 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  creationTimestamp: "2026-07-24T16:55:36Z"
+  generation: 1
+  labels:
+    orgId: cfe8c49c-9d71-45a7-9694-81670c9775c4
+    policyId: d3d00a31-caee-4e32-895a-b3c36b06471b
+  name: test-vcfa-labels-c36b06471b
+  resourceVersion: "3246151"
+  uid: 752650f2-f0f7-4662-827e-3e9c95f9fecb
+spec:
+  failurePolicy: Fail
+  matchConditions:
+  - expression: '!("kubeadm:cluster-admins" in request.userInfo.groups) && ("system:kube-controller-manager"
+      != request.userInfo.username) && request.userInfo.groups.all(g, !g.startsWith("system:serviceaccounts:vmware-system-"))
+      && request.userInfo.groups.all(g, !g.startsWith("system:serviceaccounts:svc-"))
+      && !("system:nodes" in request.userInfo.groups) && !("sso:SolutionUsers@vsphere.local"
+      in request.userInfo.groups) && ("system:kube-scheduler" != request.userInfo.username)'
+    name: consolidated-exclusion-conditions
+  matchConstraints:
+    matchPolicy: Equivalent
+    namespaceSelector: {}
+    objectSelector: {}
+    resourceRules:
+    - apiGroups:
+      - vmoperator.vmware.com
+      apiVersions:
+      - '*'
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - virtualmachines
+      scope: Namespaced
+  validations:
+  - expression: object.metadata.labels.environment == 'vks'
+    message: All virtual machines should have label environment=vks
+status:
+  observedGeneration: 1
+  typeChecking: {}

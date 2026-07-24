@@ -1,0 +1,50 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  creationTimestamp: "2026-07-24T20:06:57Z"
+  generation: 1
+  labels:
+    orgId: cfe8c49c-9d71-45a7-9694-81670c9775c4
+    policyId: 9d565aa4-f034-4d66-a134-d2525993ec66
+  name: test-vcfa-k8s-525993ec66
+  resourceVersion: "3402886"
+  uid: 4fda27c2-044c-4180-bd2c-7602aecf70c1
+spec:
+  failurePolicy: Fail
+  matchConditions:
+  - expression: '!("kubeadm:cluster-admins" in request.userInfo.groups) && ("system:kube-controller-manager"
+      != request.userInfo.username) && request.userInfo.groups.all(g, !g.startsWith("system:serviceaccounts:vmware-system-"))
+      && request.userInfo.groups.all(g, !g.startsWith("system:serviceaccounts:svc-"))
+      && !("system:nodes" in request.userInfo.groups) && !("sso:SolutionUsers@vsphere.local"
+      in request.userInfo.groups) && ("system:kube-scheduler" != request.userInfo.username)'
+    name: consolidated-exclusion-conditions
+  matchConstraints:
+    matchPolicy: Equivalent
+    namespaceSelector: {}
+    objectSelector: {}
+    resourceRules:
+    - apiGroups:
+      - run.tanzu.vmware.com
+      apiVersions:
+      - '*'
+      operations:
+      - CREATE
+      resources:
+      - tanzukubernetesclusters
+      scope: Namespaced
+    - apiGroups:
+      - cluster.x-k8s.io
+      apiVersions:
+      - '*'
+      operations:
+      - CREATE
+      resources:
+      - clusters
+      scope: Namespaced
+  validations:
+  - expression: ((request.resource.resource != "tanzukubernetesclusters") && (request.resource.resource
+      != "clusters"))
+    message: Kubernetes clusters are prohibited to be provisioned in the namespace.
+status:
+  observedGeneration: 1
+  typeChecking: {}
