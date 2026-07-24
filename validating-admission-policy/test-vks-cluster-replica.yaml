@@ -31,7 +31,7 @@ spec:
       machineDeployments:
         - class: node-pool
           name: vks-cluster-replica-test-np-kz46
-          replicas: 3
+          replicas: 1
           metadata:
             annotations:
               run.tanzu.vmware.com/resolve-os-image: os-name=photon, content-library=cl-e80e0171710ad97e3
