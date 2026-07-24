@@ -31,6 +31,9 @@ cd k8s-manifests
 k apply -f ./validating-admission-policy/cluster-replica-vap.yaml
 k apply -f ./validating-admission-policy/cluster-replica-vap-binding.yaml
 
+# Now test the cluster deploymenty
+k apply -f ./validating-admission-policy/vks-cluster-replica-test.yaml
+
 
 
 ```
