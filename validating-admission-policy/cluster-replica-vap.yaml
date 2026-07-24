@@ -14,4 +14,4 @@ spec:
       operations:  ["CREATE", "UPDATE"]
       resources:   ["clusters"]
   validations:
-    - expression: object.spec.topology.workers.machineDeployments.replicas <= 1
+    - expression: object.spec.topology.workers.machineDeployments[0].replicas <= 1 # Only checking the first MD
