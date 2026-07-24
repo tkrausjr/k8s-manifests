@@ -1,8 +1,9 @@
 
 # Resources
 
-https://oneuptime.com/blog/post/2026-02-09-cel-validating-admission-policy/view
-https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/validating-admission-policy-binding-v1/
+- https://oneuptime.com/blog/post/2026-02-09-cel-validating-admission-policy/view
+- https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/
+- https://kubernetes.io/docs/reference/kubernetes-api/admissionregistration/validating-admission-policy-binding-v1/
 
 # Simple Test done at a VKS Cluster level with Deployment and replica count
 ```
