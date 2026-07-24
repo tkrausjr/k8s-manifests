@@ -9,6 +9,6 @@ spec:
     - apiGroups:   ["cluster"]
       apiVersions: ["v1beta2"]
       operations:  ["CREATE", "UPDATE"]
-      resources:   ["cluster"]
+      resources:   ["clusters"]
   validations:
     - expression: "object.spec.topology.workers.machineDeployments.replicas <= 1"
