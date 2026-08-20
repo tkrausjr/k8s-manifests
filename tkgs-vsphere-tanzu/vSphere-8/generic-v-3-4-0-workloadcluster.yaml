@@ -1,0 +1,490 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+#define the cluster
+metadata:
+  #user-defined name of the cluster; string
+  name: cluster-default
+  #kubernetes namespace for the cluster; string
+  namespace: tkg-cluster-ns
+#define the desired state of cluster
+spec:
+  #specify the cluster network; required, there is no default
+  clusterNetwork:
+    #network ranges from which service VIPs are allocated
+    services:
+      #ranges of network addresses; string array
+      #CAUTION: must not overlap with Supervisor
+      cidrBlocks: ["10.96.0.0/12"]
+    #network ranges from which Pod networks are allocated
+    pods:
+      #ranges of network addresses; string array
+      #CAUTION: must not overlap with Supervisor
+      cidrBlocks: ["192.168.0.0/16"]
+    #domain name for services; string
+    serviceDomain: "cluster.local"
+  #specify the topology for the cluster
+  topology:
+    #name of the ClusterClass object to derive the topology
+    class: builtin-generic-v3.4.0
+    #kubernetes version of the cluster; format is TKR NAME
+    version: v1.33
+    #describe the cluster control plane
+    controlPlane:
+      #number of control plane nodes
+      #integer value 1 or 3
+      #NOTE: Production clusters require 3 control plane nodes
+      replicas: 3
+    #describe the cluster worker nodes
+    workers:
+      #specifies parameters for a set of worker nodes in the topology
+      machineDeployments:
+          # node pool class used to create the set of worker nodes
+          # required
+        - class: node-pool
+          # user-defined name of the node pool; string
+          # required
+          name: node-pool-1
+          # number of worker nodes in this pool; integer 0 or more
+          # defaults to 1
+          replicas: 3
+    #customize the cluster
+    variables:
+      #virtual machine class type and size for cluster nodes
+      # Required
+      - name: vmClass
+        value: guaranteed-medium
+      #persistent storage class for cluster nodes
+      # Required
+      - name: storageClass
+        value: tkg-storage-policy
+This example shows the configuration required to provision a comprehensive cluster. It includes examples for all the variables supported by this ClusterClass:
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+#define the cluster
+metadata:
+  #user-defined name of the cluster; string
+  name: cluster-default
+  #kubernetes namespace for the cluster; string
+  namespace: tkg-cluster-ns
+#define the desired state of cluster
+spec:
+  #specify the cluster network; required, there is no default
+  clusterNetwork:
+    #network ranges from which service VIPs are allocated
+    services:
+      #ranges of network addresses; string array
+      #CAUTION: must not overlap with Supervisor
+      cidrBlocks: ["10.96.0.0/12"]
+    #network ranges from which Pod networks are allocated
+    pods:
+      #ranges of network addresses; string array
+      #CAUTION: must not overlap with Supervisor
+      cidrBlocks: ["192.168.0.0/16"]
+    #domain name for services; string
+    serviceDomain: "cluster.local"
+  #specify the topology for the cluster
+  topology:
+    #name of the ClusterClass object to derive the topology
+    class: builtin-generic-v3.4.0
+    #kubernetes version of the cluster; format is TKR NAME
+    version: v1.33
+    #describe the cluster control plane
+    controlPlane:
+      #number of control plane nodes
+      #integer value 1 or 3
+      #NOTE: Production clusters require 3 control plane nodes
+      replicas: 3
+      # configure labels and annotations on the control plane Machine objects
+      # can be used to override the OS to be used for the control plane nodes
+      metadata:
+        annotations:
+          # annotation to choose the OS to use for the control plane nodes          
+          # allowed values for the OS name are photon and ubuntu
+          # optional
+          run.tanzu.vmware.com/resolve-os-image: os-name=photon
+      # configure machine health check options for the control plane nodes
+      # Default settings are set on the ClusterClass in use indicated by spec.topology.class
+      #
+      # For a more detailed explanation on the set of values, check 
+      # https://github.com/kubernetes-sigs/cluster-api/blob/d1ed8dc617efeb1f739890ffa48b141ea75968ee/api/core/v1beta1/clusterclass_types.go#L376
+      # optional
+      machineHealthCheck:
+        # If left unset, machine health check will configured with additional parameters from the ClusterClass
+        # optional
+        enabled: true
+        # specifies the maximum number of unhealthy machines allowed.
+        # Example values: 5, 25%
+        # optional
+        maxUnhealthy: 100%
+        # Default is 10 minutes.
+        # optional
+        nodeStartupTimeout: 25m
+        # specifies the range of unhealthy machines allowed
+        # Eg. "[3-5]" - This means that remediation will be allowed only when:
+        #   (a) there are at least 3 unhealthy machines (and)
+        #   (b) there are at most 5 unhealthy machines
+        unhealthyRange: [5-7]
+      # total time spent on draining the node
+      # optional
+      nodeDrainTimeout: 20m
+      # total time spent on deleting the node
+      # default is 10 seconds
+      # optional
+      nodeDeletionTimeout: 1h10m
+      # total time spent waiting for volumes to be detached
+      # optional
+      nodeVolumeDetachTimoeut: 30m
+      # override individual variable values for the control plane only
+      # optional
+      variables:
+        overrides:
+        # only include variables whose scope includes control plane
+        - name: vmClass
+          value: best-effort-medium
+    #describe the cluster worker nodes
+    workers:
+      #specifies parameters for a set of worker nodes in the topology
+      machineDeployments:
+          # node pool class used to create the set of worker nodes
+          # required
+        - class: node-pool
+          # user-defined name of the node pool; string
+          # required
+          name: node-pool-1
+          # number of worker nodes in this pool; integer 0 or more
+          # defaults to 1
+          replicas: 3
+          # configure labels and annotations on the control plane Machine objects
+          # can be used to override the OS to be used for the control plane nodes
+          metadata:
+            annotations:
+              # annotation to choose the OS to use for the node pool
+              # allowed values for the OS name are photon, ubuntu, windows
+              # optional
+              run.tanzu.vmware.com/resolve-os-image: os-name=photon
+          # configure machine health check options for the node pool
+          # Default settings are set on the ClusterClass in use indicated by spec.topology.class
+          #
+          # For a more detailed explanation on the set of values, check 
+          # https://github.com/kubernetes-sigs/cluster-api/blob/d1ed8dc617efeb1f739890ffa48b141ea75968ee/api/core/v1beta1/clusterclass_types.go#L376
+          # optional
+          machineHealthCheck:
+            # If left unset, machine health check will configured with additional parameters from the ClusterClass
+            # optional
+            enabled: true
+            # specifies the maximum number of unhealthy machines allowed.
+            # Example values: 5, 25%
+            # optional
+            maxUnhealthy: 100%
+            # Default is 10 minutes.
+            # optional
+            nodeStartupTimeout: 25m
+            # specifies the range of unhealthy machines allowed
+            # Eg. "[3-5]" - This means that remediation will be allowed only when:
+            #   (a) there are at least 3 unhealthy machines (and)
+            #   (b) there are at most 5 unhealthy machines
+            unhealthyRange: [5-7]
+          # total time spent on draining the node
+          # optional
+          nodeDrainTimeout: 20m
+          # total time spent on deleting the node
+          # default is 10 seconds
+          # optional
+          nodeDeletionTimeout: 1h10m
+          # total time spent waiting for volumes to be detached
+          # optional
+          nodeVolumeDetachTimoeut: 30m
+          # configures the deployment strategy to use to replace existing machines with new ones
+          #
+          # For a more detailed explanation about the parameters, check
+          # https://github.com/kubernetes-sigs/cluster-api/blob/d1ed8dc617efeb1f739890ffa48b141ea75968ee/api/core/v1beta1/machinedeployment_types.go#L334
+          # optional
+          strategy:
+            # allowed values are RollingUpdate and OnDelete
+            # defaults to RollingUpdate.
+            # optional
+            type: RollingUpdate
+            # configure parameters for the RollingUpdate stratgey type
+            # optional
+            rollingUpdate:
+              # the maximum number of machines that can be unavailable during the update
+              # Example values: 5, 25%
+              # optional
+              maxUnavailable: 20%
+              # confgure the maximum number of machines that can be scheduled above the desired number of machines.
+              # Example values: 5 or 10%
+              # optional
+              maxSurge: 25%
+              # configures the policy used by the MachineDeployment to identify nodes to delete when downscaling. 
+              # Valid values are "Random, "Newest", "Oldest"
+              # defaults to the default deletePolicy of the MachineSet.
+              # optional
+              deletePolicy: Oldest
+            # controls the strategy of remediating unhealthy machines
+            # optional
+            remeditaion:
+              # maxInFlight determines how many in flight remediations should happen at the same time
+              # optional
+              maxInFlight: 25%
+          # override individual variable values for the worker nodes only
+          # optional
+          variables:
+            overrides:
+            # only include variables whose scope includes workers
+            - name: vmClass
+              value: best-effort-medium
+    #customize the cluster
+    variables:
+      #virtual machine class type and size for cluster nodes
+      # Required
+      - name: vmClass
+        value: guaranteed-medium
+      #persistent storage class for cluster nodes
+      # Required
+      - name: storageClass
+        value: tkg-storage-policy
+      # configure additional disks to be added to the cluster VMs
+      # override it on the control plane or a per node pool basis to have granular
+      #   control for the disks attached.
+      # supported scope: cluster, control plane and workers
+      # optional
+      - name: volumes
+        value:
+        # name of the PVC to be used as the suffix (node.name)
+        - name: containerd
+          # mountPath is the directory where the volume device is mounted
+          # takes the form /dir/path (for Linux nodes) and C:\foo\bar (for Windows nodes)
+          mountPath: /var/lib/containerd
+          # storageClass is the storage class to use for the PVC
+          storageClass: tkg-storage-profile
+          # capacity is the PVC storage capacity
+          capacity: 40Gi
+        - name: kubelet-override
+          mountPath: /var/lib/kubelet
+          storageClass: tkg-storage-profile
+          capacity: 40Gi
+      # configure Kubernetes node specific settings.
+      # Supported scopes: cluster, controlPlane and workers
+      # optional
+      - name: node
+        value:
+          # set of labels to be added onto the Kubernetes nodes
+          # optional
+          labels:
+            tenant: tenant-foo
+            organization: engineering
+            managed: ""
+          # set of taints to be added onto the Kubernetes nodes
+          # optional
+          taints:
+            # Required
+          - key: key1
+            # Required
+            value: value1
+            # Allowed values are NoExecute, NoSchedule, PreferNoSchedule. 
+            # Default value is NoSchedule
+            effect: NoSchedule
+          - key: key2
+            value: value2
+            effect: NoExecute
+      # set of cluster-wide configurations for the kubernetes components in the cluster
+      # supported scope: cluster
+      # optional
+      - name: kubernetes
+        value:
+          certificateRotation:
+            # enable automatic rotation of certificates
+            # Default value is true
+            enabled: true
+            # number of days before certificate expiry to initiate the renewal of certificates
+            # Default value is 90
+            renewalDaysBeforeExpiry: 99
+          #  List of FQDNs included in the generated Kubernetes API certificate
+          endpointFQDNs:
+          - fqdn1.cluster.internal
+          - fqdn2.engineering.org
+          # configure security settings for the cluster
+          security:
+            # configures the PodSecurityStandard settings for the cluster
+            podSecurityStandard:
+              deactivated: false
+              # Allowed values are privileged, baseline, restricted
+              audit: privileged
+              # Pin the policy version to a specific k8s minor or the latest for the version
+              # example: latest, v1.xx (kubernetes version)
+              auditVersion: v1.27
+              # Allowed values are privileged, baseline, restricted
+              enforce: restricted
+              # Pin the policy version to a specific k8s minor or the latest for the version
+              # example: latest, v1.xx (kubernetes version)
+              enforceVersion: latest
+              # Allowed values are privileged, baseline, restricted
+              warn: baseline
+              # Pin the policy version to a specific k8s minor or the latest for the version
+              # example: latest, v1.xx (kubernetes version)
+              warnVersion: latest
+              # List of namespaces which are exempt from these settings
+              exemptions:
+                namespaces: ["privileged-workload-ns"]
+      # section to configure vsphere specific options for the cluster nodes
+      # supported scope: cluster, control plane and workers
+      # optional
+      - name: vsphereOptions
+        value:
+          # PV related settings for the nodes
+          persistentVolumes:
+            # list of storage classes made available in the cluster
+            availableStorageClasses:
+            - storage-class-foo
+            - storage-class-bar
+            # default storage class for the cluster
+            # value should also be present in availableStorageClasses list, when not empty
+            defaultStorageClass: storage-class-bar
+            # list of volume snapshot classes made available in the cluster
+            availableVolumeSnapshotClasses:
+            - vol-snapclass-foo
+            - vol-snapclass-bar
+            # value should also be present in availableVolumeSnapshotClasses list, when not empty
+            defaultVolumeSnapshotClass: vol-snapclass-bar
+            # list of annotations on the storage class that will not be overidden by VKS
+            customizableStorageClassAnnotations:
+            - annotation-key-foo
+            # list of labels on the storage class that will not be overidden by VKS
+            customizableStorageClassLabels:
+            - label-key-foo
+      # configure node settings independent of Kubernetes components
+      # supported scope: cluster
+      # optional
+      - name: osConfiguration
+        value:
+          # list of domain names of NTP servers 
+          # default value is obtained from the supervisor if left unset.
+          # optional
+          ntp:
+            servers:
+              - ntp.test
+          # parameters to configure a proxy server for outbound connections
+          # optional
+          systemProxy:
+            http: http://1.2.3.4:2139
+            https: http://4.3.2.1:2139
+            noProxy:
+              - no.proxy.test1
+              - no.proxy.test2
+          trust:
+            # list of additional CAs to be added to the system trust store of nodes.
+            # can reference certificate data from a secret in the namespace or plain text content 
+            # optional
+            additionalTrustedCAs:
+              - caCert:
+                  secretRef:
+                    # name of the key in the secret containing the CA certificate 
+                    #  in PEM format that is double base64-encoded
+                    # Required
+                    key: trust-ca-test1
+                    name: "trust-ca-secret-1"
+              - caCert:
+                  secretRef:
+                    key: trust-ca-test2
+                    # name defaults to <cluster-name>-user-trusted-ca-secret.
+                    name: ""
+              - caCert:
+                  # Plain text CA cert
+                  content: |-
+                    -----BEGIN CERTIFICATE-----
+                    MIIEczCCA1ugAwIBAgIBADANBgkqhkiG9w0BAQQFAD..AkGA1UEBhMCR0Ix
+                    EzARBgNVBAgTClNvbWUtU3RhdGUxFDASBgNVBAoTC0..0EgTHRkMTcwNQYD
+                    VQQLEy5DbGFzcyAxIFB1YmxpYyBQcmltYXJ5IENlcn..XRpb24gQXV0aG9y
+                    aXR5MRQwEgYDVQQDEwtCZXN0IENBIEx0ZDAeFw0wMD..TUwMTZaFw0wMTAy
+                    MDQxOTUwMTZaMIGHMQswCQYDVQQGEwJHQjETMBEGA1..29tZS1TdGF0ZTEU
+                    MBIGA1UEChMLQmVzdCBDQSBMdGQxNzA1BgNVBAsTLk..DEgUHVibGljIFBy
+                    aW1hcnkgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxFD..AMTC0Jlc3QgQ0Eg
+                    THRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCg..Tz2mr7SZiAMfQyu
+                    vBjM9OiJjRazXBZ1BjP5CE/Wm/Rr500PRK+Lh9x5eJ../ANBE0sTK0ZsDGM
+                    ak2m1g7oruI3dY3VHqIxFTz0Ta1d+NAjwnLe4nOb7/..k05ShhBrJGBKKxb
+                    8n104o/5p8HAsZPdzbFMIyNjJzBM2o5y5A13wiLitE..fyYkQzaxCw0Awzl
+                    kVHiIyCuaF4wj571pSzkv6sv+4IDMbT/XpCo8L6wTa..sh+etLD6FtTjYbb
+                    rvZ8RQM1tlKdoMHg2qxraAV++HNBYmNWs0duEdjUbJ..XI9TtnS4o1Ckj7P
+                    OfljiQIDAQABo4HnMIHkMB0GA1UdDgQWBBQ8urMCRL..5AkIp9NJHJw5TCB
+                    tAYDVR0jBIGsMIGpgBQ8urMCRLYYMHUKU5AkIp9NJH..aSBijCBhzELMAkG
+                    A1UEBhMCR0IxEzARBgNVBAgTClNvbWUtU3RhdGUxFD..AoTC0Jlc3QgQ0Eg
+                    THRkMTcwNQYDVQQLEy5DbGFzcyAxIFB1YmxpYyBQcm..ENlcnRpZmljYXRp
+                    b24gQXV0aG9yaXR5MRQwEgYDVQQDEwtCZXN0IENBIE..DAMBgNVHRMEBTAD
+                    AQH/MA0GCSqGSIb3DQEBBAUAA4IBAQC1uYBcsSncwA..DCsQer772C2ucpX
+                    xQUE/C0pWWm6gDkwd5D0DSMDJRqV/weoZ4wC6B73f5..bLhGYHaXJeSD6Kr
+                    XcoOwLdSaGmJYslLKZB3ZIDEp0wYTGhgteb6JFiTtn..sf2xdrYfPCiIB7g
+                    BMAV7Gzdc4VspS6ljrAhbiiawdBiQlQmsBeFz9JkF4..b3l8BoGN+qMa56Y
+                    It8una2gY4l2O//on88r5IWJlm1L0oA8e4fR2yrBHX..adsGeFKkyNrwGi/
+                    7vQMfXdGsRrXNGRGnX+vWDZ3/zWI0joDtCkNnqEpVn..HoX
+                    -----END CERTIFICATE-----
+          # a default vmware-system-user is added if left unset.
+          # optional
+          user:
+            passwordSecret:
+              key: user-secret-key-test
+              name: user-secret-name-test
+            sshAuthorizedKey: sshAuthorizedKeyTest...
+            user: customuser
+            password:
+              # days before renewing the expiring password.
+              # Default value is 7
+              renewalDaysBeforeExpiry: 14
+           # optional
+          fips:
+            # optional
+            # Default value is false.
+            enabled: true
+          sshd:
+            # optional
+            # Defaults to the Federal FIPS banner 
+            banner: >
+              This is a test banner for FIPS mode.
+          # configures the Ubuntu Pro subscription of the node
+          # applies to Ubuntu node pools only.
+          # optional
+          ubuntuPro:
+            # name of the secret containing a valid Ubuntu Pro Subscription token.
+            tokenSecretRef: ubuntu-pro-token
+            # list of Ubuntu Pro services to be enabled
+            services:
+              - esm-infra
+              - esm-apps
+              - livepatch
+            # Ubuntu Pro client (ubuntu-advantage-tools) settings to be configured
+            # optional
+            settings:
+              - key: some_key
+                value: some_value
+          # optional
+          # configruation for nodes to join a Windows Active Directory.
+          # applicable to Windows nodes only.
+          directoryJoin:
+            # name of the secret containing Active Directory join credentials.
+            # required
+            credentialSecretRef: domain-join
+            # FQDN of the Active Directory Kerberos domain to join.
+            # required
+            domain: contoso.test
+            # Windows Active Directory security group that has permissions to access the password of the Group Managed Service Accounts
+            # optional
+            gmsaControlSecurityGroupDN: CN=VKSClusterMembers,OU=VKSGMSAAccounts,DC=contoso,DC=test
+            # organizational unit where the node is added to the Active Directory.
+            # optional
+            organizationalUnitDN: OU=VKSComputers,DC=contoso,DC=test
+      # configure kubelet resource options
+      # supported scope: cluster, control plane and workers
+      # optional
+      - name: resourceConfiguration
+        value:
+          # specify the system reserved CPU and memory reservations
+          # optional
+          systemReserved:
+            # number of CPU cores reserved for system processes
+            # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu
+            cpu: 1
+            # memory resources reserved for system processes
+            # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory
+            memory: 4G
+            # configures the automatic calculation of system reserved resources. 
+            # Default value is true.
+            automatic: false
