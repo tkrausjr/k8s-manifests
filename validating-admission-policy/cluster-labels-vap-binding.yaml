@@ -1,9 +1,9 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingAdmissionPolicyBinding
 metadata:
-  name: "cluster-replica-vap-binding.example.com"
+  name: "cluster-labels-vap-binding.example.com"
 spec:
-  policyName: "cluster-replica-vap.example.com"
+  policyName: "cluster-labels-vap.example.com"
   validationActions: [Deny]
 
 

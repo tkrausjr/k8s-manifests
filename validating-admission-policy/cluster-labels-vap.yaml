@@ -1,7 +1,7 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingAdmissionPolicy
 metadata:
-  name: "cluster-replica-vap.example.com"
+  name: "cluster-labels-vap.example.com"
 spec:
   failurePolicy: Fail
   matchConstraints:
@@ -14,4 +14,5 @@ spec:
       operations:  ["CREATE", "UPDATE"]
       resources:   ["clusters"]
   validations:
-    - expression: object.spec.topology.workers.machineDeployments[0].replicas <= 2 # Only checking the first MD
+    - expression: "has(object.metadata.labels) && 'sealID' in object.metadata.labels"
+      message: "The 'sealID' label is required on all Clusters."

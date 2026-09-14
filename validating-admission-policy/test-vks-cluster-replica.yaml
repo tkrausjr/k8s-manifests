@@ -24,14 +24,11 @@ spec:
         value: vsan-default-storage-policy
     controlPlane:
       replicas: 1
-      metadata:
-        annotations:
-          run.tanzu.vmware.com/resolve-os-image: os-name=photon, content-library=cl-e80e0171710ad97e3
     workers:
       machineDeployments:
         - class: node-pool
           name: vks-cluster-replica-test-np-kz46
-          replicas: 1
+          replicas: 2
           metadata:
             annotations:
-              run.tanzu.vmware.com/resolve-os-image: os-name=photon, content-library=cl-e80e0171710ad97e3
+              run.tanzu.vmware.com/resolve-os-image: os-name=photon
