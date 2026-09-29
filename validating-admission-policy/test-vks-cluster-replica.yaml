@@ -2,6 +2,8 @@ apiVersion: cluster.x-k8s.io/v1beta2
 kind: Cluster
 metadata:
   name: vks-cluster-replica-test
+  labels:
+    sealID: 1467933j
 #namespace: shared-svcs-hgybt
 spec:
   clusterNetwork:
